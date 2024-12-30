@@ -1,0 +1,478 @@
+/* ส่วนของ nav bar */
+body, html {
+    overflow-x: hidden;
+  }
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: "Barlow", sans-serif;
+    max-width: 100%;
+}
+body{
+    width: 100%;
+    max-width: 100%;
+    background-color: #646262;
+    display: block;
+    color: white;
+}
+.showcase-image{
+    
+    margin-top: 0;
+    margin-bottom: 0px;
+    background-image: url('img/logo/955059.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    max-width: 100%;
+    height: 40vh;
+    background-repeat: no-repeat;
+    transform-origin: center center;
+    transition: transform 0.1s ease-in-out;
+}
+
+.header-container{
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #272727;
+    justify-content: center;
+}
+
+.logo-container{
+    gap: 10px;
+    font-size: 19px;
+    font-weight: 600;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    background-color: rgb(0, 0, 0,0);
+}
+.web-name{
+   
+    background-color: rgb(0, 0, 0,0);
+    color: #ffffff;
+}
+
+.logo{
+    width: 50px;
+    object-fit: cover;
+    background-color: rgb(0, 0, 0,0);
+}
+
+.icon-img{
+    gap: 10px;
+    text-decoration: none;
+    background-color: rgb(0, 0, 0,0);  
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.search-box{
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 30px;
+    background-color: rgb(20, 183, 47);
+    cursor: pointer;
+    height: 30px;
+    max-width: 400px;
+    flex-grow: 1;
+    
+    }
+
+.search-input{
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    font-size: 19px;
+    margin-left: 5px;
+    border: 0;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    color: white;
+    
+}
+.search-input::-webkit-search-cancel-button{
+    appearance: none;
+}
+
+.search-input::placeholder {
+    color: #ffffff ;  
+    font-size: 19px;  
+    font-weight: 500;
+    font-style: b;  
+}
+#search-icon{
+    
+    color: white;
+    font-size: 25px;
+    background-color: rgb(0, 0, 0,0);
+
+}
+.nav{
+    font-size: 20px;
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+#label{
+    font-size: 20px;
+}
+.return,.addgame,.recycle-bin{
+    cursor: pointer;
+}
+.return:hover,.addgame:hover,.recycle-bin:hover{
+    color: lime;
+}
+
+/* ส่วนของตาราง */
+
+.container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-section{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 15px; 
+    text-align: center;
+}
+th {
+    background-color: rgb(39, 41, 39);
+}
+td {
+    color: black;
+    background-color: #ffffff;
+    height: 100%;   
+}
+th, td {
+    font-size: 22px;
+    border: 1px solid #000000;
+    padding: 10px;
+}
+
+.add-button{
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(20, 183, 47);
+    -webkit-box-shadow: 11px 9px 22px -10px rgba(0,0,0,0.3);
+    -moz-box-shadow: 11px 9px 22px -10px rgba(0,0,0,0.3);
+    box-shadow: 11px 9px 22px -10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover{
+    color: #a8a3a3;
+    background-color: rgb(19, 105, 33);
+}
+
+#games-container img{
+    
+    border-radius: 5px;
+    width: 150px;
+}
+
+.modal{
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
+    -webkit-box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
+    -moz-box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
+    justify-content: center;
+}
+.addgameModal{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 50%;
+    color: #000000;
+    background-color: white;
+    display: flex;
+    border-radius: 20px;
+}
+
+.saveOrClose{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.saveOrClose button{
+
+    font-size: 20px;
+}
+
+.form-game{
+    display: grid;
+}
+
+.form-game input,.form-game label,.form-game textarea{
+    font-size: 25px;
+}
+.form-game textarea{
+    padding: 3px;
+    resize:none;
+}
+
+.deleteButton{
+    border: none;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px 5px;   
+    background-color: red;
+    margin: 0px 5px;
+    box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.editButton{
+    border: none;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px 5px;   
+    background-color: #007BFF;
+    margin: 0px 5px;
+    box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);  
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.deleteButton:hover{
+    background-color: rgb(154, 10, 10);
+}
+
+.editButton:hover{
+    background-color: #255c97;
+}
+
+
+
+.dataAddgame{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    width: 60%;
+
+}
+
+.save_button{
+    padding: 5px 5px;
+    border-radius: 5px;
+    background-color: #28a745;
+    border: none;
+    font-weight: 700;
+    color: white;
+    text-shadow: 1px 1px 11px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.close_button{
+    text-shadow: 1px 1px 11px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 5px;
+    background-color: #dc3545;
+    box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.save_button:hover{
+    background-color: #218838;
+}
+
+.close_button:hover{
+    background-color: #c82333;  
+}
+
+/* ซ่อนปุ่ม input file เดิม */
+input[type="file"] {
+    display: none;
+}
+
+/* สไตล์ปุ่มที่กำหนดเอง */
+.custom-file-upload {
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+    background-color: #45a049;
+}
+
+.custom-file-upload:active {
+    background-color: #3e8e41;
+}
+
+.NavAddgame{
+
+    justify-content: space-between;
+    display: flex;
+
+}
+
+#preview{
+    width: 80%;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.GameData{
+    display: flex;
+    justify-content: space-between;
+}
+
+#game_description{
+    font-size: 16px;
+}
+
+.UploadIMG{
+    padding-top: 10px;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+ /* ซ่อนปุ่ม increment และ decrement */
+ input[type="number"]::-webkit-inner-spin-button, 
+ input[type="number"]::-webkit-outer-spin-button {
+     -webkit-appearance: none; /* ปิดการแสดงผล */
+     margin: 0;
+ }
+
+ .alert-modal{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
+    -webkit-box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
+    -moz-box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
+}
+
+#alert-modal.visible {
+    display: none;
+    opacity: 1;
+}
+
+
+.alert-contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #000000;
+    padding: 30px;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+}
+
+.headalert{
+    font-size: 25px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.alertdes{
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.alert-button{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alert-button button{
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#confirmbt{
+    background-color: #28a745;
+}
+
+#cancelbt{
+    background-color: #dc3545;
+}
+
+#confirmbt:hover{
+    background-color: #218838;
+}
+
+#cancelbt:hover{
+    background-color: #c82333;
+}
+
+
