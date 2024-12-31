@@ -65,6 +65,7 @@ body{
 }
 
 .icon-img{
+    cursor: pointer;
     gap: 10px;
     text-decoration: none;
     background-color: rgb(0, 0, 0,0);  

@@ -16,7 +16,7 @@
     <!-- Header -->
     <header class="header-container">
         <div class="logo-container" title="Home" >
-            <a href="goToHome()"  class="icon-img"><img src="/img/logo/reallogo.png" alt="" class="logo"></a>
+            <div class="icon-img" onclick="goToHome()"><img src="/img/logo/reallogo.png" alt="" class="logo"></div>
             <label for="" id="label">Management System</label>
         </div>
         <div class="search-box">
@@ -31,7 +31,7 @@
      <div class="container">
         <div class="header-section">
             <h2>Game Management</h2>
-            <div class="add-button" onclick="modalAddgame()">Add Game</div>
+            <div class="add-button" onclick="modalAddgame(0)">Add Game</div>
         </div>
         <table class="table" id="gamelistTable">
             <thead>
@@ -53,11 +53,9 @@
         <div class="addgameModal">
             <form method="POST" class="form-game" enctype="multipart/form-data" id="addGameForm">
                 <div class="NavAddgame">
-                    <div>
-                        <h1>Add Game</h1>
-                    </div>
+                    <div id="addGameTitle"></div>
                     <div class="saveOrClose" id="saveOrClose">
-                        <button class="save_button" type="submit">Save</button>
+                        <button class="save_button" id="save_button" type="submit">Save</button>
                         <button class="close_button" type="reset" onclick="closeAddGame()">Close</button>
                     </div>
                 </div>
@@ -72,6 +70,7 @@
                     </div>
 
                     <div class="dataAddgame">    
+                        <input type="hidden" name="game_id" id="game_id">
                         <label for="game_title">Game Title *</label>
                         <input type="text" name="game_title" id="game_title" required oninvalid="setCustomValidity('กรุณากรอกชื่อเกม')" oninput="setCustomValidity('')">
                         <label for="game_description">Description *</label>
