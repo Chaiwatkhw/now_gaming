@@ -4,7 +4,7 @@ const multer  = require('multer')
 const router = express.Router(); // สร้าง router เพื่อจัดการเส้นทาง
 const mysql = require('mysql2/promise');
 const fs = require('fs');
-
+const cors = require('cors');   
 async function connectDB() {
     const connection = await mysql.createPool({
         host: 'localhost',
@@ -17,7 +17,13 @@ async function connectDB() {
     });
     return connection;
 }
+const corsOptions = {
+    credentials: true,
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200,
+};
 
+router.use(cors(corsOptions));
 // การตั้งค่า diskStorage เพื่อจัดการชื่อไฟล์พร้อมนามสกุลเดิม
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

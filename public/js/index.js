@@ -18,7 +18,7 @@ window.onload = async function winLoad() {
     loginAccount();
     axios.get('/')
     .then((res)=>{
-        console.log(res);
+        
     })
     .catch((error)=>{
         console.log("Error to Load Index:",error);
@@ -27,7 +27,6 @@ window.onload = async function winLoad() {
     axios.get('/getGame')
     .then((res)=>{
         games = res.data;
-        console.log(games);
         renderGames(games);    
     })
     .catch((error)=>{
