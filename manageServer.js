@@ -5,6 +5,11 @@ const router = express.Router(); // สร้าง router เพื่อจั
 const mysql = require('mysql2/promise');
 const fs = require('fs');
 const cors = require('cors');   
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+
+const secretKey = 'nowgaming';
+
 async function connectDB() {
     const connection = await mysql.createPool({
         host: 'localhost',
@@ -40,12 +45,35 @@ const upload = multer({
     storage: storage
 });
 
+const isAdmin = (req, res, next) => {
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.status(401).json({ error: 'Authentication required' });
+    }
+
+    jwt.verify(token, secretKey, (err, decoded) => {
+        if (err) {
+            return res.status(403).json({ error: 'Forbidden: Invalid or expired token' });
+        }
+
+        // ตรวจสอบว่า role เป็น admin หรือไม่
+        if (decoded.role !== 'admin') {
+            return res.status(403).json({ error: 'Forbidden: Insufficient permissions' });
+        }
+
+        // ถ้าเป็น admin ให้ดำเนินการถัดไป
+        req.user = decoded; // เก็บข้อมูลผู้ใช้ใน request
+        next();
+    });
+};
+
 // เส้นทาง GET สำหรับแสดงหน้า manage
-router.get('/', (req, res) => {
+router.get('/', isAdmin,(req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'manage.html'));
 });
 
-router.post('/upload', upload.single('game_imgfile'), async (req, res) => {
+router.post('/upload',isAdmin ,upload.single('game_imgfile'), async (req, res) => {
     
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
@@ -104,7 +132,7 @@ router.post('/upload', upload.single('game_imgfile'), async (req, res) => {
 });
 
 
-router.get('/getGameToManage', async (req, res) => {
+router.get('/getGameToManage',isAdmin, async (req, res) => {
     const query = `
         SELECT g.game_id, g.game_title,g.game_image,g.game_description ,hp.game_price, hp.start_date,g.game_deleted
         FROM games g
@@ -132,7 +160,7 @@ router.get('/getGameToManage', async (req, res) => {
 
 
 
-router.patch('/deleteGame/:game_id',async (req,res)=>{
+router.patch('/deleteGame/:game_id',isAdmin,async (req,res)=>{
     try{
         const { game_id } = req.params;
         
@@ -159,7 +187,7 @@ router.patch('/deleteGame/:game_id',async (req,res)=>{
 
 
 //Edit
-router.patch('/updateGame/:game_id', upload.single('game_imgfile'), async (req, res) => {
+router.patch('/updateGame/:game_id', isAdmin,upload.single('game_imgfile'), async (req, res) => {
     const { game_id } = req.params;
     const { game_title, game_description, game_price } = req.body;
     const game_image = req.file ? req.file.filename : null; // ใช้ไฟล์ใหม่ถ้ามี
@@ -210,7 +238,7 @@ router.patch('/updateGame/:game_id', upload.single('game_imgfile'), async (req, 
 });
 
 
-router.get('/getGameDetails/:game_id', async (req, res) => {
+router.get('/getGameDetails/:game_id',isAdmin, async (req, res) => {
     const { game_id } = req.params;
     try {
         const connection = await connectDB();

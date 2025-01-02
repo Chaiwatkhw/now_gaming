@@ -16,8 +16,8 @@
 <body>
     <!-- Head -->
     <header class="header-container">
-        <div class="logo-container" title="Home" >
-            <a href="index.html"  class="icon-img"><img src="img/logo/reallogo.png" alt="" class="logo"><span class="web-name">Now <br>Gaming</span></a>
+        <div class="logo-container"  >
+            <a href="index.html" title="Home"  class="icon-img"><img src="img/logo/reallogo.png" alt="" class="logo"><span class="web-name" title="Home">Now <br>Gaming</span></a>
         </div>       
         <div class="search-box">
             <span class="material-symbols-outlined"  id="search-icon"> search </span>
@@ -28,7 +28,7 @@
                 <a href="index.html" class="icon-img" ><span class="material-symbols-outlined" id="shopping_cart">shopping_cart</span></a>
             </div>
             <div class="account">
-                <a href="javascript:void(0);" class="icon-img" ><span class="material-symbols-outlined" id="account_circle" onclick="openLoginModal()">account_circle</span></a>
+                
             </div>
         </div>
     </header>
@@ -59,17 +59,23 @@
             <form action="" class="create-form">
                 <legend>Create Your Account</legend>
                 <input type="text" id="username" name="username" placeholder="Username:" required>
-                <input type="text" name="email" id="email" placeholder="Email:" required>
+                <input type="email" name="email" id="email" placeholder="Email:" required>
                 <input type="password" id="password" name="password" placeholder="Your password:" required>
-                <input type="text" id="repassword" name="repassword" placeholder="Re-type your password:" required>
+                <input type="password" id="repassword" name="repassword" placeholder="Re-type your password:" required>
                 <button type="submit">Submit</button>
             </form>
                 <span id="login_create" onclick="createOrLogin()">Create an account</span>
         </div>
-
     </div>
+    <!-- Alert Modal -->
+     <div class="alert-modal">
+        <div class="alert-content">
+        
+        </div>
+     </div>
     <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/index.js"></script>
+
 </body>
 </html>
