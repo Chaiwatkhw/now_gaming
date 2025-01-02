@@ -214,12 +214,14 @@ function deleteGame(gameId){
         console.log('Game deleted successfully:', response.data);
         closeAddGame();
         fetchGames();
+        closeAlert();
     })
     .catch(function(error){
         console.error('Error deleting game:', error);
         alert('Error deleting game');
     });
 }
+
 
 function editGame(gameId) {
     modalAddgame();  // เปิด modal การเพิ่มเกม
