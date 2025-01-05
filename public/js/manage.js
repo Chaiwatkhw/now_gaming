@@ -251,7 +251,6 @@ function editGame(gameId) {
         });
 }
 
-
 function sendGameEdit(gameId) {
     const gameImgFile = document.getElementById('game_imgfile').files[0] || null;  // ใช้ไฟล์ที่เลือกจาก input file หรือ null
     const gameTitle = document.getElementById('game_title').value;
@@ -292,8 +291,3 @@ function sendGameEdit(gameId) {
             alert(error.response.data);
         });
 }
-
-
-
-
-
