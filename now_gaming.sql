@@ -6,7 +6,7 @@ create table games (
     game_title varchar(255) not null,
     game_image varchar(255),
     game_description text,
-    game_deleted tinyint
+    game_deleted tinyint default 0
 );
 
 create table historyprice (
