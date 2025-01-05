@@ -67,6 +67,7 @@ function openLoginModal(){
 }
         // ฟังก์ชั่นปิด modal
 function closeLoginModal() {
+    loginAccount();
     const loginform = document.querySelector('.login-form');
     const createform = document.querySelector('.create-form');  
     document.getElementById("loginModal").style.display = "none";
