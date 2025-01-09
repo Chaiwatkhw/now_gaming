@@ -73,11 +73,18 @@ function previewImage() {
 function validateForm() {
     const fileInput = document.getElementById('game_imgfile');
     const imageError = document.getElementById('imageError');  // ข้อความเตือน
-    
+    const game_price = document.getElementById('game_price').value;
+
     if (fileInput.files.length == 0) {
         imageError.style.display = 'block'; // แสดงข้อความเตือน
         return false;  // คืนค่า false เมื่อไม่พบไฟล์
-    } else {
+    }
+    if (game_price <= 0) {
+        document.getElementById('game_price').value = ''; // ล้างค่าในช่องราคาเกม
+        alert('กรุณากรอกราคาเกมให้ถูกต้อง'); // แสดงข้อความเตือน
+        return false;  // คืนค่า false เมื่อราคาเกมไม่ถูกต้อง
+    }
+    else {
         imageError.style.display = 'none'; // ซ่อนข้อความเตือนเมื่อมีไฟล์
     }
     return true;  // คืนค่า true ถ้าไฟล์ถูกเลือกหรือมีไฟล์แสดงในพรีวิว
@@ -291,3 +298,9 @@ function sendGameEdit(gameId) {
             alert(error.response.data);
         });
 }
+
+const img = document.getElementById('preview');
+        if (!img.src || img.src === window.location.href) {
+            // ตรวจสอบว่าค่า src เป็นค่าว่าง หรือยังไม่ถูกตั้งค่า
+            img.style.display = 'none';
+        }

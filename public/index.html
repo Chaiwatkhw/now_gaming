@@ -47,6 +47,9 @@
     <!-- Login Modal -->
     <div  id="loginModal" class="modal">
         <div class="modal-content">
+            <div class="modal-closer">
+                <span class="close" onclick="closeLoginModal()">&times;</span>
+            </div>
             <div class="logo-container-login">
                 <img src="img/logo/reallogo.png" alt="" class="logo-login"><span class="web-name">Now <br>Gaming</span>
             </div> 
@@ -64,7 +67,10 @@
                 <input type="password" id="repassword" name="repassword" placeholder="Re-type your password:" required>
                 <button type="submit">Submit</button>
             </form>
+            <div class="xy">
                 <span id="login_create" onclick="createOrLogin()">Create an account</span>
+                <span id="forget-password" onclick="">Lost password?</span>
+            </div>
         </div>
     </div>
     <!-- Alert Modal -->

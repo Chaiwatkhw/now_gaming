@@ -331,7 +331,6 @@ footer{
     gap: 20px;
     color: white;
     width: 450px; 
-    
 }
 
 .modal-content form{
@@ -412,8 +411,8 @@ footer{
     flex: 1;
     display: flex;
     background-color: rgb(0, 0, 0,0);
-    padding-bottom: 20px;
     border-bottom:2px solid #ccc;
+    padding-bottom: 20px;
 }
 .logo-login{
     width:  75px;
@@ -422,17 +421,47 @@ footer{
 
 }
 
+.xy{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+}
+
+#forget-password{
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 #login_create{
     color: white;
     font-size: 18px;
     text-decoration: none;
-    align-self: flex-start;
     cursor: pointer;
 }
-#login_create:hover{
+#login_create:hover, #forget-password:hover{
     color: #00ff02;
 }
 
+.modal-closer{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.close{
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.close:hover{
+    color: #00ff02;
+}
 select {
     -webkit-appearance: none;
     -moz-appearance: none;

@@ -10,8 +10,9 @@ window.onload = async function winLoad() {
     }
     else{
         account.innerHTML= `
-        <a href="javascript:void(0);" class="icon-img" ><span class="material-symbols-outlined" id="account_circle" onclick="openLoginModal()">account_circle</span></a>`
-        
+        <a href="javascript:void(0);" class="icon-img" >
+        <span class="material-symbols-outlined" id="account_circle" onclick="openLoginModal()">account_circle</span>
+        </a>`;   
     }
     loginAccount();
     axios.get('/')

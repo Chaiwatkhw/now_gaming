@@ -24,7 +24,7 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role ENUM('user', 'admin') DEFAULT 'user',
+    role ENUM('user', 'admin') DEFAULT 'user'
 );
 
 INSERT INTO users (username, email, password, role) VALUES ('admin', 'chaiwat.ke@rmuti.ac.th', 'admin', 'admin');
