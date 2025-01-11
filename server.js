@@ -10,6 +10,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
+const nodemailer = require('nodemailer');
+const { json } = require('stream/consumers');
 const secretKey = 'nowgaming';
 
 
@@ -58,6 +60,26 @@ connectDB().then((connection) => {
 });
 
 
+const isUser = (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({ error: 'Authentication required' });
+    }
+    jwt.verify(token, secretKey, (err, decoded) => {
+        if (err) {
+            return res.status(403).json({ error: 'Forbidden: Invalid or expired token' });
+        }
+
+        // ตรวจสอบว่า role ต้องเป็น 'admin' หรือ 'user'
+        if (decoded.role !== 'admin' && decoded.role !== 'user') {
+            return res.status(403).json({ error: 'Forbidden: Insufficient permissions' });
+        }
+
+        // หาก role ถูกต้อง ดำเนินการถัดไป
+        req.user = decoded; // เก็บข้อมูลผู้ใช้ใน request
+        next();
+    });
+};
 
 app.get('/', async (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -152,23 +174,248 @@ app.post('/login', async (req, res) => {
     }
 });
 
-function checkAuth(req, res, next){
-    const token = req.cookies.token;
-    console.log('Received Token:', token);
-    if(!token){
-        return res.status(401).json({ error: 'Unauthorized' });
-    }
-    try{
-        const decoded = jwt.verify(token, secretKey);
-        req.user = decoded;
-        next();
-    }
-    catch(error){
-        return res.status(401).json({ error:'Invalid or expired token' });
-    }
-}
 
-app.get('/checklogin', checkAuth, async (req, res) => {
-    res.json({ message: 'You are authorized' ,user: req.user});
+app.get('/checklogin', isUser, async (req, res) => {
+    res.json({ 
+        message: 'You are authorized', 
+        user: req.user // ส่งข้อมูลผู้ใช้กลับไป
+    });
 });
 
+// สร้าง transporter สำหรับส่งอีเมล
+const transporter = nodemailer.createTransport({
+    service: 'gmail', // ใช้ Gmail หรือบริการอื่น ๆ
+    auth: {
+        user: 'nowgaming2025@gmail.com', // ใส่อีเมลของคุณ
+        pass: 'ifhg vlam shob jnlw'   // ใส่รหัสผ่านของคุณ
+    }
+});
+
+// ฟังก์ชั่นสำหรับส่ง OTP
+function sendOtpEmail(toEmail, otp) {
+    const mailOptions = {
+        from: 'nowgaming2025@gmail.com',
+        to: toEmail,
+        subject: 'Email Verification - OTP',
+        html: `
+    <html>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <style>
+          body {
+            font-family: "Barlow", sans-serif;
+            background-color: #f4f4f9;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #dbdbdb;
+            border-radius: 8px;
+            padding: 20px;
+          }
+          .header {
+            gap:10px;
+            background-color: #272727;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+          }
+          .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 500;
+          }
+          .content {
+            padding: 20px;
+            font-size: 16px;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>Now Gaming</h1>
+          </div>
+          <div class="content">
+            <h2>Verify Your Email Address</h2>
+            <p>Thank you for signing up with NowGaming. We're excited to have you on board.</p>
+            <p>Your One-Time Password (OTP) is:</p>
+            <p style="color: #4CAF50; font-size: 30px; text-align: center;"><strong>${otp}</strong></p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log('Error sending email: ', error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+}
+
+// ฟังก์ชั่นสำหรับส่ง OTP
+function sendOtpResetPassword(toEmail, otp) {
+    const mailOptions = {
+        from: 'nowgaming2025@gmail.com',
+        to: toEmail,
+        subject: 'Email Verification - OTP',
+        html: `
+    <html>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <style>
+          body {
+            font-family: "Barlow", sans-serif;
+            background-color: #f4f4f9;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #dbdbdb;
+            border-radius: 8px;
+            padding: 20px;
+          }
+          .header {
+            gap:10px;
+            background-color: #272727;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+          }
+          .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 500;
+          }
+          .content {
+            padding: 20px;
+            font-size: 16px;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>Now Gaming</h1>
+          </div>
+          <div class="content">
+            <h2>Reset Your Password</h2>
+            <p>We received a request to reset your password for your NowGaming account.</p>
+            <p>our One-Time Password (OTP) to reset your password is:</p>
+            <p style="color: #4CAF50; font-size: 30px; text-align: center;"><strong>${otp}</strong></p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log('Error sending email: ', error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+}
+
+function generateOtp() {
+    const otp = Math.floor(100000 + Math.random() * 900000);  // สร้าง OTP 6 หลัก
+    return otp;
+}
+
+// ฟังก์ชั่นสำหรับเข้ารหัส OTP ด้วย bcrypt
+async function encryptOtp(otp) {
+    const saltRounds = 10;  // จำนวนรอบในการเข้ารหัส
+    const hashedOtp = await bcrypt.hash(otp.toString(), saltRounds);  // เข้ารหัส OTP
+    return hashedOtp;
+}
+
+// ฟังก์ชั่นสำหรับตรวจสอบ OTP ที่กรอก
+async function checkOtp(userOtp, hashedOtp) {
+    const match = await bcrypt.compare(userOtp, hashedOtp);  // เปรียบเทียบ OTP ที่กรอกกับที่เข้ารหัส
+    return match;  // คืนค่า true ถ้า OTP ตรงกัน
+}
+
+app.get('/checkuser',async(req,res)=>{
+    const { username, email } = req.query; 
+    const [checkuser] = await db.query('SELECT * FROM users WHERE username = ? OR email = ?',[username,email]);
+    if(checkuser.length > 0){
+        res.status(400).json({ error: 'Username or email already exists' });
+        return;
+    }
+    else{
+        const otp = generateOtp();
+        const encryptedOtp = await encryptOtp(otp);
+        sendOtpEmail(email,otp);
+        // เก็บ OTP ที่เข้ารหัสในคุกกี้
+        res.cookie('userOtp', encryptedOtp, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+            maxAge: 5 * 60 * 1000  // เก็บ OTP ในคุกกี้เป็นเวลา 5 นาที
+        });
+        res.json({message: 'Send OTP to verify email.'});
+    }
+});
+
+// ฟังก์ชั่นสำหรับตรวจสอบ OTP ที่ผู้ใช้กรอก
+app.post('/verifyOtp', async (req, res) => {
+    const { otp } = req.body;
+    const hashedOtp = req.cookies.userOtp;
+
+    if (!hashedOtp) {
+        return res.status(400).json({ error: 'OTP has expired or not found' });
+    }
+
+    const isOtpValid = await checkOtp(otp, hashedOtp);
+    if (isOtpValid) {
+        res.status(200).json({ message: 'OTP is valid' });
+    } else {
+        res.status(400).json({ error: 'Invalid OTP' });
+    }
+});
+
+app.get('/forgotPassword', async (req,res)=>{
+    const { email } = req.query; 
+    console.log(email);
+    const [checkuser] = await db.query('SELECT * FROM users WHERE email = ?',[email]);
+    if(checkuser.length == 0){
+        res.status(400).json({ error: 'User not found in the system' });
+        return;
+    }
+    else{
+        const otp = generateOtp();
+        const encryptedOtp = await encryptOtp(otp);
+        sendOtpResetPassword(email,otp);
+        // เก็บ OTP ที่เข้ารหัสในคุกกี้
+        res.cookie('userOtp', encryptedOtp, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+            maxAge: 5 * 60 * 1000  // เก็บ OTP ในคุกกี้เป็นเวลา 5 นาที
+        });
+        res.json({message: 'Send OTP to reset password'});
+    }
+});
+
+app.patch('/updatePassword',async (req,res)=>{
+    const {email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await db.query(`UPDATE users SET password = ? WHERE email=?`,[hashedPassword,email]);
+    res.json({message: "Your Password is Update"});
+});

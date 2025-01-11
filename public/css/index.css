@@ -492,3 +492,7 @@ select {
     border-color: -webkit-linear-gradient(57deg,#00ff02 0%, #22d522 80%);
     border-color: -moz-linear-gradient(57deg,#00ff02 0%, #22d522 80%); 
 }
+
+.checkemail{
+    display: none;
+}
