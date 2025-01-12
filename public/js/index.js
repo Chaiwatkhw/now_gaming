@@ -6,6 +6,22 @@ window.onload = async function winLoad() {
         <a href="javascript:void(0);" class="icon-img" >
         <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-succes" onclick="">
         </a>
+        <div class="nav">
+            <div class="inNav">
+                <div class="user">
+                    <div>
+                        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-successs" onclick="">
+                    </div>
+                    <div>
+                        Ceraph
+                    </div>
+                </div>
+                <hr class="hr">
+                <span>Account</span>
+                <span onclick="managePage()">Game Management</span>
+                <span>Sign Out</span>
+            </div>
+        </div>
         `;
     }
     else{
@@ -255,7 +271,7 @@ document.body.addEventListener('submit', async function(e) {
                 window.location.reload();
             } catch (error) {
                 console.error(error);
-                alert('Login failed');
+                alert(error.response.data.error);
             }
         }
         
@@ -380,5 +396,51 @@ function renderGames(games){
     });
 }
 
+function managePage(){
+    window.location.href = '/manage';
+}
+
+window.addEventListener('scroll', function () {
+    const header = document.querySelector(".header-container");
+    header.classList.toggle('sticky', window.scrollY > 0);
+
+    const image = document.querySelector(".sx-img");
+    const scrollY = window.scrollY;
+
+    // จำกัดการเลื่อนภาพในช่วง 0 ถึง 200px
+    const maxScroll = 200; // ระยะที่ต้องการให้ภาพเลื่อน
+    const translateY = Math.min(scrollY * 0.1, maxScroll * 0.1);
+
+    // ปรับเลื่อนภาพตาม scroll แต่ไม่เกิน maxScroll
+    image.style.transform = `translateY(${translateY}px)`;
+});
+
+
+document.getElementById('search-icon').addEventListener('click',searchBoxChange);
+function searchBoxChange() {
+    const searchBox = document.querySelector('.search-box');
+    const searchIcon = document.getElementById('search-icon');
+    const x = document.getElementById('x');
+    // ซ่อน searchIcon และแสดง x
+    searchIcon.style.display = 'none';
+    x.style.display = 'block';
+    searchBox.classList.add('active');
+}
+
+document.getElementById('x').addEventListener('click', closeSearch);
+function closeSearch() {
+    console.log('s')
+    const searchBox = document.querySelector('.search-box');
+    const searchIcon = document.getElementById('search-icon');
+    const searchInput = document.getElementById('searchinput');
+    searchInput.value = '';
+    const x = document.getElementById('x');
+    
+    searchBox.classList.remove('active');
+    
+    // ใช้ visibility แทน display
+    searchIcon.style.display = 'flex';
+    x.style.display = 'none'
+}
 
 

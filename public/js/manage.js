@@ -304,3 +304,32 @@ const img = document.getElementById('preview');
             // ตรวจสอบว่าค่า src เป็นค่าว่าง หรือยังไม่ถูกตั้งค่า
             img.style.display = 'none';
         }
+
+document.getElementById('search-icon').addEventListener('click',searchBoxChange);
+function searchBoxChange() {
+    const searchBox = document.querySelector('.search-box');
+    const searchIcon = document.getElementById('search-icon');
+    const x = document.getElementById('x');
+    // ซ่อน searchIcon และแสดง x
+    searchIcon.style.display = 'none';
+    x.style.display = 'block';
+    searchBox.classList.add('active');
+}
+
+document.getElementById('x').addEventListener('click', closeSearch);
+function closeSearch() {
+    console.log('s')
+    const searchBox = document.querySelector('.search-box');
+    const searchIcon = document.getElementById('search-icon');
+    const searchInput = document.getElementById('searchinput');
+    searchInput.value = '';
+    const x = document.getElementById('x');
+    
+    searchBox.classList.remove('active');
+    
+    // ใช้ visibility แทน display
+    searchIcon.style.display = 'flex';
+    x.style.display = 'none'
+}
+
+
