@@ -4,13 +4,13 @@ window.onload = async function winLoad() {
     if(isLoggedIn){
         account.innerHTML= `
         <a href="javascript:void(0);" class="icon-img" >
-        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-succes" onclick="">
+        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-succes" onclick="openMenu()">
         </a>
         <div class="nav">
             <div class="inNav">
                 <div class="user">
                     <div>
-                        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-successs" onclick="">
+                        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-successs">
                     </div>
                     <div>
                         Ceraph
@@ -413,6 +413,9 @@ window.addEventListener('scroll', function () {
 
     // ปรับเลื่อนภาพตาม scroll แต่ไม่เกิน maxScroll
     image.style.transform = `translateY(${translateY}px)`;
+
+    const nav = document.querySelector('.nav');
+
 });
 
 
@@ -441,6 +444,22 @@ function closeSearch() {
     // ใช้ visibility แทน display
     searchIcon.style.display = 'flex';
     x.style.display = 'none'
+}
+
+function openMenu(){
+    const cart = document.querySelector('.cart');
+    const bgblack = document.querySelector('.bgblack');
+    const nav = document.querySelector('.nav');
+    if(nav.style.display == 'flex'){
+        cart.style.zIndex ='1';
+        nav.style.display = 'none';  
+        bgblack.style.display = 'none'; 
+    }
+    else{
+        cart.style.zIndex ='0';
+        nav.style.display = 'flex';
+        bgblack.style.display = 'block';
+    }
 }
 
 
