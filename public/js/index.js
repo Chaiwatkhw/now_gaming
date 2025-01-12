@@ -397,6 +397,7 @@ function renderGames(games){
 }
 
 function managePage(){
+    openMenu();
     window.location.href = '/manage';
 }
 
@@ -452,14 +453,31 @@ function openMenu(){
     const nav = document.querySelector('.nav');
     if(nav.style.display == 'flex'){
         cart.style.zIndex ='1';
+        nav.style.zIndex ='3';
         nav.style.display = 'none';  
         bgblack.style.display = 'none'; 
     }
     else{
         cart.style.zIndex ='0';
+        nav.style.zIndex ='0';
         nav.style.display = 'flex';
         bgblack.style.display = 'block';
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const nav = document.querySelector('.nav');
+    const bgblack = document.querySelector('.bgblack');
+
+    // Event to close the menu when mouse leaves
+    bgblack.addEventListener('click', openMenu); // Close when clicking outside
+
+    // Close the menu when the mouse leaves the nav area
+    bgblack.addEventListener('mouseover', function () {
+        openMenu();
+    });
+});
+
+
 
 

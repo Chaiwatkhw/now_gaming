@@ -35,13 +35,12 @@ body{
     bottom: 20px;
     left: 0;
     width: 100%;
-    height: 100px; /* ความสูงของส่วนเฉียง */
+    height: 50px; /* ความสูงของส่วนเฉียง */
     background: #272727; /* ไล่ระดับสี */
-    transform: skewY(+2deg); /* ทำให้เอียง */
+    /* transform: skewY(+2deg);  */
     transform-origin: top; /* จุดหมุนของการเอียง */
     z-index: -1; /* ซ้อนทับด้านหน้า */
     pointer-events: none; /* ไม่ให้คลิกได้ */
-    margin-bottom: -20px;
   }
 .sx-img {
     position: absolute;
@@ -581,7 +580,7 @@ select {
     position: absolute;
     width: fit-content;
     height: fit-content;
-    /* background-color: rgba(0, 0, 0, 0.5); */
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: flex-end;
     padding: 20px 20px;
 }
