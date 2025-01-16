@@ -146,7 +146,7 @@ app.post('/login', async (req, res) => {
         const query = 'SELECT * FROM users WHERE username = ? OR email = ?';
         const [user] = await db.query(query, [username, username]);
         if (!user.length) {
-            return res.status(400).json({ error: 'Invalid username or password' });
+            return res.status(400).json({ error: 'User not Found' });
         }
 
         const isPasswordMatch = await bcrypt.compare(password, user[0].password);
@@ -158,14 +158,14 @@ app.post('/login', async (req, res) => {
             userId: user[0].id, 
             role: user[0].role,
             username: user[0].username  // เพิ่ม username ลงไปใน payload
-        }, secretKey, { expiresIn: '30m' });
+        }, secretKey, { expiresIn: '24h' });
         
         console.log('Generated Token:', token);
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
             sameSite: 'none',
-            maxAge: 24 * 60 * 60 * 1000 
+            maxAge: 24 * 60 * 60 * 1000 // 1 วัน
         });
         res.status(200).json({ message: 'Login successful' });
     } catch (error) {
@@ -418,4 +418,16 @@ app.patch('/updatePassword',async (req,res)=>{
     const hashedPassword = await bcrypt.hash(password, 10);
     await db.query(`UPDATE users SET password = ? WHERE email=?`,[hashedPassword,email]);
     res.json({message: "Your Password is Update"});
+});
+
+app.post('/logout', (req, res) => {
+    // ลบ cookie 'token'
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none'
+    });
+
+    // ส่ง response กลับไปยัง client
+    res.status(200).json({ message: 'Logged out successfully' });
 });

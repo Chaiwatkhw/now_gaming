@@ -273,5 +273,46 @@ router.get('/getGameDetails/:game_id',isAdmin, async (req, res) => {
     }
 });
 
+router.post('/getKeyGameIMG',async (req,res)=>{
+    const {gameId} = req.body;
+    const db = await connectDB();
+    const [games] = await db.query(`SELECT * FROM games WHERE game_id = ?`,[gameId]);
+    res.send(games);
+});
+
+router.post('/addkey',async (req,res)=>{
+    const {game_id , keygame} = req.body;
+    const db = await connectDB();
+    try{
+        await db.query('INSERT INTO keygames(keygame,game_id) VALUES (?,?)',[keygame,game_id]);
+        const [allKey] = db.query('SELECT * FROM keygames WHERE game_id = ?',[game_id]);
+        res.send(allKey);
+    }catch(error){
+        console.log(error.errno)
+        if(error.errno == '1452'){
+            res.status(400).send('Foreign Key Constraint failed: The referenced row does not exist.');
+        }
+        if(error.errno == '1062'){
+            res.status(400).send('มีคีย์เกมนี้ในระบบแล้ว');
+        }
+    }
+});
+
+router.post('/getKeyGame',async (req,res)=>{
+    try{
+        const {game_id} = req.body;
+        const db = await connectDB();
+        const [allKey] = await db.query('SELECT * FROM keygames WHERE game_id = ?',[game_id]);
+        if (allKey.length === 0) {
+            return res.status(400).send('ไม่พบคีย์ของเกมนี้ในระบบ');
+        }
+        res.send(allKey);
+    }
+    catch(error){
+        console.error('Error occurred:', error); 
+        res.status(400).send('ไม่พบคีย์ของเกมนี้ในระบบ');
+    }
+});
+
 
 module.exports = router; // ส่ง router ไปใช้งานใน index.js

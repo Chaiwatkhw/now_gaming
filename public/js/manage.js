@@ -1,3 +1,4 @@
+
 // เรียกใช้งานหลังจากโหลดข้อมูล
 document.addEventListener('DOMContentLoaded', () => {
     // เรียกใช้ function เพื่อตรวจสอบการมีแถวใน tbody
@@ -174,6 +175,7 @@ function fetchGames() {
                         <td>฿${formattedPrice}</td>
                         <td>0</td>
                         <td class="editDelButton">
+                            <button onclick="openKeyGame(${game.game_id})" class="addKey">Add Key</button>
                             <button onclick="editGame(${game.game_id})" class="editButton">Edit</button>
                             <button onclick="confirmDeleteGame(${game.game_id})" class="deleteButton">Delete</button>
                         </td>
@@ -193,7 +195,7 @@ function fetchGames() {
 
 function confirmDeleteGame(gameId){
     const alertmodal = document.getElementById('alert-modal');
-    alertmodal.style.display = 'flex'; 
+    alertmodal.classList.add('show'); 
     const alertcontain = document.getElementById('alert-contain');
     alertcontain.innerHTML = `
         <span class="headalert">Confirm Deletion</span>
@@ -208,7 +210,7 @@ function confirmDeleteGame(gameId){
 
 function closeAlert(){
     const alertmodal = document.getElementById('alert-modal');
-    alertmodal.style.display = 'none'; // ปิด modal
+    alertmodal.classList.remove('show');
 }
 
 
@@ -330,6 +332,122 @@ function closeSearch() {
     // ใช้ visibility แทน display
     searchIcon.style.display = 'flex';
     x.style.display = 'none'
+}
+
+async function openKeyGame(gameId){
+    const modalKeygame = document.getElementsByClassName('modalKeygame')[0];
+    const addkeyGameModal = document.getElementsByClassName('addkeyGameModal')[0];
+    addkeyGameModal.innerHTML = `
+    <div class="headKeygame">
+                
+    </div>
+            <div class="mainKeygame">
+                <div class="leftKey">
+                     
+                </div>
+                <div class="rightKey">
+                    
+                </div>
+            </div>
+            <div class="footerKeyGame">
+    </div>
+    `;
+    await axios.post('/manage/getKeyGameIMG',{gameId})
+    .then((res)=>{
+        const game = res.data[0];
+        let headKeygame = document.getElementsByClassName('headKeygame')[0];
+        let rightKey = document.getElementsByClassName('rightKey')[0];
+        headKeygame.innerHTML = `
+            <div class="keyAmount">Key Amount: 0</div>
+            <div class="gameName">${game.game_title}</div>
+            <div class="saveOrClose" id="sorc">
+                    <button class="close_button" onclick="closeKeyGame()">Close</button>
+            </div>
+        `;
+        rightKey.innerHTML = `
+            <img src="img/game/${game.game_image}" alt="" class="imgKeyGame">
+            <input type="text" name="" id="" class="inputKeyGame" placeholder="Input Key Game:">
+            <button class="addKeyButton" onclick="addKey(${game.game_id})">Add Key</button>
+        `;
+    })
+    .catch((error)=>{
+
+    });
+    await axios.post('/manage/getKeyGame', { game_id: gameId })
+    .then((res) => {
+        let leftKey = document.getElementsByClassName('leftKey')[0];
+        
+        // สร้างตารางใหม่ที่ถูกต้อง
+        leftKey.innerHTML = `
+            <table style="width: 90%;" class="tableKey">
+
+                <tbody></tbody>
+            </table>
+        `;
+        const keyAmount = document.getElementsByClassName('keyAmount')[0];
+        const tableKey = document.getElementsByClassName('tableKey')[0].getElementsByTagName('tbody')[0];
+        let i = 0;
+        // ลูปเพื่อเพิ่มข้อมูลในแถว
+        res.data.forEach((key) => {
+            
+            let tr = document.createElement('tr');
+            
+            // สร้างเซลล์ในแถว
+            let td1 = document.createElement('td');
+            td1.style.border = 'none';
+            let input = document.createElement('input');
+            input.type = 'text';
+            input.readOnly = true;
+            input.value = key.keygame;
+            td1.appendChild(input);
+            
+            let td2 = document.createElement('td');
+            td2.style.border = 'none';
+            let editButton = document.createElement('button');
+            editButton.className = 'editButton';
+            editButton.textContent = 'Edit';
+            let deleteButton = document.createElement('button');
+            deleteButton.className = 'deleteButton';
+            deleteButton.textContent = 'Delete';
+            td2.appendChild(editButton);
+            td2.appendChild(deleteButton);
+            
+            // เพิ่มเซลล์เข้าแถว
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            
+            // เพิ่มแถวใน tbody ของตาราง
+            tableKey.appendChild(tr);
+            i++;
+        });
+        keyAmount.innerHTML = `Key Amount: ${i}`;
+    })
+    .catch((err)=>{
+
+    });
+    modalKeygame.classList.add('show');
+
+}
+function closeKeyGame(){
+    const modalKeygame = document.getElementsByClassName('modalKeygame')[0];
+    modalKeygame.classList.remove('show');
+}
+
+async function addKey(gameId) {
+    const keyGame = document.getElementsByClassName('inputKeyGame')[0].value.trim();
+    if(!keyGame){
+        return
+    }
+    await axios.post('/manage/addkey',{
+        game_id : gameId,
+        keygame : keyGame
+    })
+    .then((res)=>{
+        console.log(res);
+    })
+    .catch((error)=>{
+        console.log(error.response.data);
+    });
 }
 
 

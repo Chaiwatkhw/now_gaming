@@ -1,3 +1,4 @@
+
 window.onload = async function winLoad() {
     const account = document.getElementsByClassName('account')[0];
     const isLoggedIn = await checklogin(); 
@@ -19,7 +20,7 @@ window.onload = async function winLoad() {
                 <hr class="hr">
                 <span>Account</span>
                 <span onclick="managePage()">Game Management</span>
-                <span>Sign Out</span>
+                <span onclick="logOut()">Sign Out</span>
             </div>
         </div>
         `;
@@ -478,6 +479,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+async function logOut(){
+    try {
+        const response = await axios.post('/logout', {}, {
+            withCredentials: true // เพื่อส่ง cookie ไปพร้อมกับ request
+        });
+
+        if (response.status === 200) {
+            console.log(response.data.message); // แสดงข้อความ "Logged out successfully"
+            window.location.href = '/'; // เปลี่ยนเส้นทางไปหน้า Login
+        }
+    } catch (error) {
+        console.error('Logout error:', error.response?.data || error.message);
+    }
+}
 
 
 

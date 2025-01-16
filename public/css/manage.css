@@ -313,6 +313,19 @@ th, td {
     cursor: pointer;
     white-space: nowrap;
 }
+.addKey{
+    border: none;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px 5px;   
+    background-color: #28a745;
+    margin: 0px 5px;
+    box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);  
+    cursor: pointer;
+    white-space: nowrap;   
+}
 
 .deleteButton:hover{
     background-color: rgb(154, 10, 10);
@@ -320,6 +333,10 @@ th, td {
 
 .editButton:hover{
     background-color: #255c97;
+}
+
+.addKey:hover{
+    background-color: #218838;
 }
 
 
@@ -434,7 +451,6 @@ input[type="file"] {
  }
 
  .alert-modal{
-    display: none;
     justify-content: center;
     align-items: center;
     z-index: 2;
@@ -447,6 +463,15 @@ input[type="file"] {
     box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
     -webkit-box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
     -moz-box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
+    opacity: 0; /* เริ่มต้นซ่อน */
+    display: flex;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.alert-modal.show{
+    opacity: 1;
+    visibility: visible;
 }
 
 #alert-modal.visible {
@@ -454,6 +479,9 @@ input[type="file"] {
     opacity: 1;
 }
 
+.alert-modal.show .alert-contain {
+    transform: translateY(0); /* กลับมาตำแหน่งปกติ */
+}
 
 .alert-contain{
     display: flex;
@@ -466,6 +494,8 @@ input[type="file"] {
     width: fit-content;
     height: fit-content;
     background-color: white;
+    transform: translateY(-30px); /* เริ่มต้นเลื่อนขึ้น */
+    transition: transform 0.3s ease;
 }
 
 .headalert{
@@ -512,4 +542,146 @@ input[type="file"] {
     background-color: #c82333;
 }
 
+.modalKeygame{
+    position: fixed;
+    background-color: rgb(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    opacity: 0; /* เริ่มต้นซ่อน */
+    visibility: hidden; /* ปิดการแสดงผลเริ่มต้น */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 
+.modalKeygame.show {
+    opacity: 1;
+    visibility: visible; /* แสดง modal พร้อมแอนิเมชัน */
+}
+
+.addkeyGameModal{
+    padding: 20px;
+    border-radius: 20px;
+    height: 90vh;
+    color: black;
+    background-color: white;
+    justify-content: center;
+    width: 80%;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    transform: translateY(-30px); /* เริ่มต้นเลื่อนขึ้น */
+    transition: transform 0.3s ease;
+}
+
+.modalKeygame.show .addkeyGameModal {
+    transform: translateY(0); /* กลับมาตำแหน่งปกติ */
+}
+
+.headKeygame{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+
+.keyAmount{
+    padding-left: 20px;
+    font-size: 20px; 
+    font-weight: 600;
+    flex: 1;
+}
+
+.gameName{  
+    text-align: center;
+    flex: 1;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#sorc{
+    flex: 1;
+    padding-right: 20px;
+}
+
+.mainKeygame{
+    width: 100%;
+    margin-top: 45px;
+   
+    display: flex;
+}
+
+.leftKey{
+    overflow-y: auto;
+    width: 50%;
+    flex: 1;
+}
+
+.rightKey{
+    width: 50%;
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footerKeyGame{
+    position: absolute;
+    height: 20px;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px -5px 38px 0px rgba(0,0,0,0.1);
+}
+
+.leftKey table tr td input{
+    font-size: 20px;
+    width: 100%;
+}
+
+.keyGameTD{
+    object-fit: contain; 
+    border: none; 
+    padding: 5px;
+}
+
+.tdd{
+    border: none;
+}
+
+.imgKeyGame{
+    width: 90%; 
+    border-radius: 20px; 
+    margin-top: 20px;
+}
+
+.inputKeyGame{
+    width: 85%;
+    font-size: 25px; 
+    margin-top: 30px; 
+    padding: 5px;
+}
+
+.addKeyButton{
+    margin-top: 20px; 
+    border: none; 
+    background-color:#28a745 ; 
+    padding: 10px; 
+    border-radius: 10px; 
+    color: white; 
+    font-size: 20px;
+}
+
+.addKeyButton:hover{
+    background-color: #218838;
+}

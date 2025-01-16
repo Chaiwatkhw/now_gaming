@@ -27,4 +27,10 @@ CREATE TABLE users (
     role ENUM('user', 'admin') DEFAULT 'user', 
 );
 
-INSERT INTO users (username, email, password, role) VALUES ('admin', 'chaiwat.ke@rmuti.ac.th', 'admin', 'admin');
+CREATE TABLE keygames (
+    keygame VARCHAR(255) PRIMARY KEY,
+    game_id int,
+    key_used tinyint default 0,
+    FOREIGN KEY (game_id) REFERENCES games(game_id)
+    ON UPDATE RESTRICT 
+);
