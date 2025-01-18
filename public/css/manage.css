@@ -685,3 +685,39 @@ input[type="file"] {
 .addKeyButton:hover{
     background-color: #218838;
 }
+
+#confirmDelKey{
+    border: none;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px 5px;   
+    background-color:#28a745 ; 
+    margin: 0px 5px;
+    box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#confirmDelKey:hover{
+    background-color: #218838;
+}
+
+#cancelDelKey{
+    border: none;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px 5px;   
+    background-color: red; 
+    margin: 0px 5px;
+    box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#cancelDelKey:hover{
+    background-color: rgb(154, 10, 10);
+}

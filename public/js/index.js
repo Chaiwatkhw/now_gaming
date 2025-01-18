@@ -267,7 +267,7 @@ document.body.addEventListener('submit', async function(e) {
             try {
                 const res = await axios.post('/login', { username, password });
                 console.log(res);
-                alert('Login success');
+                alert('Login Success');
                 closeModal();
                 window.location.reload();
             } catch (error) {
@@ -379,18 +379,24 @@ document.body.addEventListener('submit', async function(e) {
 function renderGames(games){
     const cardWrapper = document.getElementsByClassName('card-wrapper')[0];
     cardWrapper.innerHTML ='';
-
+    
     games.forEach(game => {
         const div = document.createElement('div');
         div.className = 'game-card';
         const formattedPrice = parseFloat(game.game_price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         div.innerHTML = `
-            <img src="/img/game/${game.game_image}" alt="">
-            <div class="title-game">
-                ${game.game_title}
+            <div class="baseIMG">
+                <picture class="gamePicTure">
+                    <img src="/img/game/${game.game_image}" alt="">
+                </picture>
             </div>
-            <div class="game-price">
-                ${formattedPrice} THB
+            <div class="titleANDPrice">
+                <div class="title-game">
+                    ${game.game_title}
+                </div>
+                <div class="game-price">
+                    ${formattedPrice} THB
+                </div>
             </div>
         `;
         cardWrapper.appendChild(div);

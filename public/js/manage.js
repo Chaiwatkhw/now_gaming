@@ -355,8 +355,8 @@ async function openKeyGame(gameId){
     await axios.post('/manage/getKeyGameIMG',{gameId})
     .then((res)=>{
         const game = res.data[0];
-        let headKeygame = document.getElementsByClassName('headKeygame')[0];
-        let rightKey = document.getElementsByClassName('rightKey')[0];
+        const headKeygame = document.getElementsByClassName('headKeygame')[0];
+        const rightKey = document.getElementsByClassName('rightKey')[0];
         headKeygame.innerHTML = `
             <div class="keyAmount">Key Amount: 0</div>
             <div class="gameName">${game.game_title}</div>
@@ -371,12 +371,17 @@ async function openKeyGame(gameId){
         `;
     })
     .catch((error)=>{
-
+        console.log(error);
     });
+    await fetchKeys(gameId);
+    modalKeygame.classList.add('show');
+}
+
+async function fetchKeys(gameId) {
     await axios.post('/manage/getKeyGame', { game_id: gameId })
     .then((res) => {
         let leftKey = document.getElementsByClassName('leftKey')[0];
-        
+        leftKey.innerHTML ='';
         // สร้างตารางใหม่ที่ถูกต้อง
         leftKey.innerHTML = `
             <table style="width: 90%;" class="tableKey">
@@ -388,66 +393,98 @@ async function openKeyGame(gameId){
         const tableKey = document.getElementsByClassName('tableKey')[0].getElementsByTagName('tbody')[0];
         let i = 0;
         // ลูปเพื่อเพิ่มข้อมูลในแถว
-        res.data.forEach((key) => {
-            
+        res.data.forEach((key) => { 
             let tr = document.createElement('tr');
-            
-            // สร้างเซลล์ในแถว
-            let td1 = document.createElement('td');
-            td1.style.border = 'none';
-            let input = document.createElement('input');
-            input.type = 'text';
-            input.readOnly = true;
-            input.value = key.keygame;
-            td1.appendChild(input);
-            
-            let td2 = document.createElement('td');
-            td2.style.border = 'none';
-            let editButton = document.createElement('button');
-            editButton.className = 'editButton';
-            editButton.textContent = 'Edit';
-            let deleteButton = document.createElement('button');
-            deleteButton.className = 'deleteButton';
-            deleteButton.textContent = 'Delete';
-            td2.appendChild(editButton);
-            td2.appendChild(deleteButton);
-            
-            // เพิ่มเซลล์เข้าแถว
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            
-            // เพิ่มแถวใน tbody ของตาราง
-            tableKey.appendChild(tr);
-            i++;
-        });
-        keyAmount.innerHTML = `Key Amount: ${i}`;
+            tr.id = `${key.keygame}`;
+        // สร้างเซลล์ในแถว
+        let td1 = document.createElement('td');
+        td1.style.border = 'none';
+        let input = document.createElement('input');
+        input.type = 'text';
+        input.readOnly = true;
+        input.value = key.keygame;
+        td1.appendChild(input);      
+        let td2 = document.createElement('td');
+        td2.id = `td${key.keygame}`;
+        td2.style.border = 'none';
+        //let editButton = document.createElement('button');
+        //editButton.className = 'editButton';
+        //editButton.textContent = 'Edit';
+        let deleteButton = document.createElement('button');
+        deleteButton.className = `deleteButton`;
+        deleteButton.id = `deleteButton${key.keygame}`;
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = () => deleteKey(key.keygame);
+        //td2.appendChild(editButton);
+        td2.appendChild(deleteButton);
+        // เพิ่มเซลล์เข้าแถว
+        tr.appendChild(td1);
+        tr.appendChild(td2); 
+        // เพิ่มแถวใน tbody ของตาราง
+        tableKey.appendChild(tr);
+        i++;
+    });
+    keyAmount.innerHTML = `Key Amount: ${i}`; 
     })
     .catch((err)=>{
 
-    });
-    modalKeygame.classList.add('show');
-
+    });         
 }
+
 function closeKeyGame(){
     const modalKeygame = document.getElementsByClassName('modalKeygame')[0];
     modalKeygame.classList.remove('show');
 }
 
 async function addKey(gameId) {
-    const keyGame = document.getElementsByClassName('inputKeyGame')[0].value.trim();
-    if(!keyGame){
-        return
+    const keyInput = document.getElementsByClassName('inputKeyGame')[0];
+    const keyGame = keyInput.value.trim();
+
+    if (!keyGame || keyGame === '') {
+        alert('Please input a valid key');
+        return;
     }
-    await axios.post('/manage/addkey',{
-        game_id : gameId,
-        keygame : keyGame
-    })
-    .then((res)=>{
-        console.log(res);
-    })
-    .catch((error)=>{
-        console.log(error.response.data);
-    });
+
+    try {
+        // ส่งข้อมูลไปยังเซิร์ฟเวอร์
+        const res = await axios.post('/manage/addkey', {
+            game_id: gameId,
+            keygame: keyGame
+        });
+
+        // อัพเดตข้อมูลตารางหลังเพิ่มคีย์สำเร็จ
+        keyInput.value = '';
+        //alert('Add Key Success');
+        fetchKeys(gameId); // อัพเดตคีย์ใหม่ในหน้าตาราง
+    } catch (error) {
+        // จัดการข้อผิดพลาดจากเซิร์ฟเวอร์
+        keyInput.value = '';
+        if (error.response && error.response.data) {
+            alert(error.response.data); // แสดงข้อความจากเซิร์ฟเวอร์
+        } else {
+            console.error(error);
+            alert('An unexpected error occurred.');
+        }
+    }
 }
 
+async function deleteKey(key) {
+    const tdbutton = document.getElementById(`td${key}`);
+    const tr = document.getElementById(`${key}`);
+    tdbutton.innerHTML = '';
+    const confirmButton = document.createElement('button');
+    const cancelButton = document.createElement('button');
+
+    confirmButton.id = 'confirmDelKey';
+    cancelButton.id = 'cancelDelKey';
+
+    confirmButton.textContent = 'Confirm';
+    cancelButton.textContent = 'Cancel';
+
+    confirmButton.onclick = () => confirmDelKey(key);   
+    cancelButton.onclick = () => cancelDelKey(key);
+
+    tdbutton.appendChild(confirmButton);
+    tdbutton.appendChild(cancelButton);
+}
 

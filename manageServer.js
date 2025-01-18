@@ -280,23 +280,27 @@ router.post('/getKeyGameIMG',async (req,res)=>{
     res.send(games);
 });
 
-router.post('/addkey',async (req,res)=>{
-    const {game_id , keygame} = req.body;
+router.post('/addkey', async (req, res) => {
+    const { game_id, keygame } = req.body;
     const db = await connectDB();
-    try{
-        await db.query('INSERT INTO keygames(keygame,game_id) VALUES (?,?)',[keygame,game_id]);
-        const [allKey] = db.query('SELECT * FROM keygames WHERE game_id = ?',[game_id]);
-        res.send(allKey);
-    }catch(error){
-        console.log(error.errno)
-        if(error.errno == '1452'){
+    try {
+        // เพิ่มคีย์ใหม่ในฐานข้อมูล
+        await db.query('INSERT INTO keygames (keygame, game_id) VALUES (?, ?)', [keygame, game_id]);
+
+        // ดึงข้อมูลคีย์ทั้งหมดเพื่อส่งกลับ
+        const [allKey] = await db.query('SELECT * FROM keygames WHERE game_id = ?', [game_id]);
+        res.send(allKey); // ส่งข้อมูลกลับไปยัง Client
+    } catch (error) {
+        if (error.errno === 1452) {
             res.status(400).send('Foreign Key Constraint failed: The referenced row does not exist.');
-        }
-        if(error.errno == '1062'){
+        } else if (error.errno === 1062) {
             res.status(400).send('มีคีย์เกมนี้ในระบบแล้ว');
+        } else {
+            res.status(500).send('An unexpected error occurred.');
         }
     }
 });
+
 
 router.post('/getKeyGame',async (req,res)=>{
     try{

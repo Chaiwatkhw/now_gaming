@@ -6,7 +6,6 @@ body, html {
     margin: 0%;
     padding: 0%;
     font-family: "Barlow", sans-serif;
-    user-select: none;
     max-width: 100%;
 }
 body{
@@ -31,15 +30,14 @@ body{
 
 
 .slanted-overlay {
+    min-width: 1700px;
     position: absolute;
-    bottom: 20px;
+    bottom: -1px;
     left: 0;
     width: 100%;
-    height: 50px; /* ความสูงของส่วนเฉียง */
+    height: 60px; /* ความสูงของส่วนเฉียง */
     background: #272727; /* ไล่ระดับสี */
     /* transform: skewY(+2deg);  */
-    transform-origin: top; /* จุดหมุนของการเอียง */
-    z-index: -1; /* ซ้อนทับด้านหน้า */
     pointer-events: none; /* ไม่ให้คลิกได้ */
   }
 .sx-img {
@@ -267,86 +265,129 @@ a:visited {
     background-color: #272727;
 }
 
-.sumOfGame{
-    width: 80%;
-    font-size: 30px;
+.Trending{
+    
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
 }
+.mTrending{
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    color: #7d7c7c;
+}
+
+.mTrending:hover{
+    color: #fff;
+}
+
+.hTrending{
+    font-size: 30px;
+    align-self: start;
+    color: #fff;
+}
+
+#icon-arrow{
+    font-size:30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 /* ส่วนของ main contain */
 .main {
-
+    width: 100%;
+    max-width: 1200px;
     margin: 0 0px; /* ลด margin เพื่อให้เข้ากับหน้าจอขนาดเล็ก */
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* ปรับจำนวนคอลัมน์โดยอัตโนมัติ */
-    gap: 20px; /* ระยะห่างระหว่าง card */
-    justify-items: center;
-    align-items: stretch;
-    width: 80%;
-    justify-self: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
 }
 
-.game-card {
-    z-index: -1;
-    border-radius: 20px;
-    flex-shrink: 0; /* ไม่ให้การ์ดย่อขนาด */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative; /* ทำให้สามารถควบคุมตำแหน่งได้ */
-    margin: 5px; /* เพิ่มพื้นที่ด้านบนเพื่อป้องกันการกินขอบ */
-    overflow: hidden;
+.baseIMG{
+    padding-top: 57%;
+    position: relative;
+}
+
+.gamePicTure{
+    width: 100%;
+}
+
+
+.gamePicTure img{
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%; 
+    width: 100%;
+    object-fit: cover; 
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+    transition: transform 0.3s;
     cursor: pointer;
 }
 
-.game-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    z-index: 1; /* ทำให้การ์ดที่ hover อยู่ด้านบนสุด */
+.gamePicTure img:hover{
+    transform: scale(1.05);
+
 }
 
-.game-card img {
-    width: 100%; /* ให้ภาพกว้างเต็มพื้นที่ */
-    height: 100%; /* กำหนดความสูงคงที่ */
-    object-fit: cover; /* ปรับให้ภาพครอบคลุมพื้นที่โดยไม่เสียสัดส่วน */
-    aspect-ratio: 16/9;
-    
+.titleANDPrice{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
 }
+
+.game-card {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    min-width: 0;
+    position: relative;
+    width: calc(33.33333% - 30px);
+    z-index: -1;
+    /* border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    /* transition: transform 0.3s, box-shadow 0.3s; */
+    display: flex;
+}
+
+/* .game-card:hover {
+    transform: scale(1.05);
+} */
+
 
 .card-wrapper {
     z-index: 0;
-    overflow-x: hidden; /* ซ่อน scroll bar ด้านข้าง */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 การ์ดใน 1 แถว */
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .title-game{
+    /* border: solid red 1px; */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     color: white;
-    position: absolute;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 500;
     box-sizing: border-box;
-    background: rgba(0, 0, 0, 0.5);
-    bottom: 0%;
-    left: 0%;
-    right: 0;
-    padding: 5px 10px;
+    width: 70%;
 }
 
 .game-price {
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.16);
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-image: linear-gradient(90deg, rgba(25, 136, 247, 1) 0%, rgba(19, 170, 36, 1) 100%);
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%, 0 75%);
+    /* border: solid red 1px; */
     display: flex;
-    align-items: flex-start; /* วางข้อความที่ด้านบน */
-    justify-content: flex-end; /* วางข้อความชิดซ้าย */
-    padding: 5px; /* ระยะห่างข้อความ */
+    justify-content: flex-end;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    width: 30%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* ส่วนของ footer */
@@ -629,6 +670,7 @@ select {
     margin-right: auto; /* จัดให้อยู่กึ่งกลาง */
 }
 
+
 .user{
     display: flex;
     flex-direction: row;
@@ -639,26 +681,96 @@ select {
 }
 
 
-@media screen and (max-width: 1000px) {
-    .showcase-image{
-        height: 40vh;
-        background-position: center;
-    }   
+
+.showGameIMG{
+    width: 100%;
+    overflow: hidden;
+    height: 400px;
+    position: relative;
+    margin-bottom: 40px;
+}
+.showGameIMG img{
+    object-fit: cover;
+    width: 100%;
+}
+.blurimg{
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Responsive Media Queries */
-@media screen and (max-width: 768px) {   
-
-    .game-card{
-        max-width:  300px; 
-    }
-    .game-price{
-        font-size: 10px;
-    } 
-    .title-game{
-        font-size: 10px;
-    }
+.gameCategories{
+    width: 100%;
+    max-width: 1200px;
 }
-@media screen and (max-width: 600px) {  
-    
+
+.gameCategoriesHeader{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.Categories-wrapper{
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Categories-card{
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+    margin: 15px;
+    min-width: 0;
+    position: relative;
+    padding-top: 17%;
+    width: calc(33.33333% - 30px);
+    background-image: url('../img/logo/955059.jpg');
+    background-position: center;
+    background-size: cover;
+}
+.incard{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nameCat{
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.character{
+    width: 100%;
+    top: -20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-position: 100% 0;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    transform-origin: bottom right;
+    transition: 0.3s;
+}
+
+.incard:hover{
+    .character{
+        background-size: 55%;
+    }
 }
