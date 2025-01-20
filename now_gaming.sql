@@ -6,7 +6,9 @@ create table games (
     game_title varchar(255) not null,
     game_image varchar(255),
     game_description text,
-    game_deleted tinyint default 0
+    game_deleted tinyint default 0,
+    category_name VARCHAR(50),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 
 create table historyprice (
@@ -34,3 +36,18 @@ CREATE TABLE keygames (
     FOREIGN KEY (game_id) REFERENCES games(game_id)
     ON UPDATE RESTRICT 
 );
+
+/*
+('Action'),
+('Adventure'),
+('Retro'),
+('Fighting'),
+('FPS'),
+('Indies'),
+('RPG'),
+('Sports'),
+('Horror'),
+('Rhythm'),
+('Racing'),
+('Strategy');
+*/
