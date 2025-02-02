@@ -32,7 +32,7 @@ body{
 .pictureBackground{
     height: 500px;
     padding-bottom: 50px;
-    z-index: 0;
+    z-index: -2;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -192,7 +192,6 @@ body{
 }
 
 .x{
-    
     display: none;
     z-index: 1;
     cursor: pointer;
@@ -789,3 +788,205 @@ select {
         transform: scale(1.1);
     }
 }
+
+.GameBlack{
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    z-index: 2;
+    opacity: 0;
+    
+    transition: opacity 0.3s; 
+}
+
+.GameBlack.active {
+    display: flex;            
+    opacity: 1;                    
+}
+
+.GameModal{
+    overflow: hidden;
+    border-radius: 20px;
+    width: 900px;
+    height: 600px;
+    background-color: #272727;
+    position: relative;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.5);
+    transform: translateY(-3%);
+    transition: transform 0.3s; 
+    
+}
+
+.GameModal.active{
+    transform: translateY(0%);   
+}
+
+
+.topGameModal{
+    width: 100%;
+    position: absolute;
+    background-color: #2e2d2d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    
+}
+
+
+.gameModalName{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex: 2;
+    color: white;
+    font-size: 25px;
+    position: relative;
+    padding: 15px 0px;
+}
+
+.cross{
+    top:0;
+    right: 0;
+    position: absolute;
+    cursor: pointer;
+    color: white;
+    font-size: 50px;
+    padding-right: 30px;
+}
+.cross:hover{
+    color: #00ff02;
+}
+.mainGameModal{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* border: 1px solid blue; */
+}
+
+.top{
+    display: flex;
+    flex: 1;
+    padding-top: 8%;
+    /* border: 1px solid rgb(40, 7, 99);; */
+}
+.bottom{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    color: #fff;
+    /* padding: 30px; */
+     /* border: 1px solid red; */
+    padding: 20px;
+}
+
+.boxbox2{
+    border-radius: 10px;
+    height: 100%;
+    padding: 20px;
+    background-color: #363636;
+}
+
+.gameIMGModal{
+    width: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    padding-right:0 ;
+}
+
+#gameIMG{
+    object-fit: cover;
+    width: 100%;
+    border-radius: 20px;   
+}
+
+#shopping_cart2{
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.addCardButton{
+    color: rgb(0, 0, 0,0);;
+    background-color: (0, 0, 0,0);
+    margin: 10px;
+    width: 60%;
+    padding: 10px;
+    background-image: linear-gradient(57deg,#00ff02 0%, #22d522 80%);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.addCardButton:hover{
+    transform: scale(1.1);
+    background-image: linear-gradient(57deg,#17e219 0%, #059f05 80%);
+}
+
+.addcartTitle{
+    margin-left: 10px;
+    color: #fff;
+    font-size: 20px;
+    
+}
+
+.about{
+    color: white;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.addCart{
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #ccc; */
+}
+
+.boxbox{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    height: 100%;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    background-color: #363636;
+    border-radius: 10px;
+}
+
+.gamePrice{
+    font-size: 30px;
+    color: white;
+}
+
+.gameDes{
+    display: flex;
+    color: #aea8a8;
+}
+.gameDes p{
+    font-size: 20px;
+    display: inline-flex;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+.Genre{
+    /* border: 1px solid green; */
+}
+
+

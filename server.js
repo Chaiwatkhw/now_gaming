@@ -431,3 +431,15 @@ app.post('/logout', (req, res) => {
     // ส่ง response กลับไปยัง client
     res.status(200).json({ message: 'Logged out successfully' });
 });
+
+app.get('/gameModal',async (req,res)=>{
+    try{
+        const {game_id} = req.query;
+        const db = await connectDB();
+        const [game] = await db.query('SELECT * FROM games WHERE game_id = ?',[game_id]);
+        res.send(game);
+    }catch(err){
+        res.status(404).send('Game not Found');
+    }
+    
+});

@@ -17,6 +17,7 @@ function checkAndToggleTbody() {
 }
 
 function modalAddgame(select) {
+    
     const addGameTitle = document.getElementById('addGameTitle');
     const save_button = document.getElementById('save_button');
     const h1 = document.createElement('h1');
@@ -34,17 +35,25 @@ function modalAddgame(select) {
     }
     let modalAddgame = document.getElementsByClassName('modal')[0];
     modalAddgame.style.display = 'flex';
-    document.documentElement.style.overflow = 'hidden';
+    setTimeout(()=>{
+        modalAddgame.style.opacity = '1';
+    },100);
+    //document.documentElement.style.overflow = 'hidden';
+    const game_title = document.getElementById('game_title');
+    game_title.focus();
 }
 
 
 function closeAddGame(){
     let modalAddgame = document.getElementsByClassName('modal')[0];
-    modalAddgame.style.display = 'none';
-    document.documentElement.style.overflow = '';
+    //document.documentElement.style.overflow = '';
 
     const preview = document.getElementById('preview');
     preview.style.display = 'none';
+    modalAddgame.style.opacity = '0';
+    setTimeout(()=>{   
+        modalAddgame.style.display = 'none';
+    },300);
 }
 
 
@@ -119,6 +128,7 @@ document.getElementById('addGameForm').addEventListener('submit',async function(
     }
     
 });
+
 
 function addGame(){
     const gameImgFile = document.getElementById('game_imgfile').files[0];
@@ -260,12 +270,15 @@ function editGame(gameId) {
         });
 }
 
-function sendGameEdit(gameId) {
+async function sendGameEdit(gameId) {
     const gameImgFile = document.getElementById('game_imgfile').files[0] || null;  // ใช้ไฟล์ที่เลือกจาก input file หรือ null
     const gameTitle = document.getElementById('game_title').value;
     const gameDescription = document.getElementById('game_description').value;
     const gamePrice = document.getElementById('game_price').value;
-
+    if(gamePrice <= 0){
+        alert('กรุณากรอกราคาเกมให้ถูกต้อง');
+        return
+    }
     // ตรวจสอบว่าผู้ใช้กรอกข้อมูลครบหรือไม่
     if (!gameTitle || !gameDescription || !gamePrice) {
         alert('กรอกข้อมูลให้ครบทุกช่อง'); // แสดงข้อความเตือน
@@ -366,15 +379,22 @@ async function openKeyGame(gameId){
         `;
         rightKey.innerHTML = `
             <img src="img/game/${game.game_image}" alt="" class="imgKeyGame">
-            <input type="text" name="" id="" class="inputKeyGame" placeholder="Input Key Game:">
+            <input type="text" name="" id="inputKeyGame" class="inputKeyGame" placeholder="Input Key Game:">
             <button class="addKeyButton" onclick="addKey(${game.game_id})">Add Key</button>
         `;
+        
     })
     .catch((error)=>{
         console.log(error);
     });
     await fetchKeys(gameId);
     modalKeygame.classList.add('show');
+    setTimeout(() => {
+        const inputKeyGame = document.getElementById('inputKeyGame');
+        if (inputKeyGame) {
+            inputKeyGame.focus(); // โฟกัสเมื่อ DOM พร้อม
+        }
+    }, 50);
 }
 
 async function fetchKeys(gameId) {
@@ -384,7 +404,7 @@ async function fetchKeys(gameId) {
         leftKey.innerHTML ='';
         // สร้างตารางใหม่ที่ถูกต้อง
         leftKey.innerHTML = `
-            <table style="width: 90%;" class="tableKey">
+            <table style="width: 100%;" class="tableKey">
 
                 <tbody></tbody>
             </table>
@@ -399,6 +419,7 @@ async function fetchKeys(gameId) {
         // สร้างเซลล์ในแถว
         let td1 = document.createElement('td');
         td1.style.border = 'none';
+        td1.style.width = '70%';
         let input = document.createElement('input');
         input.type = 'text';
         input.readOnly = true;
@@ -470,21 +491,64 @@ async function addKey(gameId) {
 
 async function deleteKey(key) {
     const tdbutton = document.getElementById(`td${key}`);
-    const tr = document.getElementById(`${key}`);
+
+    // รีเซ็ตปุ่มทั้งหมด
+    resetAllDeleteButtons();
+
+    // ล้างปุ่มเดิมใน td
     tdbutton.innerHTML = '';
+
+    // สร้างปุ่ม Confirm และ Cancel ใหม่
     const confirmButton = document.createElement('button');
     const cancelButton = document.createElement('button');
 
-    confirmButton.id = 'confirmDelKey';
-    cancelButton.id = 'cancelDelKey';
+    confirmButton.id = 'confirmDelKey'; // เพิ่ม class สำหรับ CSS
+    cancelButton.id = 'cancelDelKey';  // เพิ่ม class สำหรับ CSS
 
     confirmButton.textContent = 'Confirm';
     cancelButton.textContent = 'Cancel';
 
-    confirmButton.onclick = () => confirmDelKey(key);   
-    cancelButton.onclick = () => cancelDelKey(key);
+    confirmButton.onclick = async () => {
+        try {
+            await axios.post('/manage/deletekey', { keygame: key });
+            document.getElementById(key).remove(); // ลบแถวออกจากตาราง
+        } catch (error) {
+            console.error(error);
+            alert('Failed to delete key.');
+        } finally {
+            resetAllDeleteButtons(); // รีเซ็ตปุ่มเมื่อเสร็จสิ้น
+        }
+    };
 
+    cancelButton.onclick = () => resetAllDeleteButtons();
+
+    // เพิ่มปุ่มใหม่เข้าใน td
     tdbutton.appendChild(confirmButton);
     tdbutton.appendChild(cancelButton);
+}
+
+
+function resetAllDeleteButtons() {
+    const allKeys = document.querySelectorAll('[id^="td"]'); // เลือกทุก td ที่เริ่มต้นด้วย id="td"
+    allKeys.forEach((td) => {
+        const keyId = td.id.replace('td', ''); // ดึง id ของคีย์ (เอาส่วน "td" ออก)
+        // ล้างเนื้อหาของ td
+        td.innerHTML = '';
+
+        // สร้างปุ่ม Delete ใหม่
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'deleteButton'; // เพิ่ม class เพื่อให้ CSS เดิมใช้งานได้
+        deleteButton.textContent = 'Delete'; // กำหนดข้อความบนปุ่ม
+        deleteButton.onclick = () => deleteKey(keyId); // กำหนดฟังก์ชันเมื่อกดปุ่ม
+
+        // เพิ่มปุ่มเข้าไปใน td
+        td.appendChild(deleteButton);
+    });
+}
+
+
+
+function cancelDelKey(key){
+
 }
 

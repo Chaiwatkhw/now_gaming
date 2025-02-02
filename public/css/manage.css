@@ -251,6 +251,8 @@ th, td {
     -webkit-box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
     -moz-box-shadow: 8px 10px 5px -4px rgba(0,0,0,0.29);
     justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
 }
 .addgameModal{
     padding: 50px;

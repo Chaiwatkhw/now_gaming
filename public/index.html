@@ -35,14 +35,14 @@
                 <a href="index.html" title="Home"  class="icon-img"><img src="img/logo/reallogo.png" alt="" class="logo"><span class="web-name" title="Home">Now <br>Gaming</span></a>
             </div>
         </div>       
-        <div class="search-box">
+        <div class="search-box" title="Search">
             <input type="search" name="searchinput" id="searchinput" placeholder="Search.." class="search-input">
             <span class="material-symbols-outlined"  id="search-icon"> search </span>
-            <span class="x" id="x">&times;</span>
+            <span class="x" id="x" title="close">&times;</span>
         </div>
         <div class="cart-and-account">
             <div class="cart">
-                <a href="index.html" class="icon-img" ><span class="material-symbols-outlined" id="shopping_cart">shopping_cart</span></a>
+                <a href="" class="icon-img" ><span class="material-symbols-outlined" id="shopping_cart" title="Cart">shopping_cart</span></a>
             </div>
             <div class="account">
 
@@ -215,7 +215,53 @@
         
         </div>
      </div>
-    
+    <!--Game Modal-->
+    <div class="GameBlack">
+        <div class="GameModal">
+            <div class="topGameModal">
+                <span class="gameModalName">
+                    <div id="gameTitle">
+                        
+                    </div>
+                    <span class="cross" id="cross" title="close" onclick="closeGameModal()">&times;</span>
+                </span>  
+            </div>
+            <div class="mainGameModal">
+                <div class="top">
+                    <div class="gameIMGModal">
+                        <img src="img/game/capsule_616x353.jpg" alt="" id="gameIMG">
+                    </div>
+                    <div class="addCart">
+                        <div class="boxbox">
+                                <div class="gamePrice">1390.00 THB</div>
+                            <div class="addCardButton">
+                                <span class="material-symbols-outlined" id="shopping_cart2">shopping_cart</span>
+                                <div class="addcartTitle">Add Cart</div>
+                            
+                            </div>
+                        <div class="Genre"> Genre: Action</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="boxbox2">
+                        <div class="about">About</div>
+                    <div class="gameDes">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, consectetur adipisicing
+                             elit. Veniam vitae veritatis nemo maxime unde! Ne
+                             cessitatibus nesciunt accusamus ducimus, atque arc
+                             hitecto, iure libero ab vitae officiis est aliquam
+                              omnis, eveniet ipsam. Provident vero, doloribus el
+                              igendi odio officia quis sapiente culpa nostrum id
+                              . In nemo nam omnis aliqua
+                            m consequuntur beatae distinctio fugiat?</p>
+                    </div>
+                    </div> 
+                    
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/index.js"></script>

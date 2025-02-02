@@ -5,13 +5,13 @@ window.onload = async function winLoad() {
     if(isLoggedIn){
         account.innerHTML= `
         <a href="javascript:void(0);" class="icon-img" >
-        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-succes" onclick="openMenu()">
+        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-succes" onclick="openMenu()" title="Account">
         </a>
         <div class="nav">
             <div class="inNav">
                 <div class="user">
                     <div>
-                        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-successs">
+                        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-successs" title="Account">
                     </div>
                     <div>
                         Ceraph
@@ -85,7 +85,7 @@ function loginAccount(){
     const modalContent = document.getElementById('loginModal').getElementsByClassName('modal-content')[0];
     modalContent.innerHTML = `
     <div class="modal-closer">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close" onclick="closeModal()" title="close">&times;</span>
     </div>
     <div class="logo-container-login">
         <img src="img/logo/reallogo.png" alt="" class="logo-login"><span class="web-name">Now <br>Gaming</span>
@@ -107,7 +107,7 @@ function createAccount(){
     const modalContent = document.getElementById('loginModal').getElementsByClassName('modal-content')[0];
     modalContent.innerHTML = `
     <div class="modal-closer">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close" onclick="closeModal()" title="close">&times;</span>
     </div>
     <div class="logo-container-login">
         <img src="img/logo/reallogo.png" alt="" class="logo-login"><span class="web-name">Now <br>Gaming</span>
@@ -215,7 +215,6 @@ function forgotPassword3(email){
 
 function createOrLogin(){
     let textDom = document.getElementById('login_create');
-    
     if(textDom.innerText === "Create an account"){
         createAccount();
     }
@@ -386,7 +385,7 @@ function renderGames(games){
         const formattedPrice = parseFloat(game.game_price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         div.innerHTML = `
             <div class="baseIMG">
-                <picture class="gamePicTure">
+                <picture class="gamePicTure" onclick="openGameModal(${game.game_id})">
                     <img src="/img/game/${game.game_image}" alt="">
                 </picture>
             </div>
@@ -499,6 +498,43 @@ async function logOut(){
         console.error('Logout error:', error.response?.data || error.message);
     }
 }
+
+async function openGameModal(gameId){
+    await axios.get('/gameModal',{
+        params:{
+            game_id: gameId
+        }
+    })
+    .then((res)=>{
+        const game = res.data[0];
+        const GameBlack = document.getElementsByClassName('GameBlack')[0];
+        const GameModal = document.getElementsByClassName('GameModal')[0];
+        const gameTitle = document.getElementById('gameTitle');
+
+        GameBlack.style.display = 'flex';
+        setTimeout(() => { 
+            GameBlack.classList.add('active');
+            GameModal.classList.add('active');
+        }, 10);
+        gameTitle.innerHTML = `${game.game_title}`;        
+
+    })
+    .catch((error)=>{
+
+    });
+} 
+
+function closeGameModal(){
+    const GameBlack = document.getElementsByClassName('GameBlack')[0];
+        const GameModal = document.getElementsByClassName('GameModal')[0];
+        GameBlack.classList.remove('active');
+        GameModal.classList.remove('active'); 
+        
+        setTimeout(() => { 
+            GameBlack.style.display = 'none';
+        }, 500);
+}
+
 
 
 
