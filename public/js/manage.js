@@ -1,10 +1,3 @@
-
-// เรียกใช้งานหลังจากโหลดข้อมูล
-document.addEventListener('DOMContentLoaded', () => {
-    // เรียกใช้ function เพื่อตรวจสอบการมีแถวใน tbody
-    checkAndToggleTbody();
-});
-
 function checkAndToggleTbody() {
     const table = document.getElementById('gamelistTable');
     const tbody = document.getElementById('games-container');
@@ -131,6 +124,7 @@ document.getElementById('addGameForm').addEventListener('submit',async function(
 
 
 function addGame(){
+    const gamecategory = document.getElementById('game-category').value;
     const gameImgFile = document.getElementById('game_imgfile').files[0];
     const gameTitle = document.getElementById('game_title').value;
     const gameDescription = document.getElementById('game_description').value;
@@ -148,6 +142,7 @@ function addGame(){
     formData.append('game_title', gameTitle);
     formData.append('game_description', gameDescription);
     formData.append('game_price', gamePrice);
+    formData.append('game_category',gamecategory);
     // ส่งข้อมูลไปที่เซิร์ฟเวอร์ผ่าน axios
     axios.post('/manage/upload', formData)
         .then(function(response) {
@@ -163,45 +158,106 @@ function addGame(){
         });
 }
 
+function gotoManage(){
+    window.location.href = '/manage';
+}
+
 function goToHome(){
     window.location.href = '/';
 }
 
+let gamesData = []; // เก็บข้อมูลเกมทั้งหมด
+let filteredGamesData = []; // เก็บข้อมูลเกมที่กรอง
+let currentPage = 1; // หน้าเริ่มต้น
+const itemsPerPage = 10; // จำนวนเกมต่อหน้า
+
+// ฟังก์ชันดึงข้อมูลเกม
 function fetchGames() {
     axios.get('/manage/getGameToManage')
         .then(function (response) {
-            const games = response.data;
-            const tbody = document.getElementById('games-container');
-            tbody.innerHTML = ''; // ล้างตารางก่อน
-            let i = 1;
-            games.forEach(game => {
-                const formattedPrice = parseFloat(game.game_price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                if (game.game_deleted == 0 ){
-                const row = `
-                    <tr>
-                        <td>${i}</td>
-                        <td><img src="../img/game/${game.game_image}" alt="${game.game_title}" style="width: 100px;"></td>
-                        <td style="text-align: left;">${game.game_title}</td>
-                        <td>฿${formattedPrice}</td>
-                        <td>0</td>
-                        <td class="editDelButton">
-                            <button onclick="openKeyGame(${game.game_id})" class="addKey">Add Key</button>
-                            <button onclick="editGame(${game.game_id})" class="editButton">Edit</button>
-                            <button onclick="confirmDeleteGame(${game.game_id})" class="deleteButton">Delete</button>
-                        </td>
-                    </tr>
-                `;
-                tbody.innerHTML += row;
-                i += 1;
-                }
-            });
-
-            checkAndToggleTbody(); // เรียกฟังก์ชันเพื่อตรวจสอบตาราง
+            gamesData = response.data.filter(game => game.game_deleted == 0); // กรองเกมที่ถูกลบ
+            filteredGamesData = [...gamesData]; // เริ่มต้นให้ข้อมูลที่กรองเหมือนข้อมูลทั้งหมด
+            currentPage = 1; // รีเซ็ตไปหน้าแรก
+            displayGames(); // แสดงผลตามหน้า
+            setupPagination(); // สร้างปุ่มแบ่งหน้า
         })
         .catch(function (error) {
             console.error('Error fetching games:', error);
         });
 }
+
+// ฟังก์ชันแสดงเกม
+function displayGames() {
+    const tbody = document.getElementById('games-container');
+    tbody.innerHTML = ''; // ล้างตารางก่อน
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedGames = filteredGamesData.slice(start, end); // ตัดเฉพาะเกมของหน้านั้นๆ
+
+    paginatedGames.forEach((game, index) => {
+        const formattedPrice = parseFloat(game.game_price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const row = `
+            <tr>
+                <td>${start + index + 1}</td>
+                <td><img src="../img/game/${game.game_image}" alt="${game.game_title}" style="width: 100px;"></td>
+                <td style="text-align: left;">${game.game_title}</td>
+                <td>฿${formattedPrice}</td>
+                <td>${game.key_count}</td>
+                <td class="editDelButton">
+                    <button onclick="openKeyGame(${game.game_id})" class="addKey">Add Key</button>
+                    <button onclick="editGame(${game.game_id})" class="editButton">Edit</button>
+                    <button onclick="confirmDeleteGame(${game.game_id})" class="deleteButton">Delete</button>
+                </td>
+            </tr>
+        `;
+        tbody.innerHTML += row;
+    });
+    checkAndToggleTbody();
+}
+
+// ฟังก์ชันแบ่งหน้า
+function setupPagination() {
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = ''; // ล้างปุ่มเก่าออก
+
+    const totalPages = Math.ceil(filteredGamesData.length / itemsPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.innerText = i;
+        btn.classList.add('page-btn');
+        if (i === currentPage) btn.classList.add('active');
+        btn.addEventListener('click', function () {
+            currentPage = i;
+            displayGames(); // แสดงเกมของหน้านั้น
+            setupPagination(); // รีเฟรชปุ่มแบ่งหน้า
+        });
+        paginationContainer.appendChild(btn);
+    }
+}
+
+// ฟังก์ชันค้นหาจากลำดับที่แสดงบนตาราง
+function searchGames() {
+    const searchQuery = document.getElementById('searchinput').value.toLowerCase();
+    
+    if (searchQuery.trim() === "") {
+        filteredGamesData = [...gamesData]; // ถ้าไม่กรอกข้อความ ค้นหาทั้งหมด
+    } else {
+        filteredGamesData = gamesData.filter((game, index) => {
+            // ค้นหาจากลำดับที่แสดง
+            const displayId = (index + 1).toString(); // ใช้ลำดับที่แสดง (เริ่มจาก 1)
+            return game.game_title.toLowerCase().includes(searchQuery) || displayId.includes(searchQuery);
+        });
+    }
+    currentPage = 1; // รีเซ็ตหน้าเป็น 1
+    displayGames(); // แสดงผล
+    setupPagination(); // รีเฟรชปุ่มแบ่งหน้า
+}
+
+// เพิ่ม event listener ให้กับช่องค้นหา
+document.getElementById('searchinput').addEventListener('input', searchGames);
+
+
 
 function confirmDeleteGame(gameId){
     const alertmodal = document.getElementById('alert-modal');
@@ -247,6 +303,7 @@ function editGame(gameId) {
     axios.get(`/manage/getGameDetails/${gameId}`)
         .then(function(response) {
             const game = response.data;
+            document.getElementById('game-category').value = game.game_category;
             document.getElementById('game_id').value = game.game_id;
             document.getElementById('game_title').value = game.game_title;
             document.getElementById('game_description').value = game.game_description;
@@ -271,6 +328,7 @@ function editGame(gameId) {
 }
 
 async function sendGameEdit(gameId) {
+    const gamecategory = document.getElementById('game-category').value;
     const gameImgFile = document.getElementById('game_imgfile').files[0] || null;  // ใช้ไฟล์ที่เลือกจาก input file หรือ null
     const gameTitle = document.getElementById('game_title').value;
     const gameDescription = document.getElementById('game_description').value;
@@ -455,6 +513,7 @@ async function fetchKeys(gameId) {
 function closeKeyGame(){
     const modalKeygame = document.getElementsByClassName('modalKeygame')[0];
     modalKeygame.classList.remove('show');
+    fetchGames();
 }
 
 async function addKey(gameId) {
@@ -510,7 +569,9 @@ async function deleteKey(key) {
 
     confirmButton.onclick = async () => {
         try {
-            await axios.post('/manage/deletekey', { keygame: key });
+            await axios.delete('/manage/deletekey',  { 
+                params: { keygame: key } // ส่ง keygame ผ่าน URL params
+            });
             document.getElementById(key).remove(); // ลบแถวออกจากตาราง
         } catch (error) {
             console.error(error);
@@ -545,8 +606,6 @@ function resetAllDeleteButtons() {
         td.appendChild(deleteButton);
     });
 }
-
-
 
 function cancelDelKey(key){
 

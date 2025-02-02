@@ -17,14 +17,14 @@
     <!-- Header -->
     <header class="header-container">
         <div class="logo-container">
-            <div class="icon-img" onclick="goToHome()" title="Home"><img src="/img/logo/reallogo.png" alt="" class="logo"></div>
+            <div class="icon-img" onclick="gotoManage()" title="Home"><img src="/img/logo/reallogo.png" alt="" class="logo"></div>
             <label for="" id="label">Management System</label>
         </div>
         <div class="search-box">
             <input type="search" name="searchinput" id="searchinput" placeholder="Search.." class="search-input">
-            <span class="material-symbols-outlined"  id="search-icon"> search </span>
+            <span class="material-symbols-outlined" id="search-icon"> search </span>
             <span class="x" id="x">&times;</span>
-        </div>
+        </div>        
         <div class="nav">
             <div class="return" onclick="goToHome()">Home</div>
         </div>      
@@ -38,9 +38,9 @@
         <table class="table" id="gamelistTable">
             <thead>
                 <tr>
-                    <th>GameID</th>
+                    <th>GameOrder</th>
                     <th>Game Image</th>
-                    <th>Game Name</th>
+                    <th>Game Title</th>
                     <th>Price</th>
                     <th>Key Amount</th>
                     <th>Actions</th>
@@ -49,7 +49,8 @@
             <tbody id="games-container"> 
 
             </tbody>
-        </table>
+        </table> 
+        <div id="pagination" class="pagination-container"></div>      
      </div>
      <div class="modal" id="modal">
         <div class="addgameModal">
@@ -71,14 +72,30 @@
                         <span id="imageError" style="color: red; display: none;">กรุณาเลือกไฟล์รูปภาพ</span>
                     </div>
 
-                    <div class="dataAddgame">    
+                    <div class="dataAddgame">   
                         <input type="hidden" name="game_id" id="game_id">
                         <label for="game_title">Game Title *</label>
                         <input type="text" name="game_title" id="game_title" required oninvalid="setCustomValidity('กรุณากรอกชื่อเกม')" oninput="setCustomValidity('')">
+                        <label for="">Genre *</label>
+                        <select id="game-category" name="game-category">
+                            <option value="Action">Action</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="Retro">Retro</option>
+                            <option value="Fighting">Fighting</option>
+                            <option value="FPS">FPS</option>
+                            <option value="Indies">Indies</option>
+                            <option value="RPG">RPG</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Rhythm">Rhythm</option>
+                            <option value="Racing">Racing</option>
+                            <option value="Strategy">Strategy</option>
+                        </select> 
                         <label for="game_description">Description *</label>
                         <textarea name="game_description" id="game_description" class="game_description" rows="10" required oninvalid="setCustomValidity('กรุณากรอกรายละเอียดเกม')" oninput="setCustomValidity('')"></textarea>
                         <label for="game_price">Price *</label>
                         <input type="number" id="game_price" name="game_price" step="0.01" required oninvalid="setCustomValidity('กรุณากรอกราคาเกม')" oninput="setCustomValidity('')">
+    
                     </div>
                 </div>
             </form>

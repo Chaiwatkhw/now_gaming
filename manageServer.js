@@ -79,9 +79,10 @@ router.post('/upload',isAdmin ,upload.single('game_imgfile'), async (req, res) =
         return res.status(400).send('No file uploaded.');
     }
 
-    const { game_title, game_description, game_price } = req.body;
+    const { game_title, game_description, game_price, game_category } = req.body;
     const game_image = req.file.filename; // ใช้ชื่อไฟล์ที่เก็บไว้ในระบบ
     const connection = await connectDB();
+    console.log(game_category);
 
     try {
         // ตรวจสอบเกมซ้ำในฐานข้อมูล
@@ -114,8 +115,8 @@ router.post('/upload',isAdmin ,upload.single('game_imgfile'), async (req, res) =
 
         // บันทึกข้อมูลลงในฐานข้อมูล (ไม่รวม key_amount)
         const [result] = await connection.execute(
-            `INSERT INTO games (game_title, game_image, game_description) VALUES (?, ?, ?)`,
-            [game_title, game_image, game_description]
+            `INSERT INTO games (game_title, game_image, game_description,game_category) VALUES (?, ?, ?,?)`,
+            [game_title, game_image, game_description,game_category]
         );
 
         await connection.execute(`INSERT INTO historyprice (game_id,game_price) VALUES (?, ?)`,[result.insertId,game_price]);
@@ -134,15 +135,26 @@ router.post('/upload',isAdmin ,upload.single('game_imgfile'), async (req, res) =
 
 router.get('/getGameToManage',isAdmin, async (req, res) => {
     const query = `
-        SELECT g.game_id, g.game_title,g.game_image,g.game_description ,hp.game_price, hp.start_date,g.game_deleted
-        FROM games g
-        JOIN historyprice hp ON g.game_id = hp.game_id
-        WHERE hp.start_date = (
-            SELECT MAX(start_date)
-            FROM historyprice
-            WHERE game_id = g.game_id
-        )
-        ORDER BY g.game_id;
+        SELECT 
+    g.game_id, 
+    g.game_title,
+    g.game_image,
+    g.game_description,
+    hp.game_price, 
+    hp.start_date,
+    g.game_deleted,
+    COUNT(k.keygame) AS key_count  -- นับจำนวนคีย์ของแต่ละเกม
+    FROM games g
+    JOIN historyprice hp ON g.game_id = hp.game_id
+    LEFT JOIN keygames k ON g.game_id = k.game_id  -- JOIN ตาราง keygames
+    WHERE hp.start_date = (
+    SELECT MAX(start_date)
+    FROM historyprice
+    WHERE game_id = g.game_id
+    )
+    GROUP BY g.game_id, g.game_title, g.game_image, g.game_description, 
+         hp.game_price, hp.start_date, g.game_deleted
+    ORDER BY g.game_id;
     `;
 
     try {
@@ -315,6 +327,20 @@ router.post('/getKeyGame',async (req,res)=>{
     catch(error){
         console.error('Error occurred:', error); 
         res.status(400).send('ไม่พบคีย์ของเกมนี้ในระบบ');
+    }
+});
+
+router.delete('/deletekey',async (req,res)=>{
+    const keygame = req.query.keygame; 
+    const db = await connectDB();
+    try{
+        const query = `
+            DELETE FROM keygames WHERE keygame = ? 
+        `;
+        await db.query(query,keygame);
+        res.send("Delete Key Game Success");
+    }catch(error){
+        res.send(error);
     }
 });
 

@@ -7,7 +7,7 @@ create table games (
     game_image varchar(255),
     game_description text,
     game_deleted tinyint default 0,
-    category_name VARCHAR(50),
+    game_category VARCHAR(50),
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 

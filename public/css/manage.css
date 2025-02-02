@@ -723,3 +723,28 @@ input[type="file"] {
 #cancelDelKey:hover{
     background-color: rgb(154, 10, 10);
 }
+
+#game-category{
+    font-size: 25px;
+}
+.pagination-container {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.page-btn {
+    margin: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    background: white;
+    font-size: 22px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.page-btn.active {
+    background-color: rgb(20, 183, 47);
+    color: white;
+    border: none;
+}
