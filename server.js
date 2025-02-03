@@ -42,7 +42,7 @@ async function connectDB() {
             password: '1234',
             database: 'now_gaming',
             waitForConnections: true,
-            connectionLimit: 10,
+            connectionLimit: 100,
             queueLimit: 0,
         });
         return connection;
@@ -81,6 +81,29 @@ const isUser = (req, res, next) => {
     });
 };
 
+const isAdmin = (req, res, next) => {
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.status(401).json({ error: 'Authentication required' });
+    }
+
+    jwt.verify(token, secretKey, (err, decoded) => {
+        if (err) {
+            return res.status(403).json({ error: 'Forbidden: Invalid or expired token' });
+        }
+
+        // ตรวจสอบว่า role เป็น admin หรือไม่
+        if (decoded.role !== 'admin') {
+            return res.status(403).json({ error: 'Forbidden: Insufficient permissions' });
+        }
+
+        // ถ้าเป็น admin ให้ดำเนินการถัดไป
+        req.user = decoded; // เก็บข้อมูลผู้ใช้ใน request
+        next();
+    });
+};
+
 app.get('/', async (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -89,25 +112,33 @@ app.get('/getGame', async (req, res) => {
     try {
         const query = `
             SELECT 
-                g.game_id,
-                g.game_title,
-                g.game_description,
-                g.game_image,
-                hp.game_price
-            FROM 
-                games g
-            JOIN 
-                historyprice hp
-            ON 
-                g.game_id = hp.game_id
-            WHERE 
-                hp.start_date = (
-                    SELECT MAX(hp2.start_date)
-                    FROM historyprice hp2
-                    WHERE hp2.game_id = hp.game_id
-                )
-            AND 
-                g.game_deleted = 0
+    g.game_id,
+    g.game_title,
+    g.game_description,
+    g.game_image,
+    hp.game_price,
+    COUNT(k.keygame) AS key_count
+FROM 
+    games g
+JOIN 
+    historyprice hp
+    ON g.game_id = hp.game_id
+LEFT JOIN 
+    keygames k
+    ON g.game_id = k.game_id AND k.key_used = 0  -- Only count unused keys
+WHERE 
+    hp.start_date = (
+        SELECT MAX(hp2.start_date)
+        FROM historyprice hp2
+        WHERE hp2.game_id = hp.game_id
+    )
+AND 
+    g.game_deleted = 0
+GROUP BY 
+    g.game_id, g.game_title, g.game_description, g.game_image, hp.game_price
+HAVING 
+    COUNT(k.keygame) > 0;  -- Only include games with at least 1 unused key
+
         `;
         const [games] = await db.query(query);
         res.json(games);
@@ -432,14 +463,47 @@ app.post('/logout', (req, res) => {
     res.status(200).json({ message: 'Logged out successfully' });
 });
 
-app.get('/gameModal',async (req,res)=>{
-    try{
-        const {game_id} = req.query;
+app.get('/gameModal', async (req, res) => {
+    try {
+        const { game_id } = req.query;
         const db = await connectDB();
-        const [game] = await db.query('SELECT * FROM games WHERE game_id = ?',[game_id]);
-        res.send(game);
-    }catch(err){
+        const [gameData] = await db.query(`
+            SELECT 
+                g.game_id, 
+                g.game_title, 
+                g.game_image, 
+                g.game_description,
+                g.game_category,
+                hp.game_price, 
+                COUNT(k.keygame) AS key_count
+            FROM 
+                games g
+            LEFT JOIN 
+                keygames k ON g.game_id = k.game_id AND k.key_used = 0
+            LEFT JOIN 
+                historyprice hp ON g.game_id = hp.game_id
+            WHERE 
+                g.game_id = ?
+                AND g.game_deleted = 0
+                AND hp.start_date = (
+                    SELECT MAX(start_date)
+                    FROM historyprice 
+                    WHERE game_id = g.game_id
+                )
+            GROUP BY 
+                g.game_id, g.game_title, g.game_image, g.game_description, hp.game_price
+        `, [game_id]);
+
+        res.send(gameData);
+    } catch (err) {
         res.status(404).send('Game not Found');
     }
-    
+});
+
+app.get('/checkAdmin',isAdmin,(req,res)=>{
+    res.json({ 
+        success: true,
+        message: 'User is an admin', 
+        user: req.user // ส่งข้อมูลผู้ใช้กลับไป
+    });
 });

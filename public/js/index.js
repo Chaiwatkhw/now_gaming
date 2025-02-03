@@ -1,8 +1,9 @@
 
 window.onload = async function winLoad() {
     const account = document.getElementsByClassName('account')[0];
+    const isAdmin = await checkAdmin();
     const isLoggedIn = await checklogin(); 
-    if(isLoggedIn){
+    if(isAdmin){
         account.innerHTML= `
         <a href="javascript:void(0);" class="icon-img" >
         <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-succes" onclick="openMenu()" title="Account">
@@ -14,7 +15,7 @@ window.onload = async function winLoad() {
                         <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-successs" title="Account">
                     </div>
                     <div>
-                        Ceraph
+                         ${isAdmin.username}
                     </div>
                 </div>
                 <hr class="hr">
@@ -25,10 +26,33 @@ window.onload = async function winLoad() {
         </div>
         `;
     }
+    else if(isLoggedIn){
+        account.innerHTML= `
+        <a href="javascript:void(0);" class="icon-img" >
+        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-succes" onclick="openMenu()" title="Account">
+        </a>
+        <div class="nav">
+            <div class="inNav">
+                <div class="user">
+                    <div>
+                        <img src="/img/logo/avatar2.svg" alt="account" class="img-profile-login-successs" title="Account">
+                    </div>
+                    <div>
+                        ${isLoggedIn.username}
+                    </div>
+                </div>
+                <hr class="hr">
+                <span onclick="">Account</span>
+                <span onclick="">My orders</span>
+                <span onclick="logOut()">Sign Out</span>
+            </div>
+        </div>
+        `;
+    }
     else{
         loginAccount();
         account.innerHTML= `
-        <a href="javascript:void(0);" class="icon-img" >
+        <a href="javascript:void(0);" class="icon-img" title="Account">
         <span class="material-symbols-outlined" id="account_circle" onclick="openModal()">account_circle</span>
         </a>`;   
     }
@@ -54,7 +78,7 @@ window.onload = async function winLoad() {
 async function checklogin() {
     try {
         const res = await axios.get('/checklogin', { withCredentials: true }); // ตรวจสอบ login
-        console.log(res.data);
+        //console.log(res.data);
         
         // หากได้รับข้อความว่า "You are authorized" แสดงว่าผู้ใช้ล็อกอิน
         if (res.data.message === 'You are authorized') {
@@ -64,6 +88,19 @@ async function checklogin() {
     } catch (error) {
         console.log("Error checking login:", error.response ? error.response.data : error);
         return null;  // หากเกิดข้อผิดพลาดในการตรวจสอบ
+    }
+}
+
+async function checkAdmin() {
+    try {
+        const res = await axios.get('/checkAdmin', { withCredentials: true });
+        if (res.data.message === 'User is an admin') {
+           // console.log("✅ User is an Admin");
+            return res.data.user;
+        }
+    } catch (error) {
+        //console.log("❌ User is NOT an Admin");
+        return false;
     }
 }
 
@@ -378,8 +415,8 @@ document.body.addEventListener('submit', async function(e) {
 function renderGames(games){
     const cardWrapper = document.getElementsByClassName('card-wrapper')[0];
     cardWrapper.innerHTML ='';
-    
-    games.forEach(game => {
+    for (let i = 0; i < Math.min(9, games.length); i++) {
+        const game = games[i];
         const div = document.createElement('div');
         div.className = 'game-card';
         const formattedPrice = parseFloat(game.game_price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -399,7 +436,11 @@ function renderGames(games){
             </div>
         `;
         cardWrapper.appendChild(div);
-    });
+    }
+    
+    // games.forEach(game => {
+        
+    // });
 }
 
 function managePage(){
@@ -507,17 +548,26 @@ async function openGameModal(gameId){
     })
     .then((res)=>{
         const game = res.data[0];
+        console.log(game)
         const GameBlack = document.getElementsByClassName('GameBlack')[0];
         const GameModal = document.getElementsByClassName('GameModal')[0];
         const gameTitle = document.getElementById('gameTitle');
-
+        const pgameDes = document.getElementById('pgameDes');
+        const Genre = document.getElementsByClassName('Genre')[0];
+        const gamePrice = document.getElementsByClassName('gamePrice')[0];
+        const gameIMG = document.getElementById('gameIMG');
+        const keyAmount = document.getElementsByClassName('keyAmount')[0];
         GameBlack.style.display = 'flex';
         setTimeout(() => { 
             GameBlack.classList.add('active');
             GameModal.classList.add('active');
         }, 10);
+        gamePrice.innerHTML = `${game.game_price} THB`;
         gameTitle.innerHTML = `${game.game_title}`;        
-
+        pgameDes.innerHTML = `${game.game_description}`
+        Genre.innerHTML = `Genre: ${game.game_category}`;
+        gameIMG.src = `img/game/${game.game_image}`
+        keyAmount.innerHTML = `Key Amount: ${game.key_count}`;
     })
     .catch((error)=>{
 

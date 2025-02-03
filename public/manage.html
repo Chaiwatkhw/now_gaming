@@ -17,13 +17,13 @@
     <!-- Header -->
     <header class="header-container">
         <div class="logo-container">
-            <div class="icon-img" onclick="gotoManage()" title="Home"><img src="/img/logo/reallogo.png" alt="" class="logo"></div>
-            <label for="" id="label">Management System</label>
+            <div class="icon-img" onclick="gotoManage()" title="Manage"><img src="/img/logo/reallogo.png" alt="" class="logo"></div>
+            <label for="" id="label">Game Management</label>
         </div>
         <div class="search-box">
-            <input type="search" name="searchinput" id="searchinput" placeholder="Search.." class="search-input">
-            <span class="material-symbols-outlined" id="search-icon"> search </span>
-            <span class="x" id="x">&times;</span>
+            <input type="search" name="searchinput" id="searchinput" placeholder="Search.." class="search-input" title="Search">
+            <span class="material-symbols-outlined" id="search-icon" title="Search"> search </span>
+            <span class="x" id="x" title="Close">&times;</span>
         </div>        
         <div class="nav">
             <div class="return" onclick="goToHome()">Home</div>
@@ -32,7 +32,7 @@
     <!-- Main Content -->
      <div class="container">
         <div class="header-section">
-            <h2>Game Management</h2>
+            <button id="filter-zero-key" onclick="filterZeroKey()">Show Games with 0 Keys</button>
             <div class="add-button" onclick="modalAddgame(0)">Add Game</div>
         </div>
         <table class="table" id="gamelistTable">

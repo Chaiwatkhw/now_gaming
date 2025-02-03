@@ -37,6 +37,44 @@ CREATE TABLE keygames (
     ON UPDATE RESTRICT 
 );
 
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) 
+    ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE orderdetail (
+    order_id INT,
+    keygame VARCHAR(255),
+    game_id INT,
+    quantity INT DEFAULT 1,
+    PRIMARY KEY (order_id, keygame),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id) 
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (keygame) REFERENCES keygames(keygame) 
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (game_id) REFERENCES games(game_id) 
+    ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+CREATE TABLE cart (
+    cart_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    game_id INT,
+    quantity INT DEFAULT 1,
+    date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) 
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (game_id) REFERENCES games(game_id) 
+    ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+
 /*
 ('Action'),
 ('Adventure'),

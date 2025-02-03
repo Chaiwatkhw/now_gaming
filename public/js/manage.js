@@ -1,3 +1,4 @@
+
 function checkAndToggleTbody() {
     const table = document.getElementById('gamelistTable');
     const tbody = document.getElementById('games-container');
@@ -170,6 +171,7 @@ let gamesData = []; // เก็บข้อมูลเกมทั้งหม
 let filteredGamesData = []; // เก็บข้อมูลเกมที่กรอง
 let currentPage = 1; // หน้าเริ่มต้น
 const itemsPerPage = 10; // จำนวนเกมต่อหน้า
+let showZeroKey = false; // สถานะการกรองเกมที่ key_count = 0
 
 // ฟังก์ชันดึงข้อมูลเกม
 function fetchGames() {
@@ -186,7 +188,27 @@ function fetchGames() {
         });
 }
 
-// ฟังก์ชันแสดงเกม
+// ฟังก์ชันกรองเกมที่ key_count = 0
+function filterZeroKey() {
+    showZeroKey = !showZeroKey; // เปลี่ยนสถานะการกรอง
+    if (showZeroKey) {
+        filteredGamesData = gamesData.filter(game => game.key_count === 0); // กรองเกมที่ key_count = 0
+    } else {
+        filteredGamesData = [...gamesData]; // คืนค่าข้อมูลทั้งหมด
+    }
+    currentPage = 1; // รีเซ็ตหน้าเป็น 1
+    displayGames(); // แสดงผลตามข้อมูลที่กรอง
+    setupPagination(); // รีเฟรชปุ่มแบ่งหน้า
+
+    // เปลี่ยนข้อความของปุ่ม
+    const filterButton = document.getElementById('filter-zero-key');
+    if (showZeroKey) {
+        filterButton.textContent = 'Reset Filter'; // เปลี่ยนเป็น Reset เมื่อกรองแล้ว
+    } else {
+        filterButton.textContent = 'Show Games with 0 Keys'; // เปลี่ยนเป็น Show 0 Key เมื่อไม่กรอง
+    }
+}
+
 function displayGames() {
     const tbody = document.getElementById('games-container');
     tbody.innerHTML = ''; // ล้างตารางก่อน
@@ -214,6 +236,7 @@ function displayGames() {
     });
     checkAndToggleTbody();
 }
+
 
 // ฟังก์ชันแบ่งหน้า
 function setupPagination() {
@@ -410,7 +433,7 @@ async function openKeyGame(gameId){
     const addkeyGameModal = document.getElementsByClassName('addkeyGameModal')[0];
     addkeyGameModal.innerHTML = `
     <div class="headKeygame">
-                
+                <input type="hidden" id="gameKeyid" value="${gameId}">
     </div>
             <div class="mainKeygame">
                 <div class="leftKey">
@@ -493,7 +516,7 @@ async function fetchKeys(gameId) {
         deleteButton.className = `deleteButton`;
         deleteButton.id = `deleteButton${key.keygame}`;
         deleteButton.textContent = 'Delete';
-        deleteButton.onclick = () => deleteKey(key.keygame);
+        deleteButton.onclick = () => deleteKey(key.keygame,gameId);
         //td2.appendChild(editButton);
         td2.appendChild(deleteButton);
         // เพิ่มเซลล์เข้าแถว
@@ -548,7 +571,7 @@ async function addKey(gameId) {
     }
 }
 
-async function deleteKey(key) {
+async function deleteKey(key,gameId) {
     const tdbutton = document.getElementById(`td${key}`);
 
     // รีเซ็ตปุ่มทั้งหมด
@@ -573,6 +596,7 @@ async function deleteKey(key) {
                 params: { keygame: key } // ส่ง keygame ผ่าน URL params
             });
             document.getElementById(key).remove(); // ลบแถวออกจากตาราง
+            openKeyGame(gameId);
         } catch (error) {
             console.error(error);
             alert('Failed to delete key.');
@@ -607,7 +631,4 @@ function resetAllDeleteButtons() {
     });
 }
 
-function cancelDelKey(key){
-
-}
 

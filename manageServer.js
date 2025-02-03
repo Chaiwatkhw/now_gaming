@@ -17,7 +17,7 @@ async function connectDB() {
         password: '1234',
         database: 'now_gaming',
         waitForConnections: true,
-        connectionLimit: 10,
+        connectionLimit: 100,
         queueLimit: 0,
     });
     return connection;
@@ -135,7 +135,7 @@ router.post('/upload',isAdmin ,upload.single('game_imgfile'), async (req, res) =
 
 router.get('/getGameToManage',isAdmin, async (req, res) => {
     const query = `
-        SELECT 
+    SELECT 
     g.game_id, 
     g.game_title,
     g.game_image,
@@ -143,18 +143,19 @@ router.get('/getGameToManage',isAdmin, async (req, res) => {
     hp.game_price, 
     hp.start_date,
     g.game_deleted,
-    COUNT(k.keygame) AS key_count  -- นับจำนวนคีย์ของแต่ละเกม
-    FROM games g
-    JOIN historyprice hp ON g.game_id = hp.game_id
-    LEFT JOIN keygames k ON g.game_id = k.game_id  -- JOIN ตาราง keygames
-    WHERE hp.start_date = (
+    COUNT(k.keygame) AS key_count  -- นับจำนวนคีย์ของแต่ละเกมที่ยังไม่ได้ใช้งาน
+FROM games g
+JOIN historyprice hp ON g.game_id = hp.game_id
+LEFT JOIN keygames k ON g.game_id = k.game_id AND k.key_used = 0  -- นับเฉพาะคีย์ที่ยังไม่ถูกใช้งาน
+WHERE hp.start_date = (
     SELECT MAX(start_date)
     FROM historyprice
     WHERE game_id = g.game_id
-    )
-    GROUP BY g.game_id, g.game_title, g.game_image, g.game_description, 
+)
+GROUP BY g.game_id, g.game_title, g.game_image, g.game_description, 
          hp.game_price, hp.start_date, g.game_deleted
-    ORDER BY g.game_id;
+ORDER BY g.game_id;
+
     `;
 
     try {
@@ -318,7 +319,7 @@ router.post('/getKeyGame',async (req,res)=>{
     try{
         const {game_id} = req.body;
         const db = await connectDB();
-        const [allKey] = await db.query('SELECT * FROM keygames WHERE game_id = ?',[game_id]);
+        const [allKey] = await db.query('SELECT * FROM keygames WHERE game_id = ? AND key_used = 0',[game_id]);
         if (allKey.length === 0) {
             return res.status(400).send('ไม่พบคีย์ของเกมนี้ในระบบ');
         }
@@ -343,6 +344,5 @@ router.delete('/deletekey',async (req,res)=>{
         res.send(error);
     }
 });
-
 
 module.exports = router; // ส่ง router ไปใช้งานใน index.js

@@ -1,0 +1,205 @@
+body, html {
+    /* overflow-x: hidden; */
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+*{
+    font-family: "Barlow", sans-serif;
+}
+
+body{
+    background-color: #272727;
+    position: relative;
+}
+
+.header-container{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background: #101010;
+    justify-content: center;
+    color: white;
+}
+
+.icon-img{
+    gap: 10px;
+    text-decoration: none;
+    background-color: rgb(0, 0, 0,0);  
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.web-name{  
+    background-color: rgb(0, 0, 0,0);
+    color: white;
+}
+
+.logo{
+    width: 50px;
+    object-fit: cover;
+    background-color: rgb(0, 0, 0,0);
+}
+
+.logo-container{    
+    margin-left: 20px;
+    gap: 10px;
+    font-size: 19px;
+    font-weight: 600;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    display: flex;
+}
+
+.in-logo-container{
+    width: fit-content;
+    padding: 4px 10px; 
+    border-radius: 15px;
+}
+
+.main-content {
+    max-width: 1200px; /* กำหนดขนาดสูงสุดให้แคบลง */
+    width: 100%;
+    color: white;
+    margin: 150px auto 0 auto; /* ใช้ margin auto เพื่อจัดกึ่งกลาง */
+    display: flex;
+    justify-content: center;
+}
+
+
+.cartpage{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cartpage-left{
+    /* border: 1px solid greenyellow; */
+    flex: 1 1;
+}
+
+.cartpage-right{
+    /* border: 1px solid fuchsia;    */
+    flex: 0 1 33%;
+    margin-left: 20px;
+    position: sticky;
+    top: 150px;
+    align-self: flex-start;
+}
+
+.summary{
+    display: flex;
+    flex-direction: column;
+}
+
+.carth1,.summaryh1{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.gameCart{
+    background-color: #323232;
+    border-radius: 10px;
+    padding: 30px;
+
+}
+
+.game-item:not(:last-child){
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid hsla(0, 0%, 100%, .1);
+    padding-bottom: 30px;
+}
+.game-item:not(:first-child) {
+    padding-top: 30px;
+}
+.gameIMG{
+    border-radius: 7px;
+    width: 190px;
+}
+
+.summaryprice{
+    background-color: #101010;  
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 30px;
+}
+
+.payButton{
+    color: rgb(0, 0, 0,0);;
+    background-color: (0, 0, 0,0);
+    margin: 10px;
+    width: 80%;
+    padding: 10px;
+    background-image: linear-gradient(57deg,#00ff02 0%, #22d522 80%);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.payButton:hover{
+    transform: scale(1.1);
+    background-image: linear-gradient(57deg,#17e219 0%, #059f05 80%);
+}
+
+.payTitle{
+    margin-left: 10px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.choice {
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.choice::before,
+.choice::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: hsla(0, 0%, 100%, .1);
+}
+
+.choice::before {
+    margin-right: 10px;
+}
+
+.choice::after {
+    margin-left: 10px;
+}
+
+.back{
+    cursor: pointer;
+    font-size: 18px;
+    color: #999;
+}

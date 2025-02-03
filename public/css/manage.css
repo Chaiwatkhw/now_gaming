@@ -748,3 +748,16 @@ input[type="file"] {
     color: white;
     border: none;
 }
+
+#filter-zero-key{
+    padding: 10px;
+    border: none;
+    background-color:#28a745 ; 
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+}
+
+#filter-zero-key:hover{
+    background-color: #218838;
+}
