@@ -3,7 +3,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const mysql = require('mysql2/promise');
+
 const manageServer = require('./manageServer');
+const cartServer = require('./cartServer');
+
 const cors = require('cors');
 const multer = require('multer');
 const bcrypt = require('bcryptjs');
@@ -11,7 +14,6 @@ const jwt = require('jsonwebtoken');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 const nodemailer = require('nodemailer');
-const { json } = require('stream/consumers');
 const secretKey = 'nowgaming';
 
 
@@ -32,7 +34,9 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true
 }));
+
 app.use('/manage', manageServer);
+app.use('/cart',cartServer);
 
 async function connectDB() {
     try {
@@ -111,11 +115,12 @@ app.get('/', async (req, res) => {
 app.get('/getGame', async (req, res) => {
     try {
         const query = `
-            SELECT 
+           SELECT 
     g.game_id,
     g.game_title,
     g.game_description,
     g.game_image,
+    g.game_category,  -- ✅ เพิ่มประเภทเกม
     hp.game_price,
     COUNT(k.keygame) AS key_count
 FROM 
@@ -125,7 +130,7 @@ JOIN
     ON g.game_id = hp.game_id
 LEFT JOIN 
     keygames k
-    ON g.game_id = k.game_id AND k.key_used = 0  -- Only count unused keys
+    ON g.game_id = k.game_id AND k.key_used = 0  -- นับเฉพาะ Key ที่ยังไม่ใช้
 WHERE 
     hp.start_date = (
         SELECT MAX(hp2.start_date)
@@ -135,9 +140,9 @@ WHERE
 AND 
     g.game_deleted = 0
 GROUP BY 
-    g.game_id, g.game_title, g.game_description, g.game_image, hp.game_price
+    g.game_id, g.game_title, g.game_description, g.game_image, g.game_category, hp.game_price  -- ✅ Group ด้วย game_genre ด้วย
 HAVING 
-    COUNT(k.keygame) > 0;  -- Only include games with at least 1 unused key
+    COUNT(k.keygame) > 0  -- เอาเฉพาะเกมที่มี Key ใช้ได้
 
         `;
         const [games] = await db.query(query);
@@ -171,7 +176,7 @@ app.post('/register',async (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-    console.log('Received Login Request:', req.body);
+    //console.log('Received Login Request:', req.body);
     try {
         const { username, password } = req.body;
         const query = 'SELECT * FROM users WHERE username = ? OR email = ?';

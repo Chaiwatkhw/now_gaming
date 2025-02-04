@@ -1,5 +1,6 @@
 
 window.onload = async function winLoad() {
+    
     const account = document.getElementsByClassName('account')[0];
     const isAdmin = await checkAdmin();
     const isLoggedIn = await checklogin(); 
@@ -52,7 +53,7 @@ window.onload = async function winLoad() {
     else{
         loginAccount();
         account.innerHTML= `
-        <a href="javascript:void(0);" class="icon-img" title="Account">
+        <a href="javascript:void(0);" class="icon-img2" title="Account">
         <span class="material-symbols-outlined" id="account_circle" onclick="openModal()">account_circle</span>
         </a>`;   
     }
@@ -75,6 +76,17 @@ window.onload = async function winLoad() {
     );
 }
 
+function gotoHome(){
+    window.location.href = '/';
+    const trending = document.querySelector(".Trending .hTrending");
+    const iconArrow = document.getElementById('icon-arrow');
+    trending.style.cursor = "pointer";
+    iconArrow.style.cursor = "pointer";
+}
+
+function goTocart(){
+    window.location.href = '/cart';
+}
 async function checklogin() {
     try {
         const res = await axios.get('/checklogin', { withCredentials: true }); // ตรวจสอบ login
@@ -412,14 +424,23 @@ document.body.addEventListener('submit', async function(e) {
         }
 }});
 
-function renderGames(games){
+function renderGames(games) {
     const cardWrapper = document.getElementsByClassName('card-wrapper')[0];
-    cardWrapper.innerHTML ='';
+    cardWrapper.innerHTML = '';
+
     for (let i = 0; i < Math.min(9, games.length); i++) {
         const game = games[i];
+
+        const category = game.game_category ? game.game_category.toLowerCase() : 'unknown';
+
         const div = document.createElement('div');
         div.className = 'game-card';
-        const formattedPrice = parseFloat(game.game_price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        div.setAttribute('data-category', category);  // ✅ ใช้ data-category
+
+        const formattedPrice = parseFloat(game.game_price).toLocaleString('en-US', { 
+            minimumFractionDigits: 2, maximumFractionDigits: 2 
+        });
+
         div.innerHTML = `
             <div class="baseIMG">
                 <picture class="gamePicTure" onclick="openGameModal(${game.game_id})">
@@ -435,13 +456,59 @@ function renderGames(games){
                 </div>
             </div>
         `;
+
         cardWrapper.appendChild(div);
     }
-    
-    // games.forEach(game => {
-        
-    // });
 }
+
+async function getGame2() {
+    axios.get('/getGame')
+    .then((res)=>{
+        games = res.data;
+        renderGames2(games);    
+    })
+    .catch((error)=>{
+        console.log("Error to Load Product:",error);
+    }
+    );    
+}
+
+
+function renderGames2(games) {
+    const cardWrapper = document.getElementsByClassName('card-wrapper')[0];
+    cardWrapper.innerHTML = '';
+
+    games.forEach(game => {  // ✅ ใส่ callback function ใน forEach()
+        const category = game.game_category ? game.game_category.toLowerCase() : 'unknown';
+
+        const div = document.createElement('div');
+        div.className = 'game-card';
+        div.setAttribute('data-category', category);
+
+        const formattedPrice = parseFloat(game.game_price).toLocaleString('en-US', { 
+            minimumFractionDigits: 2, maximumFractionDigits: 2 
+        });
+
+        div.innerHTML = `
+            <div class="baseIMG">
+                <picture class="gamePicTure" onclick="openGameModal(${game.game_id})">
+                    <img src="/img/game/${game.game_image}" alt="">
+                </picture>
+            </div>
+            <div class="titleANDPrice">
+                <div class="title-game">
+                    ${game.game_title}
+                </div>
+                <div class="game-price">
+                    ${formattedPrice} THB
+                </div>
+            </div>
+        `;
+
+        cardWrapper.appendChild(div);
+    });
+}
+
 
 function managePage(){
     openMenu();
@@ -584,6 +651,164 @@ function closeGameModal(){
             GameBlack.style.display = 'none';
         }, 500);
 }
+
+async function getGame3(categoryName) {
+    axios.get('/getGame')
+    .then((res)=>{
+        games = res.data;
+        renderGames3(games,categoryName);    
+    })
+    .catch((error)=>{
+        console.log("Error to Load Product:",error);
+    }
+    );    
+}
+
+
+function renderGames3(games,categoryName) {
+    const trending = document.querySelector(".Trending .hTrending");
+    const cardWrapper = document.getElementsByClassName('card-wrapper')[0];
+    cardWrapper.innerHTML = '';
+    let i = 0;
+    games.forEach(game => {  
+        const category = game.game_category ? game.game_category.toLowerCase() : 'unknown';
+        if (category === categoryName){
+
+        
+        const div = document.createElement('div');
+        div.className = 'game-card';
+        div.setAttribute('data-category', category);
+
+        const formattedPrice = parseFloat(game.game_price).toLocaleString('en-US', { 
+            minimumFractionDigits: 2, maximumFractionDigits: 2 
+        });
+
+        div.innerHTML = `
+            <div class="baseIMG">
+                <picture class="gamePicTure" onclick="openGameModal(${game.game_id})">
+                    <img src="/img/game/${game.game_image}" alt="">
+                </picture>
+            </div>
+            <div class="titleANDPrice">
+                <div class="title-game">
+                    ${game.game_title}
+                </div>
+                <div class="game-price">
+                    ${formattedPrice} THB
+                </div>
+            </div>
+        `;
+        cardWrapper.appendChild(div);
+        i++;
+        }
+    });
+    if(i == 0){
+        trending.textContent = "No games found";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("searchinput");
+    const gameCards = document.getElementsByClassName("game-card");
+    const pictureBackground = document.querySelector(".pictureBackground");
+    const containWeb = document.querySelector(".Contain-web");
+    const categoriesWrapper = document.querySelector(".Categories-wrapper");
+    const gameCategories = document.querySelector(".gameCategories");
+    const showGameIMG = document.querySelector(".showGameIMG");
+    
+    const categoryCards = document.querySelectorAll(".Categories-card");
+    const trending = document.querySelector(".Trending .hTrending");
+    const iconArrow = document.getElementById('icon-arrow');
+
+    function updateDisplay(show) {
+        pictureBackground.style.display = show ? "block" : "none";
+        containWeb.style.paddingTop = show ? "0px" : "150px";
+        categoriesWrapper.style.display = show ? "flex" : "none";
+        gameCategories.style.display = show ? "block" : "none";
+        showGameIMG.style.display = show ? "block" : "none";
+    }
+
+    searchInput.addEventListener("input", function () {
+        const searchText = searchInput.value.toLowerCase().trim();
+        let hasMatch = false;
+
+        for (let gameCard of gameCards) {
+            const titleElement = gameCard.querySelector(".title-game");
+            if (titleElement) {
+                const titleText = titleElement.textContent.toLowerCase();
+                if (titleText.includes(searchText)) {
+                    gameCard.style.display = "block";
+                    hasMatch = true;
+                } else {
+                    gameCard.style.display = "none";
+                }
+            }
+        }
+
+        if (searchText.length > 0) {
+            updateDisplay(false);
+            trending.textContent = "Results";
+        } else {
+            updateDisplay(true);
+            trending.textContent = "Trending";
+        }
+        checkTrending();
+    });
+
+    categoryCards.forEach(card => {
+        card.addEventListener("click", function () {
+            const categoryName = this.querySelector(".nameCat").textContent.trim().toLowerCase();
+            trending.textContent = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
+            getGame3(categoryName);
+            updateDisplay(false); 
+            checkTrending();
+        });
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded",function(){
+    const pictureBackground = document.querySelector(".pictureBackground");
+    const containWeb = document.querySelector(".Contain-web");
+    const categoriesWrapper = document.querySelector(".Categories-wrapper");
+    const gameCategories = document.querySelector(".gameCategories");
+    const showGameIMG = document.querySelector(".showGameIMG");
+    function updateDisplay(show) {
+        pictureBackground.style.display = show ? "block" : "none";
+        containWeb.style.paddingTop = show ? "0px" : "150px";
+        categoriesWrapper.style.display = show ? "flex" : "none";
+        gameCategories.style.display = show ? "block" : "none";
+        showGameIMG.style.display = show ? "block" : "none";
+    }
+    const mTrending = document.getElementsByClassName('mTrending')[0];
+    mTrending.addEventListener("click",function(){
+        const hTrending = document.getElementsByClassName('hTrending')[0];
+        if(hTrending.innerHTML.trim() == 'Trending'){
+            updateDisplay(false);
+            getGame2();
+        } 
+    });
+})
+
+function checkTrending(){
+    const trending = document.querySelector(".Trending .hTrending");
+    const iconArrow = document.getElementById('icon-arrow');
+    if (trending.textContent.trim() !== "Trending") {
+        trending.style.cursor = "default";
+        trending.style.pointerEvents = "none";  // ปิดการคลิก
+        iconArrow.style.cursor = "default";
+        iconArrow.style.pointerEvents = "none"; 
+    } else {
+        trending.style.cursor = "pointer";
+        trending.style.pointerEvents = "auto";  // เปิดให้คลิกได้
+        iconArrow.style.cursor = "pointer";
+        iconArrow.style.pointerEvents = "auto";  // เปิดให้คลิกได้
+    }
+}
+
+
+
+
 
 
 

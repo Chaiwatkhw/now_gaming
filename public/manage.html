@@ -17,7 +17,7 @@
     <!-- Header -->
     <header class="header-container">
         <div class="logo-container">
-            <div class="icon-img" onclick="gotoManage()" title="Manage"><img src="/img/logo/reallogo.png" alt="" class="logo"></div>
+            <div class="icon-img" onclick="goToHome()" title="Home"><img src="/img/logo/reallogo.png" alt="" class="logo"></div>
             <label for="" id="label">Game Management</label>
         </div>
         <div class="search-box">
@@ -66,7 +66,7 @@
                     <div class="UploadIMG">
                         <img id="preview" src="" alt="Image preview">
                         <div class="imgbutton">
-                            <label for="game_imgfile" class="custom-file-upload">Upload Image *</label>
+                            <label for="game_imgfile" class="custom-file-upload">Upload Image</label>
                             <input type="file" name="game_imgfile" id="game_imgfile"  class="custom-file-upload" accept=".jpg,.png,.jpeg,.avif,.webp" oninvalid="setCustomValidity('กรุณากรอกรูปภาพเกม')" oninput="setCustomValidity('')" onchange="previewImage()">
                         </div>
                         <span id="imageError" style="color: red; display: none;">กรุณาเลือกไฟล์รูปภาพ</span>
@@ -74,9 +74,9 @@
 
                     <div class="dataAddgame">   
                         <input type="hidden" name="game_id" id="game_id">
-                        <label for="game_title">Game Title *</label>
+                        <label for="game_title">Game Title <span style="color: red;">*</span></label>
                         <input type="text" name="game_title" id="game_title" required oninvalid="setCustomValidity('กรุณากรอกชื่อเกม')" oninput="setCustomValidity('')">
-                        <label for="">Genre *</label>
+                        <label for="">Genre <span style="color: red;">*</span></label>
                         <select id="game-category" name="game-category">
                             <option value="Action">Action</option>
                             <option value="Adventure">Adventure</option>
@@ -91,9 +91,9 @@
                             <option value="Racing">Racing</option>
                             <option value="Strategy">Strategy</option>
                         </select> 
-                        <label for="game_description">Description *</label>
+                        <label for="game_description">Description <span style="color: red;">*</span></label>
                         <textarea name="game_description" id="game_description" class="game_description" rows="10" required oninvalid="setCustomValidity('กรุณากรอกรายละเอียดเกม')" oninput="setCustomValidity('')"></textarea>
-                        <label for="game_price">Price *</label>
+                        <label for="game_price">Price <span style="color: red;">*</span></label>
                         <input type="number" id="game_price" name="game_price" step="0.01" required oninvalid="setCustomValidity('กรุณากรอกราคาเกม')" oninput="setCustomValidity('')">
     
                     </div>

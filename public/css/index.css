@@ -1,6 +1,5 @@
 /* ส่วนของ nav bar */
 body, html {
-    overflow-x: hidden;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
@@ -12,6 +11,7 @@ body, html {
     max-width: 100%;
 }
 body{
+    overflow-x: hidden;
     width: 100%;
     max-width: 100%;
     min-height: 100%;
@@ -117,14 +117,25 @@ body{
 }
 
 .icon-img{
+    
     gap: 10px;
-    text-decoration: none;
     background-color: rgb(0, 0, 0,0);  
     display: flex;
     align-items: center;
     text-align: center;
+    cursor: pointer;
 }
 
+.icon-img2{
+    
+    gap: 10px;
+    background-color: rgb(0, 0, 0,0);  
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
 .search-box{
     width: 50px;
     height: 10px;
@@ -273,7 +284,6 @@ a:visited {
 }
 
 .Trending{
-    
     width: 100%;
     max-width: 1200px;
     margin-bottom: 20px;
@@ -288,9 +298,6 @@ a:visited {
     color: #7d7c7c;
 }
 
-.mTrending:hover{
-    color: #fff;
-}
 
 .hTrending{
     font-size: 30px;
@@ -373,7 +380,7 @@ a:visited {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .title-game{
@@ -923,6 +930,7 @@ select {
     justify-content: center;
     align-items: center;
     transition: 0.3s;
+    font-weight: 500;
 }
 
 .addCardButton:hover{
@@ -989,5 +997,14 @@ select {
     width: 80%;
     justify-content: space-between;
 }
+
+.hTrending.disabled,
+#icon-arrow.disabled {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
 
 
