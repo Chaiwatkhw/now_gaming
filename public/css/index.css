@@ -5,6 +5,7 @@ body, html {
     scroll-behavior: smooth;
   }
 *{
+    /* outline: 1px solid red; */
     margin: 0%;
     padding: 0%;
     font-family: "Barlow", sans-serif;
@@ -12,13 +13,10 @@ body, html {
 }
 body{
     overflow-x: hidden;
-    width: 100%;
-    max-width: 100%;
-    min-height: 100%;
     background-color: #272727;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }
 
 .mainWeb{
@@ -41,7 +39,6 @@ body{
 
 
 .slanted-overlay {
-    min-width: 1700px;
     position: absolute;
     bottom: -1px;
     left: 0;
@@ -63,22 +60,18 @@ body{
 
 
 .header-container{
+    box-sizing: border-box;
     position: fixed;
-    overflow: visible;
     z-index: 1;
-    width: 100%;
-    top: 0;
-    flex-wrap: wrap;
+    width: 100vw;
     display: flex;
-    flex-direction: row;
     align-items: center;
     padding: 0 0px;
     padding-top: 10px;
     padding-bottom: 20px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(255, 255, 255, 0));
-    /* background-color: #272727; */
     justify-content: center;
-    transition: all 0.3s ease-in;
+    transition: background 0.3s ease-in;
 }
 
 .header-container.sticky{
@@ -732,6 +725,7 @@ select {
 }
 
 .Categories-wrapper{
+    overflow-x: hidden;
     width: 100%;
     max-width: 1200px;
     position: relative;
@@ -1005,6 +999,30 @@ select {
     pointer-events: none;
 }
 
+#cartGame{
+    position: relative;
+}
 
+.gameAmountCart {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: -10px;
+    margin-top: -10px;
+    background-color: red;
+    padding: 5px; /* เพิ่มขนาดให้เหมาะสม */
+    border-radius: 50%;
+    min-width: 10px; /* กำหนดขนาดขั้นต่ำ */
+    min-height: 10px; /* ให้เป็นวงกลม */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.amountCart{
+    font-size: 9px;
+    font-weight: 900;
+}
 
 

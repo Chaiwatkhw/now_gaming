@@ -74,6 +74,7 @@ window.onload = async function winLoad() {
         console.log("Error to Load Product:",error);
     }
     );
+    amountCart();
 }
 
 function gotoHome(){
@@ -96,10 +97,10 @@ async function checklogin() {
         if (res.data.message === 'You are authorized') {
             return res.data.user;  // ส่งข้อมูลผู้ใช้กลับมา
         }
-        return null;  // หากไม่ได้ล็อกอิน
+        return false;  // หากไม่ได้ล็อกอิน
     } catch (error) {
         console.log("Error checking login:", error.response ? error.response.data : error);
-        return null;  // หากเกิดข้อผิดพลาดในการตรวจสอบ
+        return false;  // หากเกิดข้อผิดพลาดในการตรวจสอบ
     }
 }
 
@@ -538,10 +539,12 @@ document.getElementById('search-icon').addEventListener('click',searchBoxChange)
 function searchBoxChange() {
     const searchBox = document.querySelector('.search-box');
     const searchIcon = document.getElementById('search-icon');
+    const searchinput = document.getElementById('searchinput');
     const x = document.getElementById('x');
     // ซ่อน searchIcon และแสดง x
     searchIcon.style.display = 'none';
     x.style.display = 'block';
+    searchinput.focus();
     searchBox.classList.add('active');
 }
 
@@ -615,7 +618,6 @@ async function openGameModal(gameId){
     })
     .then((res)=>{
         const game = res.data[0];
-        console.log(game)
         const GameBlack = document.getElementsByClassName('GameBlack')[0];
         const GameModal = document.getElementsByClassName('GameModal')[0];
         const gameTitle = document.getElementById('gameTitle');
@@ -624,6 +626,7 @@ async function openGameModal(gameId){
         const gamePrice = document.getElementsByClassName('gamePrice')[0];
         const gameIMG = document.getElementById('gameIMG');
         const keyAmount = document.getElementsByClassName('keyAmount')[0];
+        const addCardButton = document.getElementsByClassName('addCardButton')[0];
         GameBlack.style.display = 'flex';
         setTimeout(() => { 
             GameBlack.classList.add('active');
@@ -635,6 +638,7 @@ async function openGameModal(gameId){
         Genre.innerHTML = `Genre: ${game.game_category}`;
         gameIMG.src = `img/game/${game.game_image}`
         keyAmount.innerHTML = `Key Amount: ${game.key_count}`;
+        addCardButton.setAttribute("onclick", `addCart(${game.game_id})`);
     })
     .catch((error)=>{
 
@@ -730,7 +734,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     searchInput.addEventListener("input", function () {
         const searchText = searchInput.value.toLowerCase().trim();
-        let hasMatch = false;
 
         for (let gameCard of gameCards) {
             const titleElement = gameCard.querySelector(".title-game");
@@ -748,11 +751,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (searchText.length > 0) {
             updateDisplay(false);
             trending.textContent = "Results";
+            trending.style.cursor = 'default';
+            iconArrow.style.cursor = 'default';
         } else {
-            updateDisplay(true);
-            trending.textContent = "Trending";
+            getGame2();
+            //updateDisplay(true);
+            //trending.textContent = "Trending";
+            //trending.style.cursor = 'pointer';
+            //iconArrow.style.cursor = 'pointer';
         }
-        checkTrending();
     });
 
     categoryCards.forEach(card => {
@@ -761,11 +768,11 @@ document.addEventListener("DOMContentLoaded", function () {
             trending.textContent = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
             getGame3(categoryName);
             updateDisplay(false); 
-            checkTrending();
+            trending.style.cursor = 'default';
+            iconArrow.style.cursor = 'default';
         });
     });
 });
-
 
 document.addEventListener("DOMContentLoaded",function(){
     const pictureBackground = document.querySelector(".pictureBackground");
@@ -773,6 +780,8 @@ document.addEventListener("DOMContentLoaded",function(){
     const categoriesWrapper = document.querySelector(".Categories-wrapper");
     const gameCategories = document.querySelector(".gameCategories");
     const showGameIMG = document.querySelector(".showGameIMG");
+    const trending = document.querySelector(".Trending .hTrending");
+    const iconArrow = document.getElementById('icon-arrow');
     function updateDisplay(show) {
         pictureBackground.style.display = show ? "block" : "none";
         containWeb.style.paddingTop = show ? "0px" : "150px";
@@ -786,24 +795,53 @@ document.addEventListener("DOMContentLoaded",function(){
         if(hTrending.innerHTML.trim() == 'Trending'){
             updateDisplay(false);
             getGame2();
+            trending.textContent = "Results";
+            trending.style.cursor = 'default';
+            iconArrow.style.cursor = 'default';
         } 
     });
 })
 
-function checkTrending(){
-    const trending = document.querySelector(".Trending .hTrending");
-    const iconArrow = document.getElementById('icon-arrow');
-    if (trending.textContent.trim() !== "Trending") {
-        trending.style.cursor = "default";
-        trending.style.pointerEvents = "none";  // ปิดการคลิก
-        iconArrow.style.cursor = "default";
-        iconArrow.style.pointerEvents = "none"; 
-    } else {
-        trending.style.cursor = "pointer";
-        trending.style.pointerEvents = "auto";  // เปิดให้คลิกได้
-        iconArrow.style.cursor = "pointer";
-        iconArrow.style.pointerEvents = "auto";  // เปิดให้คลิกได้
+async function amountCart() {
+    const amountCart = document.getElementsByClassName('amountCart')[0];
+    const gameAmountCart = document.getElementsByClassName('gameAmountCart')[0];
+    try {
+        const res = await axios.post('/amountCart', {}, { withCredentials: true });
+        const count = res.data.count;
+
+        if (count > 0) {
+            gameAmountCart.style.visibility = 'visible';
+            amountCart.textContent = count; // แสดงจำนวนเกมในตะกร้า
+        } else {
+            gameAmountCart.style.visibility = 'hidden';
+        }
+    } catch (error) {
+        gameAmountCart.style.visibility = 'hidden';
+        console.error("Error fetching cart amount:", error);
     }
+}
+
+
+async function addCart(game_id) {
+    const isLoggedIn = await checklogin(); 
+    if(isLoggedIn){
+        await axios.post('/addcart',{
+            game_id
+        })
+        .then((res)=>{
+            amountCart();
+            closeGameModal();
+        })
+        .catch((error)=>{
+    
+        });
+    }
+    else{
+        openModal()
+        closeGameModal();
+    }
+    
+    
 }
 
 

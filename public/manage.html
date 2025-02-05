@@ -75,9 +75,9 @@
                     <div class="dataAddgame">   
                         <input type="hidden" name="game_id" id="game_id">
                         <label for="game_title">Game Title <span style="color: red;">*</span></label>
-                        <input type="text" name="game_title" id="game_title" required oninvalid="setCustomValidity('กรุณากรอกชื่อเกม')" oninput="setCustomValidity('')">
-                        <label for="">Genre <span style="color: red;">*</span></label>
-                        <select id="game-category" name="game-category">
+                        <input type="text" name="game_title" id="game_title" required oninvalid="setCustomValidity('กรุณากรอกชื่อเกม')" oninput="setCustomValidity('')" placeholder="Game Name" style="padding: 3px;">
+                        <label for="" >Genre <span style="color: red;">*</span></label>
+                        <select id="game-category" name="game-category" style="padding: 3px;">
                             <option value="Action">Action</option>
                             <option value="Adventure">Adventure</option>
                             <option value="Retro">Retro</option>
@@ -92,9 +92,9 @@
                             <option value="Strategy">Strategy</option>
                         </select> 
                         <label for="game_description">Description <span style="color: red;">*</span></label>
-                        <textarea name="game_description" id="game_description" class="game_description" rows="10" required oninvalid="setCustomValidity('กรุณากรอกรายละเอียดเกม')" oninput="setCustomValidity('')"></textarea>
+                        <textarea name="game_description" id="game_description" class="game_description" rows="10" required oninvalid="setCustomValidity('กรุณากรอกรายละเอียดเกม')" oninput="setCustomValidity('')" placeholder="Game details" style="padding: 3px;"></textarea>
                         <label for="game_price">Price <span style="color: red;">*</span></label>
-                        <input type="number" id="game_price" name="game_price" step="0.01" required oninvalid="setCustomValidity('กรุณากรอกราคาเกม')" oninput="setCustomValidity('')">
+                        <input type="number" id="game_price" name="game_price" step="0.01" required oninvalid="setCustomValidity('กรุณากรอกราคาเกม')" oninput="setCustomValidity('')" placeholder="0.00" style="padding: 3px;">
     
                     </div>
                 </div>

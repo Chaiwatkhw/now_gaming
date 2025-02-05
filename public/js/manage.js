@@ -405,11 +405,13 @@ document.getElementById('search-icon').addEventListener('click',searchBoxChange)
 function searchBoxChange() {
     const searchBox = document.querySelector('.search-box');
     const searchIcon = document.getElementById('search-icon');
+    const searchinput = document.getElementById('searchinput');
     const x = document.getElementById('x');
     // ซ่อน searchIcon และแสดง x
     searchIcon.style.display = 'none';
     x.style.display = 'block';
     searchBox.classList.add('active');
+    searchinput.focus();   
 }
 
 document.getElementById('x').addEventListener('click', closeSearch);
@@ -418,6 +420,7 @@ function closeSearch() {
     const searchBox = document.querySelector('.search-box');
     const searchIcon = document.getElementById('search-icon');
     const searchInput = document.getElementById('searchinput');
+
     searchInput.value = '';
     const x = document.getElementById('x');
     

@@ -512,3 +512,68 @@ app.get('/checkAdmin',isAdmin,(req,res)=>{
         user: req.user // ส่งข้อมูลผู้ใช้กลับไป
     });
 });
+
+app.post('/addcart', async (req, res) => {
+    const { game_id } = req.body;
+    const token = req.cookies.token; // อ่าน JWT จาก Cookie
+
+    if (!token) return res.status(401).json({ error: "No token found" });
+
+    try {
+        const decoded = jwt.verify(token, secretKey);
+        const username = decoded.username;
+
+        const db = await connectDB();
+        
+        // ดึง user_id จาก username
+        const [userResult] = await db.query(`SELECT user_id FROM users WHERE username = ?`, [username]);
+        if (userResult.length === 0) return res.status(404).json({ error: "User not found" });
+
+        const user_id = userResult[0].user_id;
+
+        // ตรวจสอบว่ามี game_id ใน cart ของ user นี้หรือยัง
+        const [cartResult] = await db.query(`SELECT quantity FROM cart WHERE user_id = ? AND game_id = ?`, [user_id, game_id]);
+
+        if (cartResult.length === 0) {
+            // ถ้ายังไม่มี → INSERT
+            await db.query(`INSERT INTO cart (user_id, game_id, quantity) VALUES (?, ?, 1)`, [user_id, game_id]);
+        } else {
+            // ถ้ามีแล้ว → UPDATE quantity +1
+            //await db.query(`UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND game_id = ?`, [user_id, game_id]);
+        }
+
+        res.json({ message: "Add Cart Success." });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Add Cart Failed." });
+    }
+});
+
+
+app.post('/amountCart', async (req, res) => {
+    try {
+        const token = req.cookies.token;
+        if (!token) return res.status(401).json({ error: "No token found" });
+
+        const decoded = jwt.verify(token, secretKey);
+        const username = decoded.username;
+
+        const db = await connectDB();
+        
+        // ค้นหา user_id
+        const [userResult] = await db.query(`SELECT user_id FROM users WHERE username = ?`, [username]);
+        if (userResult.length === 0) return res.status(404).json({ error: "User not found" });
+
+        const user_id = userResult[0].user_id;
+
+        // นับจำนวนรายการสินค้า (ไม่นับ quantity)
+        const [cartResult] = await db.query(`SELECT COUNT(DISTINCT game_id) AS total FROM cart WHERE user_id = ?`, [user_id]);
+        const count = cartResult[0].total || 0;
+
+        res.json({ count });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Server Error" });
+    }
+});
+

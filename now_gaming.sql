@@ -61,19 +61,16 @@ CREATE TABLE orderdetail (
 
 
 CREATE TABLE cart (
-    cart_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     game_id INT,
     quantity INT DEFAULT 1,
     date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id, game_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id) 
     ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (game_id) REFERENCES games(game_id) 
     ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-
-
 
 /*
 ('Action'),
