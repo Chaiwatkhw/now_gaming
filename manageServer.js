@@ -82,7 +82,6 @@ router.post('/upload',isAdmin ,upload.single('game_imgfile'), async (req, res) =
     const { game_title, game_description, game_price, game_category } = req.body;
     const game_image = req.file.filename; // ใช้ชื่อไฟล์ที่เก็บไว้ในระบบ
     const connection = await connectDB();
-    console.log(game_category);
 
     try {
         // ตรวจสอบเกมซ้ำในฐานข้อมูล
@@ -173,15 +172,22 @@ ORDER BY g.game_id;
 
 
 
-router.patch('/deleteGame/:game_id',isAdmin,async (req,res)=>{
-    try{
+router.patch('/deleteGame/:game_id', isAdmin, async (req, res) => {
+    try {
         const { game_id } = req.params;
         
         const connection = await connectDB();
-        const [game] = await connection.query('SELECT * FROM games WHERE game_id = ?',[game_id]);
-        if(game.length === 0){
-             return res.status(404).send('Game not Found');
+        
+        // ตรวจสอบว่าเกมมีอยู่หรือไม่
+        const [game] = await connection.query('SELECT * FROM games WHERE game_id = ?', [game_id]);
+        if (game.length === 0) {
+            return res.status(404).send('Game not Found');
         }
+
+        // ลบ keygame ที่ยังไม่ได้ใช้ (key_used = 0)
+        await connection.query('DELETE FROM keygames WHERE game_id = ? AND key_used = 0', [game_id]);
+
+        // อัปเดตให้เกมถูกลบ (soft delete)
         const [result] = await connection.query('UPDATE games SET game_deleted = 1 WHERE game_id = ?', [game_id]);
 
         if (result.affectedRows > 0) {
@@ -189,14 +195,11 @@ router.patch('/deleteGame/:game_id',isAdmin,async (req,res)=>{
         } else {
             res.status(500).send('Failed to delete game');
         }
-    }
-    catch(error){
+    } catch (error) {
         console.log(error);
         res.status(500).send('Error deleting game');
-    }    
+    }
 });
-
-
 
 
 //Edit

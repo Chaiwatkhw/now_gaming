@@ -6,6 +6,7 @@ const mysql = require('mysql2/promise');
 
 const manageServer = require('./manageServer');
 const cartServer = require('./cartServer');
+const accountServer = require('./accountServer');
 
 const cors = require('cors');
 const multer = require('multer');
@@ -37,6 +38,7 @@ app.use(cors({
 
 app.use('/manage', manageServer);
 app.use('/cart',cartServer);
+app.use('/account',accountServer);
 
 async function connectDB() {
     try {

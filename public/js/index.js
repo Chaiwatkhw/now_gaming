@@ -1,3 +1,8 @@
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        window.location.href = '/';
+    }
+});
 
 window.onload = async function winLoad() {
     
@@ -20,7 +25,7 @@ window.onload = async function winLoad() {
                     </div>
                 </div>
                 <hr class="hr">
-                <span>Account</span>
+                <span onclick="goToAccount()">Account</span>
                 <span onclick="managePage()">Game Management</span>
                 <span onclick="logOut()">Sign Out</span>
             </div>
@@ -43,8 +48,7 @@ window.onload = async function winLoad() {
                     </div>
                 </div>
                 <hr class="hr">
-                <span onclick="">Account</span>
-                <span onclick="">My orders</span>
+                <span onclick="goToAccount()">Account</span>
                 <span onclick="logOut()">Sign Out</span>
             </div>
         </div>
@@ -844,10 +848,8 @@ async function addCart(game_id) {
     
 }
 
-
-
-
-
-
+function goToAccount(){
+    window.location.href ='/account';
+}
 
 

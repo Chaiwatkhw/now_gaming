@@ -1,3 +1,8 @@
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        window.location.href = '/';
+    }
+});
 
 function checkAndToggleTbody() {
     const table = document.getElementById('gamelistTable');

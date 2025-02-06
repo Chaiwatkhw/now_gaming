@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <!-- External Stylesheets -->
-        <link rel="stylesheet" href="css/cart.css">
+        <link rel="stylesheet" href="css/account.css">
         
         <!-- Google Fonts Preconnect -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,78 +28,70 @@
         <link rel="icon" type="image/x-icon" href="img/logo/favicon/favicon.ico">
         
         <!-- Page Title -->
-        <title>Cart</title>
+        <title>Account</title>
     </head>  
 <body>
  <!-- Head -->
     <header class="header-container">
         <div class="logo-container">
             <div class="in-logo-container">
-                <div href="" title="Home"  class="icon-img" onclick="goIndex()"><img src="img/logo/reallogo.png" alt="" class="logo"><span class="web-name" title="Home">Now <br>Gaming</span></div>
-            </div>
-        </div>       
+                <div href="" title="Home"  class="icon-img" onclick="gotoHome()"><img src="img/logo/reallogo.png" alt="" class="logo"><span class="web-name" title="Home">Account</span></div>
+            </div>  
+        </div>
+        <div class="nav">
+            <div class="return" onclick="gotoHome()">Home</div>
+        </div>        
     </header>  
 <!-- Card Detail -->
     <div class="main-content">
-        <div class="cartpage">
-            <div class="cartpage-left">
-                <div class="cart">
-                    <div class="carth1">
-                        Cart
+        <div class="left-content">
+            <div class="left-content2">
+                <div class="account-info">
+                    Account Overview
+                </div>
+                <div class="in-left-content">
+                    <div class="my-account">
+                        My Account
                     </div>
-                    <div class="gameCart">
-                        <!-- <div class="game-item">
-                            <img src="img/game/the-legend-of-zelda-tears-of-the-kingdom-05-23-23-1.jpeg" alt="" class="gameIMG">
-                            <div class="game-info">
-                                <div class="game-title">
-                                    The Legend of Zelda
-                                </div>
-                                <div class="recycle">
-                                    <i class="fa fa-trash" id="trash" title="Remove"></i>
-                                </div>
-                            </div>
-                            <div class="price-and-amount">
-                                <div class="price">
-                                    190.00 THB
-                                </div>
-                                <div class="amount">
-                                    <select name="" id="gameAmount">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div> -->
+                    <div class="my-order">
+                        My Orders
                     </div>
                 </div>
-                
+            </div> 
+        </div>
+        <div class="right-content">
+            <div class="account-and-order">
+                My Account
             </div>
-            <div class="cartpage-right">
-                <div class="summary">
-                    <div class="summaryh1">
-                        Summary
+            <div class="in-right-content">
+                <div class="account-avatar">
+                    <div class="sec1">
+                        <div class="avatar-section">
+                            <div class="profileT">Profile picture</div>
+                            <div class="proimg">
+                                <img src="img/logo/avatar2.svg" alt="" class="avatar">  
+                                <div class="upload-profile"><img src="img/logo/icon-photo.svg" alt="" class="icon-photo"><span style="color: #999;"> .jpg.png</span></div>       
+                            </div>   
+                        </div>
+                        <div class="username-section">
+                            <div class="username">Username</div>
+                            <input type="text" value="ceraph" class="usernameInput" id="usernameread" readonly>
+                            <div class="email">Email</div>
+                            <input type="text" value="ceraph1497@gmail.com" class="usernameInput" id="emailread" readonly>
+                            <div class="changePassword">Change Password</div>
+                            <input type="text"  class="IInput" id="curpass" placeholder="Current Password:">
+                            <input type="text"  class="IInput" id="newpass" placeholder="New Password:">
+                            <input type="text"  class="IInput" id="connewpass" placeholder="Confirm New Password:">
+                            <div class="Button" onclick="pay()">
+                                <div class="ButtonTitle">Submit</div>
+                            </div>
+                        </div> 
                     </div>
-                    <div class="summaryprice">
-                        <div class="summary-row">
-                            <span>Subtotal</span>
-                            <span>2348.00 THB</span>
-                        </div>
-                        <div class="payButton">
-                            <div class="payTitle">Pay</div>
-                        </div>
-                        <span class="choice">
-                            or
-                        </span>
-                        <div class="back" onclick="goIndex()">
-                            Continue shopping
-                        </div>
+                    <div class="sec2">
+                        Order1
                     </div>
-                    
                 </div>
-            </div >
+            </div>
         </div>
     </div>
     <footer class="footer">
@@ -107,6 +99,6 @@
         <div></div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="js/cart.js"></script>
+    <script src="js/account.js"></script>
 </body>
 </html>

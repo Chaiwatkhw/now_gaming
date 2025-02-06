@@ -49,7 +49,7 @@ CREATE TABLE orderdetail (
     order_id INT,
     keygame VARCHAR(255),
     game_id INT,
-    quantity INT DEFAULT 1,
+    -- quantity INT DEFAULT 1,
     PRIMARY KEY (order_id, keygame),
     FOREIGN KEY (order_id) REFERENCES orders(order_id) 
     ON DELETE CASCADE ON UPDATE CASCADE,

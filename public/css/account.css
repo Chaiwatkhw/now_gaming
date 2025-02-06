@@ -1,0 +1,285 @@
+body, html {
+    /* overflow-x: hidden; */
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+*{
+    /* outline: 1px solid red; */
+    font-family: "Barlow", sans-serif;
+}
+
+body{
+    background-color: #272727;
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.header-container{
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    top: 0;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #191919;
+    justify-content: center;
+    color: white;
+    overflow: hidden;
+}
+
+.icon-img{
+    gap: 10px;
+    text-decoration: none;
+    background-color: rgb(0, 0, 0,0);  
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.web-name{  
+    background-color: rgb(0, 0, 0,0);
+    color: white;
+}
+
+.logo{
+    width: 50px;
+    object-fit: cover;
+    background-color: rgb(0, 0, 0,0);
+}
+
+.logo-container{    
+    margin-left: 20px;
+    gap: 10px;
+    font-size: 19px;
+    font-weight: 600;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    display: flex;
+}
+
+.in-logo-container{
+    width: fit-content;
+    padding: 4px 10px; 
+    border-radius: 15px;
+}
+
+.main-content {
+    max-width: 1200px; /* กำหนดขนาดสูงสุดให้แคบลง */
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: 150px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.footer{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+    background-color: black;
+    position: static;
+    height: 20px;
+    width: 100%;
+    margin-bottom: 0 !important;
+    margin-top: 30px;
+}
+
+.nav{
+    font-size: 20px;
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+.return{
+    cursor: pointer;
+}
+
+.return:hover{
+    color: lime;
+}
+
+.left-content{
+    flex: 0 1 20%;
+    top: 150px;
+    position: sticky;
+    margin-right: 30px;
+}
+
+.right-content{
+    flex: 1 1;
+}
+
+.in-left-content{
+    font-size: 20px;
+    background-color: #101010;  
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.my-account{
+    margin-bottom: 20px;
+}
+
+.my-order{
+    transition: 0.3s;
+}
+
+.account-info{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.account-and-order{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.in-right-content{
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: #323232;
+    padding: 30px;
+}
+
+.avatar-section{
+    flex: 0 1 35%;
+}
+
+.username-section{
+    flex: 1 1;
+}
+
+.account-avatar{
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+}
+
+.avatar{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.username{
+    margin-bottom: 20px;
+}
+
+.usernameInput{
+    box-sizing: border-box;
+    width: 100%;
+    border: 2px solid #3d3d3d;
+    font-size: 18px;
+    padding: 10px 10px;
+    background-color: rgb(0, 0, 0, 0.5);
+    /* color: white; */
+    color: #999;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    margin-bottom: 20px;
+}
+
+.email{
+    margin-bottom: 20px;
+}
+
+.profileT{
+    padding-bottom: 20px;
+}
+
+.icon-photo{
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+.left-content2{
+    position: sticky;
+    top: 150px;
+}
+
+.proimg{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-profile{
+    cursor: pointer;
+}
+
+.sec1{
+    display: flex;
+    width: 100%;
+    display: none;
+}
+
+.changePassword{
+    margin-bottom: 20px;
+}
+
+.IInput{
+    box-sizing: border-box;
+    width: 100%;
+    border: 2px solid #3d3d3d;
+    font-size: 18px;
+    padding: 10px 10px;
+    background-color: rgb(0, 0, 0, 0.5);
+    /* color: white; */
+    color: white;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    margin-bottom: 20px;
+}
+
+.IInput:hover{
+    border: 2px solid lime;
+}
+
+.Button{
+    width: 15%;
+    color: rgb(0, 0, 0,0);;
+    background-color: (0, 0, 0,0);
+    padding: 10px;
+    background-image: linear-gradient(57deg,#00ff02 0%, #22d522 80%);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Button:hover{
+    transform: scale(1.1);
+    background-image: linear-gradient(57deg,#17e219 0%, #059f05 80%);
+}
+
+.ButtonTitle{
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
