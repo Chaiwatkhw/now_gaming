@@ -75,3 +75,18 @@ CREATE TABLE cart (
     FOREIGN KEY (price_id) REFERENCES historyprice(history_id)
     ON DELETE RESTRICT ON UPDATE CASCADE
 );
+
+/*
+('Action'),
+('Adventure'),
+('Retro'),
+('Fighting'),
+('FPS'),
+('Indies'),
+('RPG'),
+('Sports'),
+('Horror'),
+('Rhythm'),
+('Racing'),
+('Strategy');
+*/
