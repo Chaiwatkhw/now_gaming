@@ -199,6 +199,9 @@ function checkEmail(username,email,password){
         <input type="text" id="otp" name="otp" placeholder="Verification Code:" required>
         <button type="submit">Verify</button>
     </form>
+    <div class="xy">
+        <span id="login_create" onclick="createAccount()">Back</span>
+    </div>
     `;
 }
 
@@ -307,6 +310,13 @@ const validatePassword = (password, repassword) => {
     return null;
 };
 
+function Vaildpass(password,repassword){
+
+    if (password.length < 8) return  true;
+    if (password !== repassword) return true;
+    return null;
+}
+
 document.body.addEventListener('submit', async function(e) {
     if (e.target.classList.contains('formAccount')) {
         e.preventDefault();
@@ -411,21 +421,24 @@ document.body.addEventListener('submit', async function(e) {
         else if(legend.innerText === "New Password"){
             const formData = new FormData(e.target);
             const password = formData.get('password').trim();
-            const repassword = formData.get('password').trim();
+            const repassword = formData.get('repassword').trim();
             const email = formData.get('email').trim();
             const err = validatePassword(password,repassword);
             if(err){
-                alert(err)
-                return;
+                if (password.length < 8) alert("รหัสต้องมีความยาวมากกว่า 8 ตัวอักษร") ;
+                else if (password !== repassword) alert("รหัสผ่านไม่ตรงกัน") ;
             }
-            axios.patch('/updatePassword',{email,password})
-            .then((res)=>{
-                alert('Update Password Success')
-                closeModal();
-            })
-            .catch((err)=>{
-                alert('Update Password Failed')
-            });
+            else{
+                axios.patch('/updatePassword',{email,password})
+                .then((res)=>{
+                    alert('Update Password Success')
+                    closeModal();
+                })
+                .catch((err)=>{
+                    alert('Update Password Failed')
+                });
+            }
+            
         }
 }});
 
