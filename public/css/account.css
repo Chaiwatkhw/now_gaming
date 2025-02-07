@@ -141,10 +141,12 @@ body{
 
 .my-account{
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .my-order{
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .account-info{
@@ -165,11 +167,12 @@ body{
 }
 
 .avatar-section{
-    flex: 0 1 35%;
+    flex: 0 1 45%;
 }
 
 .username-section{
     flex: 1 1;
+    margin-right: 50px;
 }
 
 .account-avatar{
@@ -235,7 +238,7 @@ body{
 .sec1{
     display: flex;
     width: 100%;
-    display: none;
+    /* display: none; */
 }
 
 .changePassword{
@@ -270,6 +273,9 @@ body{
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Button:hover{
@@ -283,3 +289,101 @@ body{
     font-size: 20px;
     font-weight: 600;
 }
+
+.active-tab {
+    color: lime !important;
+}
+
+.sec2{
+    display: none;
+}
+
+/* คอนเทนเนอร์ของคำสั่งซื้อ */
+.order-container {
+    background-color: #2a2a2a; /* กำหนดพื้นหลังให้แตกต่าง */
+    border-radius: 10px; /* ขอบมน */
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+    transition: transform 0.3s ease-in-out;
+}
+
+.order-container:hover {
+    transform: scale(1.03); /* เมื่อ hover จะขยาย */
+}
+
+/* ตารางที่แสดงคำสั่งซื้อ */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.order-table th,
+.order-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444; /* ขอบล่างให้กับเซลล์ */
+}
+
+.order-table th {
+    background-color: #333; /* สีพื้นหลังของหัวข้อ */
+    color: #fff;
+}
+
+.order-table td {
+    background-color: #252525;
+    color: #ccc;
+}
+
+/* การตั้งค่าตารางให้คอลัมน์กว้างเท่ากัน */
+.order-table {
+    width: 100%;
+    table-layout: fixed; /* ทำให้คอลัมน์มีความกว้างเท่ากัน */
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.order-table th,
+.order-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+    word-wrap: break-word; /* ให้เนื้อหาตัดบรรทัดอัตโนมัติหากยาวเกินไป */
+}
+
+.order-table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.order-table td {
+    background-color: #252525;
+    color: #ccc;
+}
+
+/* ทำให้คอลัมน์สุดท้ายมีการจัดข้อความให้ขวา */
+.order-table td:last-child {
+    text-align: right;
+}
+
+/* ปรับการแสดงผลราคารวม */
+.total-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #b3b3b3;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.total-price span {
+    color: lime;
+}
+
+.return:hover {
+    color: lime;
+}
+

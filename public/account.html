@@ -66,32 +66,38 @@
             <div class="in-right-content">
                 <div class="account-avatar">
                     <div class="sec1">
+                        <div class="username-section">
+                            <div class="username">Username</div>
+                            <input type="text" value="" class="usernameInput" id="usernameread" readonly>
+                            <div class="email">Email</div>
+                            <input type="text" value="" class="usernameInput" id="emailread" readonly>
+                            
+                        </div> 
                         <div class="avatar-section">
-                            <div class="profileT">Profile picture</div>
+                            <!-- <div class="profileT">Profile picture</div>
                             <div class="proimg">
                                 <img src="img/logo/avatar2.svg" alt="" class="avatar">  
                                 <div class="upload-profile"><img src="img/logo/icon-photo.svg" alt="" class="icon-photo"><span style="color: #999;"> .jpg.png</span></div>       
-                            </div>   
-                        </div>
-                        <div class="username-section">
-                            <div class="username">Username</div>
-                            <input type="text" value="ceraph" class="usernameInput" id="usernameread" readonly>
-                            <div class="email">Email</div>
-                            <input type="text" value="ceraph1497@gmail.com" class="usernameInput" id="emailread" readonly>
+                            </div>    -->
                             <div class="changePassword">Change Password</div>
-                            <input type="text"  class="IInput" id="curpass" placeholder="Current Password:">
-                            <input type="text"  class="IInput" id="newpass" placeholder="New Password:">
-                            <input type="text"  class="IInput" id="connewpass" placeholder="Confirm New Password:">
-                            <div class="Button" onclick="pay()">
+                            <input type="password"  class="IInput" id="curpass" placeholder="Current Password:">
+                            <input type="password"  class="IInput" id="newpass" placeholder="New Password:">
+                            <input type="password"  class="IInput" id="connewpass" placeholder="Confirm New Password:">
+                            <div class="Button" onclick="">
                                 <div class="ButtonTitle">Submit</div>
                             </div>
-                        </div> 
-                    </div>
-                    <div class="sec2">
-                        Order1
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="sec2">
+                <div class="order">
+                    <div id="ordersContainer">
+                        <!-- Orders will be populated here dynamically -->
+                    </div>           
+                </div>
+            </div>
+            
         </div>
     </div>
     <footer class="footer">

@@ -47,29 +47,33 @@ CREATE TABLE orders (
 
 CREATE TABLE orderdetail (
     order_id INT,
-    keygame VARCHAR(255),
     game_id INT,
-    -- quantity INT DEFAULT 1,
+    price_id INT,
+    keygame VARCHAR(255),
     PRIMARY KEY (order_id, keygame),
     FOREIGN KEY (order_id) REFERENCES orders(order_id) 
     ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (keygame) REFERENCES keygames(keygame) 
     ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (game_id) REFERENCES games(game_id) 
-    ON DELETE CASCADE ON UPDATE CASCADE
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (price_id) REFERENCES historyprice(history_id)
+    ON DELETE RESTRICT ON UPDATE CASCADE
 );
-
 
 CREATE TABLE cart (
     user_id INT,
     game_id INT,
+    price_id INT,
     quantity INT DEFAULT 1,
     date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (user_id, game_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id) 
     ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (game_id) REFERENCES games(game_id) 
-    ON DELETE CASCADE ON UPDATE CASCADE
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (price_id) REFERENCES historyprice(history_id)
+    ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 /*

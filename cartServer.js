@@ -194,16 +194,17 @@ router.post('/pay', async (req, res) => {
         for (const item of cartItems) {
             const { game_id, quantity } = item;
 
-            // Get the latest game price
+            // Get the latest game price and price_id
             const [priceResult] = await connection.query(
-                `SELECT COALESCE(
-                    (SELECT game_price FROM historyprice 
-                     WHERE historyprice.game_id = ? 
-                     ORDER BY start_date DESC LIMIT 1), 0
-                ) AS game_price`, [game_id]
+                `SELECT history_id, game_price 
+                 FROM historyprice 
+                 WHERE historyprice.game_id = ? 
+                 ORDER BY start_date DESC LIMIT 1`, [game_id]
             );
 
             const game_price = priceResult[0].game_price;
+            const price_id = priceResult[0].history_id; // Get price_id
+
             orderTotal += game_price * quantity;
 
             // Get available keys for the game
@@ -221,7 +222,8 @@ router.post('/pay', async (req, res) => {
             orderItems.push({
                 game_id,
                 keys: availableKeys.map(k => k.keygame),
-                price: game_price
+                price: game_price,
+                price_id // Add price_id to orderItems
             });
         }
 
@@ -235,8 +237,8 @@ router.post('/pay', async (req, res) => {
         for (const item of orderItems) {
             for (const keygame of item.keys) {
                 await connection.query(
-                    `INSERT INTO orderdetail (order_id, keygame, game_id) VALUES (?, ?, ?)`,
-                    [order_id, keygame, item.game_id]
+                    `INSERT INTO orderdetail (order_id, keygame, game_id, price_id) VALUES (?, ?, ?, ?)`,
+                    [order_id, keygame, item.game_id, item.price_id] // Insert price_id here
                 );
 
                 // Mark the key as used
@@ -260,6 +262,7 @@ router.post('/pay', async (req, res) => {
         if (connection) await connection.end(); // Close the connection
     }
 });
+
 
 
 

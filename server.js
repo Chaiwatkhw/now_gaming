@@ -533,15 +533,28 @@ app.post('/addcart', async (req, res) => {
 
         const user_id = userResult[0].user_id;
 
+        // หาค่า price_id จาก historyprice ที่มี game_id และราคาในเวลานั้น
+        const [priceResult] = await db.query(`
+            SELECT history_id 
+            FROM historyprice
+            WHERE game_id = ? 
+            ORDER BY start_date DESC LIMIT 1`, [game_id]);
+
+        if (priceResult.length === 0) {
+            return res.status(404).json({ error: "Price history not found for this game" });
+        }
+
+        const price_id = priceResult[0].history_id;
+
         // ตรวจสอบว่ามี game_id ใน cart ของ user นี้หรือยัง
         const [cartResult] = await db.query(`SELECT quantity FROM cart WHERE user_id = ? AND game_id = ?`, [user_id, game_id]);
 
         if (cartResult.length === 0) {
             // ถ้ายังไม่มี → INSERT
-            await db.query(`INSERT INTO cart (user_id, game_id, quantity) VALUES (?, ?, 1)`, [user_id, game_id]);
+            await db.query(`INSERT INTO cart (user_id, game_id, price_id, quantity) VALUES (?, ?, ?, 1)`, [user_id, game_id, price_id]);
         } else {
             // ถ้ามีแล้ว → UPDATE quantity +1
-            //await db.query(`UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND game_id = ?`, [user_id, game_id]);
+            // await db.query(`UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND game_id = ?`, [user_id, game_id]);
         }
 
         res.json({ message: "Add Cart Success." });
@@ -550,6 +563,7 @@ app.post('/addcart', async (req, res) => {
         res.status(500).json({ error: "Add Cart Failed." });
     }
 });
+
 
 
 app.post('/amountCart', async (req, res) => {
