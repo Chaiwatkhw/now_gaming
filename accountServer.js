@@ -10,14 +10,15 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 router.use(express.json());
 const secretKey = 'nowgaming';
+require('dotenv').config();
 const saltRounds = 10; 
 
 async function connectDB() {
     const connection = await mysql.createPool({
         host: 'localhost',
-        user: 'root',
-        password: '1234',
-        database: 'now_gaming',
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB_NAME,
         waitForConnections: true,
         connectionLimit: 100,
         queueLimit: 0,

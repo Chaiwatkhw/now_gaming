@@ -44,9 +44,9 @@ async function connectDB() {
     try {
         const connection = await mysql.createPool({
             host: 'localhost',
-            user: 'root',
-            password: '1234',
-            database: 'now_gaming',
+            user: process.env.DB_USER,
+            password: process.env.DB_PASS,
+            database: process.env.DB_NAME,
             waitForConnections: true,
             connectionLimit: 100,
             queueLimit: 0,
