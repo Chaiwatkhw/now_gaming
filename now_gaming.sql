@@ -7,8 +7,7 @@ create table games (
     game_image varchar(255),
     game_description text,
     game_deleted tinyint default 0,
-    game_category VARCHAR(50),
-    FOREIGN KEY (category_id) REFERENCES categories(category_id)
+    game_category VARCHAR(50)
 );
 
 create table historyprice (
@@ -26,7 +25,7 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role ENUM('user', 'admin') DEFAULT 'user', 
+    role ENUM('user', 'admin') DEFAULT 'user'
 );
 
 CREATE TABLE keygames (
