@@ -204,7 +204,7 @@ router.patch('/deleteGame/:game_id', isAdmin, async (req, res) => {
 //Edit
 router.patch('/updateGame/:game_id', isAdmin,upload.single('game_imgfile'), async (req, res) => {
     const { game_id } = req.params;
-    const { game_title, game_description, game_price } = req.body;
+    const { game_title, game_description, game_price ,game_category} = req.body;
     const game_image = req.file ? req.file.filename : null; // ใช้ไฟล์ใหม่ถ้ามี
 
     try {
@@ -218,11 +218,12 @@ router.patch('/updateGame/:game_id', isAdmin,upload.single('game_imgfile'), asyn
 
         // Step 2: Update the game details (title, description)
         const updateQuery = `
-            UPDATE games 
-            SET game_title = ?, game_description = ? 
-            WHERE game_id = ?
-        `;
-        await connection.execute(updateQuery, [game_title, game_description, game_id]);
+    UPDATE games 
+    SET game_title = ?, game_description = ?, game_category = ?
+    WHERE game_id = ?
+`;
+    await connection.execute(updateQuery, [game_title, game_description, game_category, game_id]);
+
 
         // Step 3: If new image is uploaded, update the image as well
         if (game_image) {

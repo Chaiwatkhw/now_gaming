@@ -385,6 +385,7 @@ async function sendGameEdit(gameId) {
     formData.append('game_title', gameTitle);
     formData.append('game_description', gameDescription);
     formData.append('game_price', gamePrice);
+    formData.append('game_category',gamecategory);
 
     axios.patch(`/manage/updateGame/${gameId}`, formData)
         .then(function(response) {
