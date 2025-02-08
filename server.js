@@ -116,14 +116,15 @@ app.get('/', async (req, res) => {
 app.get('/getGame', async (req, res) => {
     try {
         const query = `
-           SELECT 
+SELECT 
     g.game_id,
     g.game_title,
     g.game_description,
     g.game_image,
     g.game_category,  -- ✅ เพิ่มประเภทเกม
     hp.game_price,
-    COUNT(k.keygame) AS key_count
+    COUNT(CASE WHEN k.key_used = 0 THEN 1 END) AS available_keys,  -- นับ Key ที่ยังไม่ใช้
+    COUNT(CASE WHEN k.key_used = 1 THEN 1 END) AS used_key_count  -- นับ Key ที่ใช้ไปแล้ว
 FROM 
     games g
 JOIN 
@@ -131,7 +132,7 @@ JOIN
     ON g.game_id = hp.game_id
 LEFT JOIN 
     keygames k
-    ON g.game_id = k.game_id AND k.key_used = 0  -- นับเฉพาะ Key ที่ยังไม่ใช้
+    ON g.game_id = k.game_id
 WHERE 
     hp.start_date = (
         SELECT MAX(hp2.start_date)
@@ -141,10 +142,11 @@ WHERE
 AND 
     g.game_deleted = 0
 GROUP BY 
-    g.game_id, g.game_title, g.game_description, g.game_image, g.game_category, hp.game_price  -- ✅ Group ด้วย game_genre ด้วย
+    g.game_id, g.game_title, g.game_description, g.game_image, g.game_category, hp.game_price
 HAVING 
-    COUNT(k.keygame) > 0  -- เอาเฉพาะเกมที่มี Key ใช้ได้
-
+    COUNT(CASE WHEN k.key_used = 0 THEN 1 END) > 0  -- เอาเฉพาะเกมที่มี Key ใช้ได้
+ORDER BY 
+    used_key_count DESC;  -- เรียงลำดับจากเกมที่มี Key ใช้ไปแล้วมากที่สุด
         `;
         const [games] = await db.query(query);
         res.json(games);

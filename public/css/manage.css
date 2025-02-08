@@ -663,6 +663,7 @@ input[type="file"] {
 
 .imgKeyGame{
     width: 90%; 
+    max-height: 226px;
     border-radius: 20px; 
     margin-top: 20px;
 }
