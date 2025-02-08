@@ -48,7 +48,6 @@ async function connectDB() {
             password: process.env.DB_PASS,
             database: process.env.DB_NAME,
             waitForConnections: true,
-            connectionLimit: 100,
             queueLimit: 0,
         });
         return connection;
