@@ -121,7 +121,7 @@ SELECT
     g.game_title,
     g.game_description,
     g.game_image,
-    g.game_category,  -- ✅ เพิ่มประเภทเกม
+    g.game_category, 
     hp.game_price,
     COUNT(CASE WHEN k.key_used = 0 THEN 1 END) AS available_keys,  -- นับ Key ที่ยังไม่ใช้
     COUNT(CASE WHEN k.key_used = 1 THEN 1 END) AS used_key_count  -- นับ Key ที่ใช้ไปแล้ว
@@ -144,9 +144,9 @@ AND
 GROUP BY 
     g.game_id, g.game_title, g.game_description, g.game_image, g.game_category, hp.game_price
 HAVING 
-    COUNT(CASE WHEN k.key_used = 0 THEN 1 END) > 0  -- เอาเฉพาะเกมที่มี Key ใช้ได้
+    COUNT(CASE WHEN k.key_used = 0 THEN 1 END) > 0  
 ORDER BY 
-    used_key_count DESC;  -- เรียงลำดับจากเกมที่มี Key ใช้ไปแล้วมากที่สุด
+    used_key_count DESC;  
         `;
         const [games] = await db.query(query);
         res.json(games);
