@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<Worksheet ss:Name="Table1">
+	<Table>
+		<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Row>
+			<Cell><Data ss:Type="String">history_id</Data></Cell>
+			<Cell><Data ss:Type="String">game_id</Data></Cell>
+			<Cell><Data ss:Type="String">game_price</Data></Cell>
+			<Cell><Data ss:Type="String">start_date</Data></Cell>
+		</Row>
+
+		<Row>
+			<Cell><Data ss:Type="Number">1</Data></Cell>
+			<Cell><Data ss:Type="Number">1</Data></Cell>
+			<Cell><Data ss:Type="Number">1407.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:15:46</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">2</Data></Cell>
+			<Cell><Data ss:Type="Number">2</Data></Cell>
+			<Cell><Data ss:Type="Number">354.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:17:53</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">3</Data></Cell>
+			<Cell><Data ss:Type="Number">3</Data></Cell>
+			<Cell><Data ss:Type="Number">1753.95</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:19:17</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">4</Data></Cell>
+			<Cell><Data ss:Type="Number">4</Data></Cell>
+			<Cell><Data ss:Type="Number">3759.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:20:23</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">5</Data></Cell>
+			<Cell><Data ss:Type="Number">5</Data></Cell>
+			<Cell><Data ss:Type="Number">1290.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:22:55</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">6</Data></Cell>
+			<Cell><Data ss:Type="Number">6</Data></Cell>
+			<Cell><Data ss:Type="Number">1499.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:24:01</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">7</Data></Cell>
+			<Cell><Data ss:Type="Number">7</Data></Cell>
+			<Cell><Data ss:Type="Number">1890.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:29:01</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">8</Data></Cell>
+			<Cell><Data ss:Type="Number">8</Data></Cell>
+			<Cell><Data ss:Type="Number">560.30</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:29:54</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">9</Data></Cell>
+			<Cell><Data ss:Type="Number">9</Data></Cell>
+			<Cell><Data ss:Type="Number">400.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:30:41</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">10</Data></Cell>
+			<Cell><Data ss:Type="Number">10</Data></Cell>
+			<Cell><Data ss:Type="Number">635.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:32:08</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">11</Data></Cell>
+			<Cell><Data ss:Type="Number">11</Data></Cell>
+			<Cell><Data ss:Type="Number">1390.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:34:34</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">12</Data></Cell>
+			<Cell><Data ss:Type="Number">12</Data></Cell>
+			<Cell><Data ss:Type="Number">160.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:35:15</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">13</Data></Cell>
+			<Cell><Data ss:Type="Number">13</Data></Cell>
+			<Cell><Data ss:Type="Number">1590.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:35:58</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">14</Data></Cell>
+			<Cell><Data ss:Type="Number">14</Data></Cell>
+			<Cell><Data ss:Type="Number">1620.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:36:37</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">15</Data></Cell>
+			<Cell><Data ss:Type="Number">15</Data></Cell>
+			<Cell><Data ss:Type="Number">950.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:37:44</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">16</Data></Cell>
+			<Cell><Data ss:Type="Number">16</Data></Cell>
+			<Cell><Data ss:Type="Number">329.50</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:38:57</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">17</Data></Cell>
+			<Cell><Data ss:Type="Number">17</Data></Cell>
+			<Cell><Data ss:Type="Number">2950.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:39:31</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">18</Data></Cell>
+			<Cell><Data ss:Type="Number">18</Data></Cell>
+			<Cell><Data ss:Type="Number">3190.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:40:16</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">19</Data></Cell>
+			<Cell><Data ss:Type="Number">19</Data></Cell>
+			<Cell><Data ss:Type="Number">1589.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:41:59</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">20</Data></Cell>
+			<Cell><Data ss:Type="Number">20</Data></Cell>
+			<Cell><Data ss:Type="Number">2999.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:42:38</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">21</Data></Cell>
+			<Cell><Data ss:Type="Number">21</Data></Cell>
+			<Cell><Data ss:Type="Number">2990.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:44:08</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">22</Data></Cell>
+			<Cell><Data ss:Type="Number">22</Data></Cell>
+			<Cell><Data ss:Type="Number">1049.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:44:50</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">23</Data></Cell>
+			<Cell><Data ss:Type="Number">23</Data></Cell>
+			<Cell><Data ss:Type="Number">1899.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:45:32</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">24</Data></Cell>
+			<Cell><Data ss:Type="Number">24</Data></Cell>
+			<Cell><Data ss:Type="Number">4804.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:46:11</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">25</Data></Cell>
+			<Cell><Data ss:Type="Number">25</Data></Cell>
+			<Cell><Data ss:Type="Number">11900.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:46:49</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">26</Data></Cell>
+			<Cell><Data ss:Type="Number">26</Data></Cell>
+			<Cell><Data ss:Type="Number">506.40</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:47:54</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">27</Data></Cell>
+			<Cell><Data ss:Type="Number">27</Data></Cell>
+			<Cell><Data ss:Type="Number">315.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:48:40</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">28</Data></Cell>
+			<Cell><Data ss:Type="Number">28</Data></Cell>
+			<Cell><Data ss:Type="Number">2971.60</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:49:17</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">29</Data></Cell>
+			<Cell><Data ss:Type="Number">29</Data></Cell>
+			<Cell><Data ss:Type="Number">257.40</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:50:32</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">30</Data></Cell>
+			<Cell><Data ss:Type="Number">30</Data></Cell>
+			<Cell><Data ss:Type="Number">339.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:51:11</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">31</Data></Cell>
+			<Cell><Data ss:Type="Number">31</Data></Cell>
+			<Cell><Data ss:Type="Number">266.56</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:52:47</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">32</Data></Cell>
+			<Cell><Data ss:Type="Number">32</Data></Cell>
+			<Cell><Data ss:Type="Number">3033.75</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:53:26</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">33</Data></Cell>
+			<Cell><Data ss:Type="Number">33</Data></Cell>
+			<Cell><Data ss:Type="Number">2990.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:54:04</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">34</Data></Cell>
+			<Cell><Data ss:Type="Number">34</Data></Cell>
+			<Cell><Data ss:Type="Number">1880.10</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:54:36</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">35</Data></Cell>
+			<Cell><Data ss:Type="Number">35</Data></Cell>
+			<Cell><Data ss:Type="Number">2163.92</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:55:22</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">36</Data></Cell>
+			<Cell><Data ss:Type="Number">36</Data></Cell>
+			<Cell><Data ss:Type="Number">2190.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:56:19</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">37</Data></Cell>
+			<Cell><Data ss:Type="Number">37</Data></Cell>
+			<Cell><Data ss:Type="Number">1980.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:56:53</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">38</Data></Cell>
+			<Cell><Data ss:Type="Number">38</Data></Cell>
+			<Cell><Data ss:Type="Number">1850.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:57:39</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">39</Data></Cell>
+			<Cell><Data ss:Type="Number">39</Data></Cell>
+			<Cell><Data ss:Type="Number">1534.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:58:29</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">40</Data></Cell>
+			<Cell><Data ss:Type="Number">40</Data></Cell>
+			<Cell><Data ss:Type="Number">1199.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 11:59:02</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">41</Data></Cell>
+			<Cell><Data ss:Type="Number">41</Data></Cell>
+			<Cell><Data ss:Type="Number">794.02</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:00:00</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">42</Data></Cell>
+			<Cell><Data ss:Type="Number">42</Data></Cell>
+			<Cell><Data ss:Type="Number">2454.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:00:32</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">43</Data></Cell>
+			<Cell><Data ss:Type="Number">43</Data></Cell>
+			<Cell><Data ss:Type="Number">1846.40</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:01:05</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">44</Data></Cell>
+			<Cell><Data ss:Type="Number">44</Data></Cell>
+			<Cell><Data ss:Type="Number">1977.30</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:01:45</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">45</Data></Cell>
+			<Cell><Data ss:Type="Number">45</Data></Cell>
+			<Cell><Data ss:Type="Number">1190.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:06:30</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">46</Data></Cell>
+			<Cell><Data ss:Type="Number">46</Data></Cell>
+			<Cell><Data ss:Type="Number">1490.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:07:22</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">47</Data></Cell>
+			<Cell><Data ss:Type="Number">47</Data></Cell>
+			<Cell><Data ss:Type="Number">199.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:08:12</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">48</Data></Cell>
+			<Cell><Data ss:Type="Number">48</Data></Cell>
+			<Cell><Data ss:Type="Number">875.07</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:09:39</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">49</Data></Cell>
+			<Cell><Data ss:Type="Number">49</Data></Cell>
+			<Cell><Data ss:Type="Number">1890.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:10:27</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">50</Data></Cell>
+			<Cell><Data ss:Type="Number">50</Data></Cell>
+			<Cell><Data ss:Type="Number">1604.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:11:02</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">51</Data></Cell>
+			<Cell><Data ss:Type="Number">51</Data></Cell>
+			<Cell><Data ss:Type="Number">1499.50</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:12:07</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">52</Data></Cell>
+			<Cell><Data ss:Type="Number">52</Data></Cell>
+			<Cell><Data ss:Type="Number">2290.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:13:01</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">53</Data></Cell>
+			<Cell><Data ss:Type="Number">53</Data></Cell>
+			<Cell><Data ss:Type="Number">380.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:13:57</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">54</Data></Cell>
+			<Cell><Data ss:Type="Number">54</Data></Cell>
+			<Cell><Data ss:Type="Number">1550.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:17:31</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">55</Data></Cell>
+			<Cell><Data ss:Type="Number">55</Data></Cell>
+			<Cell><Data ss:Type="Number">2499.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:17:58</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">56</Data></Cell>
+			<Cell><Data ss:Type="Number">56</Data></Cell>
+			<Cell><Data ss:Type="Number">2541.74</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:18:52</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">57</Data></Cell>
+			<Cell><Data ss:Type="Number">57</Data></Cell>
+			<Cell><Data ss:Type="Number">2722.08</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:19:27</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">58</Data></Cell>
+			<Cell><Data ss:Type="Number">58</Data></Cell>
+			<Cell><Data ss:Type="Number">2099.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:20:13</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">59</Data></Cell>
+			<Cell><Data ss:Type="Number">59</Data></Cell>
+			<Cell><Data ss:Type="Number">1390.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:20:50</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">60</Data></Cell>
+			<Cell><Data ss:Type="Number">60</Data></Cell>
+			<Cell><Data ss:Type="Number">3361.80</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 12:21:23</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">61</Data></Cell>
+			<Cell><Data ss:Type="Number">8</Data></Cell>
+			<Cell><Data ss:Type="Number">560.00</Data></Cell>
+			<Cell><Data ss:Type="String">2025-02-08 13:08:32</Data></Cell>
+		</Row>	</Table>
+</Worksheet>
+</Workbook>

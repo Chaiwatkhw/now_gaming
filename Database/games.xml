@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<Worksheet ss:Name="Table1">
+	<Table>
+		<Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Row>
+			<Cell><Data ss:Type="String">game_id</Data></Cell>
+			<Cell><Data ss:Type="String">game_title</Data></Cell>
+			<Cell><Data ss:Type="String">game_image</Data></Cell>
+			<Cell><Data ss:Type="String">game_description</Data></Cell>
+			<Cell><Data ss:Type="String">game_deleted</Data></Cell>
+			<Cell><Data ss:Type="String">game_category</Data></Cell>
+		</Row>
+
+		<Row>
+			<Cell><Data ss:Type="Number">1</Data></Cell>
+			<Cell><Data ss:Type="String">Cyberpunk 2077</Data></Cell>
+			<Cell><Data ss:Type="String">cyberpunk-2077.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Cyberpunk 2077 เป็นเกมสวมบทบาทแนวแอคชั่นผจญภัยแบบโลกเปิดที่ดำเนินเรื่องในอนาคตอันมืดมนของไนท์ซิตี้ มหานครที่คลั่งในอำนาจ ความหรูหรา และการปรับแต่งร่างกายอย่างไม่หยุดหย่อน</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Action</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">2</Data></Cell>
+			<Cell><Data ss:Type="String">Grand Theft Auto V</Data></Cell>
+			<Cell><Data ss:Type="String">grand-theft-auto-v-pc-game-rockstar-cover.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">The game is set in the fictional town of San Andreas which is based loosely on generic southern California life.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Action</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">3</Data></Cell>
+			<Cell><Data ss:Type="String">Red Dead Redemption 2</Data></Cell>
+			<Cell><Data ss:Type="String">Red Dead Head.jpeg</Data></Cell>
+			<Cell><Data ss:Type="String">Winner of over 175 Game of the Year Awards and recipient of over 250 perfect scores, RDR2 is the epic tale of outlaw Arthur Morgan and the infamous Van der Linde gang, on the run across America at the dawn of the modern age. Also includes access to the shared living world of Red Dead Online.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Action</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">4</Data></Cell>
+			<Cell><Data ss:Type="String">Devil May Cry 5</Data></Cell>
+			<Cell><Data ss:Type="String">Devil May Cry 5.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">            The Devil you know returns in this brand new entry in the over-the-top action series available on the PC.  Prepare to get downright demonic with this signature blend of high-octane stylized action and otherworldly & original characters the series is known for. Director Hideaki Itsuno and the core team have returned to create the most insane, technically advanced and utterly unmissable action experience of this generation!
+</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Action</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">5</Data></Cell>
+			<Cell><Data ss:Type="String">Spider-Man: Miles Morales</Data></Cell>
+			<Cell><Data ss:Type="String">Marvel s Spider Man Miles Morales.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Bitten by a genetically engineered spider known as specimen 42, which is slightly different from the one that granted Peter Parker superhuman powers, Miles Morales possesses abilities similar to the original Spider-Man's, including enhanced strength, agility, and reflexes, the ability to adhere to walls</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Action</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">6</Data></Cell>
+			<Cell><Data ss:Type="String">The Legend of Zelda Breath of the Wild</Data></Cell>
+			<Cell><Data ss:Type="String">The Legend of Zelda Breath of the Wild.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Forget everything you know about The Legend of Zelda games. Step into a world of discovery, exploration, and adventure in The Legend of Zelda: Breath of the Wild, a boundary-breaking new game in the acclaimed series. Travel across vast fields, through forests, and to mountain peaks as you discover what has become of the kingdom of Hyrule in this stunning Open-Air Adventure. Now on Nintendo Switch, your journey is freer and more open than ever. Take your system anywhere, and adventure as Link any way you like.2017 Nintendo. The Legend of Zelda and Nintendo Switch are trademarks of Nintendo</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Adventure</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">7</Data></Cell>
+			<Cell><Data ss:Type="String">uncharted 4 a thief's end</Data></Cell>
+			<Cell><Data ss:Type="String">uncharted 4 a thief's end.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Three years after UNCHARTED 3: Drake's Deception, hunter Nathan Drake has left his old world behind, but fate has brought the treasure back. Drake's brother Sam has come to the rescue, offering a service Drake can't refuse. Sam and Drake travel to Libertalia, a knight's paradise in the deep jungles of Madagascar, in search of the missing treasure of Captain Henry Avery. UNCHARTED 4: A Thief's End takes players on an adventure through an island filled with jungles, remote towns and snowy peaks in search of Avery's treasure.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Adventure</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">8</Data></Cell>
+			<Cell><Data ss:Type="String">Tomb Raider</Data></Cell>
+			<Cell><Data ss:Type="String">Tomb Raider (2013).jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Tomb Raider explores the intense and gritty origin story of Lara Croft and her ascent from a young woman to a hardened survivor. Armed only with raw instincts and the ability to push beyond the limits of human endurance, Lara must fight to unravel the dark history of a forgotten island to escape its relentless hold. Download the Turning Point trailer to see the beginning of Lara’s epic adventure.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Adventure</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">9</Data></Cell>
+			<Cell><Data ss:Type="String">Firewatch</Data></Cell>
+			<Cell><Data ss:Type="String">Firewatch.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">The year is 1989. You are a man named Henry who has retreated from his messy life to work as a fire lookout in the Wyoming wilderness. Perched high atop a mountain, it’s your job to look for smoke and keep the wilderness safe. An especially hot, dry summer has everyone on edge. Your supervisor Delilah is available to you at all times over a small, handheld radio—your only contact with the world you've left behind. But when something strange draws you out of your lookout tower and into the forest, you’ll explore a wild and unknown environment, facing questions and making choices that can build or destroy the only meaningful relationship you have.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Adventure</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">10</Data></Cell>
+			<Cell><Data ss:Type="String">Life is Strange</Data></Cell>
+			<Cell><Data ss:Type="String">Life is Strange.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Life is Strange is an award-winning and critically acclaimed episodic adventure game that allows the player to rewind time and affect the past, present and future. Follow the story of Max Caulfield, a photography senior who discovers she can rewind time while saving her best friend Chloe Price. The pair soon find themselves investigating the mysterious disappearance of fellow student Rachel Amber, uncovering a dark side to life in Arcadia Bay. Meanwhile, Max must quickly learn that changing the past can sometimes lead to a devastating future.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Adventure</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">11</Data></Cell>
+			<Cell><Data ss:Type="String">pac-man world 3 remake</Data></Cell>
+			<Cell><Data ss:Type="String">pac-man world 3 remake 16 9.avif</Data></Cell>
+			<Cell><Data ss:Type="String">Similar to its predecessors (Pac-Man World 1 and 2), Pac-Man World 3 is a 3D platformer that places Pac-Man in a 3D platforming environment, where he ventures into the Ghosts' Spectral Realm to stop Erwin. Pac-Man travels across various areas and solves puzzles and platforming.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Retro</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">12</Data></Cell>
+			<Cell><Data ss:Type="String">Space Invaders Extreme</Data></Cell>
+			<Cell><Data ss:Type="String">Space Invaders Extreme.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">The critically acclaimed update to the Space Invaders franchise is here to invade Steam with greatly improved graphics and audio! Packed with pulsing, vibrant visuals enhanced further by interactive sound. The invaders have evolved, the question is: can you keep up? The Steam version adds a brand new World Ranking System for Arcade Mode. Learn the intricacies of the scoring system and use that knowledge to conquer the leaderboards! Who will prevail in this battle to become the world champion?!</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Retro</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">13</Data></Cell>
+			<Cell><Data ss:Type="String">Donkey Kong Country: Tropical Freeze</Data></Cell>
+			<Cell><Data ss:Type="String">Donkey Kong Country Tropical Freeze.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Arctic invaders have turned Donkey Kong Island into their frozen fortress, and it's up to you to save the day. Play as Donkey Kong in Original Mode and team up with Diddy Kong, Dixie Kong and Cranky Kong, all with unique abilities, to overcome challenging levels and terrifying frozen enemies.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Retro</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">14</Data></Cell>
+			<Cell><Data ss:Type="String">SUPER MARIO BROS.U DELUXE</Data></Cell>
+			<Cell><Data ss:Type="String">SUPER MARIO BROS U DELUXE.avif</Data></Cell>
+			<Cell><Data ss:Type="String">Two games in one, for twice the fun! Simple, intuitive controls and a new playable character tailored to younger players with limited gaming experience. A wealth of extra content, like a Hints gallery and helpful reference videos , make this the perfect choice for anyone looking to introduce their family to the magical world of Mario. Each player uses a separate Joy-Con™ controller, so two players can team up right out of the box. Battle through 164 adventure paths in the game’s two main modes, and enjoy replayability with three additional modes: Challenges, Boost Rush, and Coin Battle, where you can also play as Mii™ characters.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Retro</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">15</Data></Cell>
+			<Cell><Data ss:Type="String">Rockman X4</Data></Cell>
+			<Cell><Data ss:Type="String">Rockman X4.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Mega Man X4 was released on the Playstation Network in North America as part of the PSOne classics on September 2, 2014,[2] which was later released in Japan on December 17, 2014. It was then re-released on Mega Man X Legacy Collection on July 24, 2018 in North America and Europe, and was released two days later in Japan.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Retro</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">16</Data></Cell>
+			<Cell><Data ss:Type="String">Street Fighter V</Data></Cell>
+			<Cell><Data ss:Type="String">Street Fighter V.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Experience the thrilling one-on-one action in Street Fighter® V! Choose from 16 unique characters, each with their own unique story and special training missions. When you’re ready, challenge your friends both online and offline. Choose from a variety of opponents. Whether it’s competing for battle money in Ranked Match, having fun in Casual Match, or inviting friends to join the Battle Lounge to see who’s the best. Take the excitement to the next level with cross-platform play, allowing PlayStation 4 and Steam players to play together!</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Fighting</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">17</Data></Cell>
+			<Cell><Data ss:Type="String">Mortal Kombat 11</Data></Cell>
+			<Cell><Data ss:Type="String">Mortal Kombat 11.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">YOU'RE NEXT! MK is back and better than ever in the next evolution of the iconic franchise. The all new Custom Character Variations give you unprecedented control of your fighters to make them your own. The new graphics engine showcases every skull-shattering, eye-popping moment, bringing you so close to the fight you can feel it. Featuring a roster of new and returning Klassic Fighters, Mortal Kombat's best-in-class cinematic story mode continues the epic saga over 25 years in the making.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Fighting</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">18</Data></Cell>
+			<Cell><Data ss:Type="String">TEKKEN 7</Data></Cell>
+			<Cell><Data ss:Type="String">TEKKEN 7.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">YOU'RE NEXT! MK is back and better than ever in the next evolution of the iconic franchise. The all new Custom Character Variations give you unprecedented control of your fighters to make them your own. The new graphics engine showcases every skull-shattering, eye-popping moment, bringing you so close to the fight you can feel it. Featuring a roster of new and returning Klassic Fighters, Mortal Kombat's best-in-class cinematic story mode continues the epic saga over 25 years in the making.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Fighting</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">19</Data></Cell>
+			<Cell><Data ss:Type="String">Super Smash Bros. Ultimate</Data></Cell>
+			<Cell><Data ss:Type="String">H2x1_NSwitch_SuperSmashBrosUltimate_02_image1600w.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Legends of the Game Evolve in the Ultimate Fighting Game to Play Anywhere, Anytime! New to the game, Simon Belmont and King K. Rool check in with Inkling, Ridley, and all the other Super Smash Bros. fighters to knock your opponents out of the way. Experience fast-paced, action-packed battles in brand-new levels based on the Castlevania series, Super Mario Odyssey, and more!</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Fighting</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">20</Data></Cell>
+			<Cell><Data ss:Type="String">Guilty Gear Strive</Data></Cell>
+			<Cell><Data ss:Type="String">Guilty Gear Strive.avif</Data></Cell>
+			<Cell><Data ss:Type="String">Discover the Smell of the Game with Guilty Gear -Strive-! Immerse yourself in new gameplay mechanics designed to be simple and welcoming for fighting game newcomers, yet deep and creative for veterans. Ride the Fire into a heavy metal inspired alternate future full of over-the-top action, style and fun! Blazing! “Guilty Gear -Strive-“ is the latest entry in the critically acclaimed Guilty Gear fighting game franchise. Created by Daisuke Ishiwatari and developed by Arc System Works, “Guilty Gear -Strive-“ upholds the series’ reputation for a high octane soundtrack, groundbreaking hybrid 2D/3D cell-shaded graphics and intense, rewarding gameplay.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Fighting</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">21</Data></Cell>
+			<Cell><Data ss:Type="String">Call of Duty: Modern Warfare II</Data></Cell>
+			<Cell><Data ss:Type="String">Call of Duty Modern Warfare II.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Announcement Call of Duty: Modern Warfare II had its first confirmation official on February 11th, 2022. In a post on the Call of Duty blog, it has been announced that the Call of Duty title of 2022 it would be a sequel of Call of Duty: Modern Warfare released in 2019 and also a new Call of Duty: Warzone experience also would be in development, both led by Infinity Ward. At that time, the official title had not been revealed yet.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">FPS</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">22</Data></Cell>
+			<Cell><Data ss:Type="String">Battlefield 2042</Data></Cell>
+			<Cell><Data ss:Type="String">Battlefieldâ¢ 2042.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Welcome to 2042 Battlefield™ 2042 is a first-person shooter that brings the franchise’s signature all-out warfare back to action. Fight intense multiplayer battles with the latest weaponry and combat. Lead your team to victory in both massive, melee and tactical battles across maps from the world of 2042 and legacy Battlefield games.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">FPS</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">23</Data></Cell>
+			<Cell><Data ss:Type="String">Doom Eternal</Data></Cell>
+			<Cell><Data ss:Type="String">Doom Eternal.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Set some time after the events of the 2016 game, the story follows the Doom Slayer once again, on a mission to end Hell's consumption of Earth and foil the alien Khan Maykr's plans to exterminate humanity. Along with the single-player campaign, a multiplayer mode, Battlemode, was introduced.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">FPS</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">24</Data></Cell>
+			<Cell><Data ss:Type="String">Overwatch 2</Data></Cell>
+			<Cell><Data ss:Type="String">OverwatchÂ® 2.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Team up with your fellow heroes in Overwatch 2, a free-to-play first-person shooter featuring a unique and ever-expanding roster of heroes, and engage in thrilling battles across captivating global settings. Team up with friends for thrilling 5v5 squad battles or take on powerful new enemy forces.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">FPS</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">25</Data></Cell>
+			<Cell><Data ss:Type="String">VALORANT</Data></Cell>
+			<Cell><Data ss:Type="String">Valorant.jpeg</Data></Cell>
+			<Cell><Data ss:Type="String">Valorant (also known as VALORANT) is a free-to-play, multiplayer, first-person shooter video game developed and published by Riot Games for Microsoft Windows. The game was first announced in October 2019 under the codename Project A, initially in closed beta until April 7, 2020, and officially launched on June 2, 2020, after being in development since 2014. Inspired by the Counter-Strike series of tactical shooters, Valorant incorporates a number of mechanics, such as a buy menu, spray patterns, and movement discrepancies.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">FPS</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">26</Data></Cell>
+			<Cell><Data ss:Type="String">Hollow Knight</Data></Cell>
+			<Cell><Data ss:Type="String">Hollow Knight.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Godmaster - Take your place amongst the Gods. New Characters and Quest. New Boss Fights. Available Now! Lifeblood - A Kingdom Upgraded! New Boss. Upgraded Bosses. Tweaks and Refinements across the whole game. The Grimm Troupe - Light the Nightmare Lantern. Summon the Troupe. New Major Quest. New Boss Fights. New Charms. New Enemies. New Friends.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Indies</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">27</Data></Cell>
+			<Cell><Data ss:Type="String">Stardew Valley</Data></Cell>
+			<Cell><Data ss:Type="String">stardew-update.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Stardew Valley is an open-ended country-life RPG! You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Indies</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">28</Data></Cell>
+			<Cell><Data ss:Type="String">Celeste</Data></Cell>
+			<Cell><Data ss:Type="String">Celeste.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Help Madeline survive her inner demons on her journey to the top of Celeste Mountain, in this super-tight platformer from the creators of TowerFall. Brave hundreds of hand-crafted challenges, uncover devious secrets, and piece together the mystery of the mountain.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Indies</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">29</Data></Cell>
+			<Cell><Data ss:Type="String">Hades</Data></Cell>
+			<Cell><Data ss:Type="String">Hades.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Defy the god of the dead as you hack and slash out of the Underworld in this rogue-like dungeon crawler from the creators of Bastion, Transistor, and Pyre.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Indies</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">30</Data></Cell>
+			<Cell><Data ss:Type="String">UNDERTALE</Data></Cell>
+			<Cell><Data ss:Type="String">Undertale.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Help Madeline survive her inner demons on her journey to the top of Celeste Mountain, in this super-tight platformer from the creators of TowerFall. Brave hundreds of hand-crafted challenges, uncover devious secrets, and piece together the mystery of the mountain.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Indies</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">31</Data></Cell>
+			<Cell><Data ss:Type="String">The Witcher 3: Wild Hunt</Data></Cell>
+			<Cell><Data ss:Type="String">The Witcher 3 Wild Hunt.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">The Witcher 3: Wild Hunt is an action role-playing game with a third-person perspective. Players control Geralt of Rivia, a monster slayer known as a Witcher. Geralt walks, runs, rolls and dodges, and (for the first time in the series) jumps, climbs and swims.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">RPG</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">32</Data></Cell>
+			<Cell><Data ss:Type="String">FINAL FANTASY VII REMAKE INTERGRADE</Data></Cell>
+			<Cell><Data ss:Type="String">Final Fantasy VII Remake.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">FINAL FANTASY VII REMAKE is a bold reimagining of the original FINAL FANTASY VII, originally released in 1997, developed under the guidance of the original key developers. This critically-acclaimed game, which mixes traditional command-based combat and real-time action, makes its Steam debut along with FF7R EPISODE INTERmission─a new story arc featuring Yuffie Kisaragi.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">RPG</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">33</Data></Cell>
+			<Cell><Data ss:Type="String">Elden Ring</Data></Cell>
+			<Cell><Data ss:Type="String">Elden Ring.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Elden Ring is an action RPG which takes place in the Lands Between, sometime after the Shattering of the titular Elden Ring. Players must explore and fight their way through the vast open-world to unite all the shards, restore the Elden Ring, and become Elden Lord.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">RPG</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">34</Data></Cell>
+			<Cell><Data ss:Type="String">Persona 5 Royal</Data></Cell>
+			<Cell><Data ss:Type="String">Persona 5 Royal.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">  Don the mask and join the Phantom Thieves of Hearts as they stage grand heists, infiltrate the minds of the corrupt, and make them change their ways!
+</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">RPG</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">35</Data></Cell>
+			<Cell><Data ss:Type="String">The Elder Scrolls V: Skyrim Special Edition</Data></Cell>
+			<Cell><Data ss:Type="String">Skyrim.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Winner of more than 200 Game of the Year Awards, The Elder Scrolls V: Skyrim Special Edition brings the epic fantasy to life in stunning detail. The Special Edition includes the critically acclaimed game and add-ons with all-new features like remastered art and effects, volumetric god rays, dynamic depth of field, screen-space reflections, and more. </Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">RPG</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">36</Data></Cell>
+			<Cell><Data ss:Type="String">FIFA 23</Data></Cell>
+			<Cell><Data ss:Type="String">FIFA 23.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">FIFA 23 is a football video game published by EA Sports. It is the 30th and final installment in the FIFA series that is developed by EA Sports, and released worldwide on 30 September 2022 for Nintendo Switch, PlayStation 4, PlayStation 5, Windows, Xbox One and Xbox Series X/S. Kylian Mbappé and Sam Kerr are the cover athletes for the standard and legacy editions.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Sports</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">37</Data></Cell>
+			<Cell><Data ss:Type="String">NBA 2K23</Data></Cell>
+			<Cell><Data ss:Type="String">nba 2k23.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">The NBA series of games has been released for us to play almost every year. But if you ask what is more outstanding and interesting this year than the previous installments, I would have to say that it is the improvement of both gameplay and gameplay systems that are better in every installment. It is a tradition for fans that when September approaches, they must see a new installment released. And this year, we are going to get to experience it with NBA 2K23.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Sports</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">38</Data></Cell>
+			<Cell><Data ss:Type="String">Football PES 2021 SEASON UPDATE</Data></Cell>
+			<Cell><Data ss:Type="String">Pro Evolution Soccer 2021.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Please note that the latest data for certain licensed leagues and teams will only be available via an update post-release. You will need an internet connection in order to download this update. See the official website for more details.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Sports</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">39</Data></Cell>
+			<Cell><Data ss:Type="String">Tony Hawk's Pro Skater 1+2</Data></Cell>
+			<Cell><Data ss:Type="String">Tony Hawk's Pro Skater 1 2.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Tony Hawk's Pro Skater 1 + 2 is a skateboarding video game played in a third-person view with its gameplay oriented towards classic arcade games. The goal of most modes of the game is to achieve a high score or collect certain objects. The player must complete objectives to unlock levels to progress through the game.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Sports</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">40</Data></Cell>
+			<Cell><Data ss:Type="String">Madden NFL 23</Data></Cell>
+			<Cell><Data ss:Type="String">Madden NFL 23.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Compete to make your mark in Madden NFL 23 history Control every clash with every decision you make in an all-new way. Take control of your team in Franchise mode, which adds free agents and updated trade logic. Compete to make your mark in Face of the Franchise: The League mode and assemble the most powerful team in all of Madden Ultimate Team™.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Sports</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">41</Data></Cell>
+			<Cell><Data ss:Type="String">Resident Evil Village</Data></Cell>
+			<Cell><Data ss:Type="String">Resident Evil Village.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Experience survival horror like never before in the eighth installment of the Resident Evil franchise - Resident Evil Village. Set after the horrifying events of the critically acclaimed Resident Evil 7 biohazard, this all-new story begins with Ethan Winters and his wife Mia living peacefully in their new home, free from the nightmares of their past. As they build a new life together, tragedy strikes them once again.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Horror</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">42</Data></Cell>
+			<Cell><Data ss:Type="String">Silent Hill 2</Data></Cell>
+			<Cell><Data ss:Type="String">Silent Hill 2.webp</Data></Cell>
+			<Cell><Data ss:Type="String">Investigating a letter from his late wife, James returns to where they made so many memories - Silent Hill. What he finds is a ghost town, prowled by disturbing monsters and cloaked in deep fog. Confront the monsters, solve puzzles, and search for traces of your wife in this remake of SILENT HILL 2.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Horror</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">43</Data></Cell>
+			<Cell><Data ss:Type="String">Outlast</Data></Cell>
+			<Cell><Data ss:Type="String">Outlast.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Hell is an experiment you can't survive in Outlast, a first-person survival horror game developed by veterans of some of the biggest game franchises in history. As investigative journalist Miles Upshur, explore Mount Massive Asylum and try to survive long enough to discover its terrible secret... if you dare.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Horror</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">44</Data></Cell>
+			<Cell><Data ss:Type="String">Alien: Isolation</Data></Cell>
+			<Cell><Data ss:Type="String">Alien Isolation.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Discover the true meaning of fear in Alien: Isolation, a survival horror set in an atmosphere of constant dread and mortal danger. Fifteen years after the events of Alien™, Ellen Ripley's daughter, Amanda enters a desperate battle for survival, on a mission to unravel the truth behind her mother's disappearance.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Horror</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">45</Data></Cell>
+			<Cell><Data ss:Type="String">Dead by Daylight</Data></Cell>
+			<Cell><Data ss:Type="String">Dead by Daylight.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Dead by Daylight is an indie horror game developed and published by Behaviour Interactive. Dead by Daylight is both an action and survival horror multiplayer game in which one crazed, unstoppable Killer hunts down four Survivors through a terrifying nightmarish world in a deadly game of Cat & Mouse</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Horror</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">46</Data></Cell>
+			<Cell><Data ss:Type="String">Guitar Hero III: Legends of Rock</Data></Cell>
+			<Cell><Data ss:Type="String">guitar hero iii legends of rock.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Guitar Hero III: Legends of Rock is a music rhythm game, the third main installment in the Guitar Hero series, and the fourth title overall. The game was published by Activision and distributed by RedOctane. It is the first game in the series to be developed by Neversoft after Activision’s acquisition of RedOctane and MTV Games’ purchase of Harmonix, the previous development studio for the series.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Rhythm</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">47</Data></Cell>
+			<Cell><Data ss:Type="String">Friday Night Funkin</Data></Cell>
+			<Cell><Data ss:Type="String">friday night funkin.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Friday Night Funkin' is a rhythm game in which the player controls a character called Boyfriend, who must defeat a series of opponents to continue dating his significant other, Girlfriend. The player must pass multiple levels, referred to as "Weeks" in-game, containing three songs each.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Rhythm</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">48</Data></Cell>
+			<Cell><Data ss:Type="String">Beat Saber</Data></Cell>
+			<Cell><Data ss:Type="String">Beat Saber.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Beat Saber is an immersive rhythm experience you have never seen before! Enjoy tons of handcrafted levels and swing your way through the pulsing music beats, surrounded by a futuristic world. Use your sabers to slash the beats as they come flying at you – every beat indicates which saber you need to use and the direction you need to match. With Beat Saber you become a dancing superhero!</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Rhythm</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">49</Data></Cell>
+			<Cell><Data ss:Type="String">Taiko no Tatsujin: Rhythm Festival</Data></Cell>
+			<Cell><Data ss:Type="String">Taiko no Tatsujin Rhythm Festival.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Taiko no Tatsujin: Rhythm Festival is a drum-based rhythm game featuring songs from genres such as Anime and VOCALOID™, and also a variety of game modes! Have fun playing solo or online! Recent Reviews: Very Positive (36) - 94% of the 36 user reviews in the last 30 days are positive.
+</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Rhythm</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">50</Data></Cell>
+			<Cell><Data ss:Type="String">osu!</Data></Cell>
+			<Cell><Data ss:Type="String">osu!.webp</Data></Cell>
+			<Cell><Data ss:Type="String">Osu! is a rhythm game in which hit circles appear as notes over a song's runtime, and the objective is to click on the circles at the appropriate time and in the correct order, aided by rings called approach circles that close in on the hit circles to visually indicate the timing.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Rhythm</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">51</Data></Cell>
+			<Cell><Data ss:Type="String">Forza Horizon 5</Data></Cell>
+			<Cell><Data ss:Type="String">Forza Horizon 5.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Forza Horizon 5 is a racing video game set in an open world environment based in a fictional representation of Mexico. The game has the largest map in the entire Forza Horizon series, being 50% larger than its predecessor, Forza Horizon 4, while also having the highest point in the Horizon series.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Racing</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">52</Data></Cell>
+			<Cell><Data ss:Type="String">Gran Turismo 7</Data></Cell>
+			<Cell><Data ss:Type="String">Gran Turismo 7.webp</Data></Cell>
+			<Cell><Data ss:Type="String">Gran Turismo 7 (Italian: Gran Turismo 7) is a racing simulation video game developed by Polyphony Digital and published by Sony Interactive Entertainment. It is the eighth main game in the Gran Turismo series. It was announced on June 11, 2020, at the PlayStation 5 reveal event and released on March 4, 2022 for PlayStation 4 and PlayStation 5, making it the first multi-console game in the series. Gran Turismo 7 received positive reviews from critics, with praise for its graphics and gameplay.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Racing</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">53</Data></Cell>
+			<Cell><Data ss:Type="String">Need for Speed: Heat</Data></Cell>
+			<Cell><Data ss:Type="String">Need for Speed Heat.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Sprint by day and step on it at night with Need for Speed™ Heat Deluxe Edition. It’s a street-level racing thrill ride where the line between legal and illegal blurs as the sun sets.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Racing</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">54</Data></Cell>
+			<Cell><Data ss:Type="String">Mario Kart 8 Deluxe</Data></Cell>
+			<Cell><Data ss:Type="String">Mario Kart 8 Deluxe.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Forza Horizon 5 is a racing video game set in an open world environment based in a fictional representation of Mexico. The game has the largest map in the entire Forza Horizon series, being 50% larger than its predecessor, Forza Horizon 4, while also having the highest point in the Horizon series.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Racing</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">55</Data></Cell>
+			<Cell><Data ss:Type="String">F1® 23</Data></Cell>
+			<Cell><Data ss:Type="String">F1Â® 23.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Stand firm until the end in EA SPORTS™ F1® 23, the official video game of the 2023 FIA Formula One World Championship™. </Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Racing</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">56</Data></Cell>
+			<Cell><Data ss:Type="String">Age of Empires IV: Anniversary Edition</Data></Cell>
+			<Cell><Data ss:Type="String">Age of Empires IV.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Featuring both familiar and innovative new ways to expand your empire in vast landscapes with stunning 4K visual fidelity, Age of Empires IV: Anniversary Edition brings an evolved real-time strategy game to the next level in this celebratory new version that includes a host of free new content such </Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Strategy</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">57</Data></Cell>
+			<Cell><Data ss:Type="String">Sid Meier’s Civilization® VI</Data></Cell>
+			<Cell><Data ss:Type="String">Sid Meierâs CivilizationÂ® VI.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Civilization VI is the newest installment in the award winning Civilization Franchise. Expand your empire, advance your culture and go head-to-head against history’s greatest leaders. Will your civilization stand the test of time?</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Strategy</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">58</Data></Cell>
+			<Cell><Data ss:Type="String">StarCraft™ II Campaign Collection</Data></Cell>
+			<Cell><Data ss:Type="String">StarCraftâ¢ II Campaign Collection.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">With millions of players already in the fight, StarCraft II has made gaming history. Now it’s your turn to take command and lead vast armies of terran, protoss and zerg to victory amongst the stars. Prepare for interstellar war, commander. You’re needed at the front. The StarCraft II Complete Collection includes</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Strategy</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">59</Data></Cell>
+			<Cell><Data ss:Type="String">Total War: Warhammer III</Data></Cell>
+			<Cell><Data ss:Type="String">Total War Warhammer III.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Like its predecessors, Total War: Warhammer III features turn-based strategy and real-time tactics gameplay similar to other games in the Total War series. In the campaign, players move armies and characters around the map and manage settlements in a turn-based manner.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Strategy</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">60</Data></Cell>
+			<Cell><Data ss:Type="String">XCOM 2</Data></Cell>
+			<Cell><Data ss:Type="String">XCOM 2.jpg</Data></Cell>
+			<Cell><Data ss:Type="String">Description. XCOM® 2 is the sequel to the award-winning strategy game XCOM: Enemy Unknown. Earth has changed and is now under alien rule. Facing impossible odds you must rebuild XCOM, and ignite a global resistance to reclaim our world and save humanity.</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+			<Cell><Data ss:Type="String">Strategy</Data></Cell>
+		</Row>	</Table>
+</Worksheet>
+</Workbook>
