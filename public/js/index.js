@@ -135,6 +135,22 @@ function closeModal(){
     loginModal.style.display = 'none';
 }
 
+function togglePassword(inputId, iconId) {
+    const passwordInput = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash"); // เปลี่ยนเป็นไอคอนตาปิด
+    } else {
+        passwordInput.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye"); // เปลี่ยนเป็นไอคอนตาเปิด
+    }
+}
+
+
 function loginAccount(){
     const modalContent = document.getElementById('loginModal').getElementsByClassName('modal-content')[0];
     modalContent.innerHTML = `
@@ -147,8 +163,11 @@ function loginAccount(){
     <form action="" class="formAccount">
         <legend id="legend">Log In</legend>
         <input type="text" id="username_email" name="username_email" placeholder="Username or Email:" required>
-        <input type="password" name="password1" id="password1" placeholder="Your password:" required>
-        <button type="submit" >Log in</button>
+        <div class="password-container">
+            <i class="fa fa-eye" id="eyeIcon1" onclick="togglePassword('password1', 'eyeIcon1')"></i>
+            <input type="password" name="password1" id="password1" placeholder="Your password:" required>
+        </div>
+        <button type="submit">Log in</button>
     </form>
     <div class="xy">
         <span id="login_create" onclick="createOrLogin()">Create an account</span>
@@ -170,8 +189,14 @@ function createAccount(){
         <legend id="legend">Create Your Account</legend>
         <input type="text" id="username" name="username" placeholder="Username:" required>
         <input type="email" name="email" id="email" placeholder="Email:" required>
-        <input type="password" id="password" name="password" placeholder="Your password:" required>
-        <input type="password" id="repassword" name="repassword" placeholder="Re-type your password:" required>
+        <div class="password-container">
+            <i class="fa fa-eye" id="eyeIcon2" onclick="togglePassword('password', 'eyeIcon2')"></i>
+            <input type="password" id="password" name="password" placeholder="Your password:" required>
+        </div>
+        <div class="password-container">
+            <i class="fa fa-eye" id="eyeIcon3" onclick="togglePassword('repassword', 'eyeIcon3')"></i>
+            <input type="password" id="repassword" name="repassword" placeholder="Re-type your password:" required>
+        </div>
         <button type="submit">Submit</button>
     </form>
     <div class="xy">
@@ -180,6 +205,7 @@ function createAccount(){
     </div>
     `;
 }
+
 
 function checkEmail(username,email,password){
     const modalContent = document.getElementById('loginModal').getElementsByClassName('modal-content')[0];

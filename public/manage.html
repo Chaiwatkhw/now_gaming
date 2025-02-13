@@ -35,14 +35,16 @@
             <button id="filter-zero-key" onclick="filterZeroKey()">Show Games with 0 Keys</button>
             <div class="add-button" onclick="modalAddgame(0)">Add Game</div>
         </div>
+        
         <table class="table" id="gamelistTable">
-            <thead>
-                <tr>
+            <thead id="thead">
+                <tr style="cursor: default;">
                     <th>GameOrder</th>
                     <th>Game Image</th>
                     <th>Game Title</th>
                     <th>Price</th>
                     <th>Key Amount</th>
+                    <th>Category</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -50,6 +52,7 @@
 
             </tbody>
         </table> 
+        <div id="notfoundgame"></div>
         <div id="pagination" class="pagination-container"></div>      
      </div>
      <div class="modal" id="modal">
@@ -112,6 +115,7 @@
             
         </div>
      </div>
+     
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="/js/manage.js"></script>
      

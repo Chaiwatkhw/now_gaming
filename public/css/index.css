@@ -1025,4 +1025,36 @@ select {
     font-weight: 900;
 }
 
+/* ส่วนลูกตา */
+
+.password-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column; /* ทำให้ไอคอนอยู่ด้านบน */
+    /* border: 1px solzid red; */
+}
+
+.password-container input {
+    width: 100%;
+    padding-top: 25px; /* ขยับช่อง input ลงมาให้มีพื้นที่ด้านบน */
+    padding-right: 10px;
+}
+
+.password-container i {
+    position: absolute;
+    top:12px;
+    right: 10px;
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.password-container i:hover {
+    color: #464343;
+}
+
+
 

@@ -387,3 +387,29 @@ body{
     color: lime;
 }
 
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 32%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.eye-icon:hover{
+    color: #464343;
+}
+
+.IInput {
+    position: relative;
+    padding-right: 30px;  /* Add padding to make space for the icon */
+}
+
+.changePassword3{
+    box-sizing: border-box;
+    position: relative;
+    
+    /* border: 1px solid red; */
+}
+

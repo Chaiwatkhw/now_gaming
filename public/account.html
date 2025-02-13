@@ -80,12 +80,30 @@
                                 <div class="upload-profile"><img src="img/logo/icon-photo.svg" alt="" class="icon-photo"><span style="color: #999;"> .jpg.png</span></div>       
                             </div>    -->
                             <div class="changePassword">Change Password</div>
-                            <input type="password"  class="IInput" id="curpass" placeholder="Current Password:">
-                            <input type="password"  class="IInput" id="newpass" placeholder="New Password:">
-                            <input type="password"  class="IInput" id="connewpass" placeholder="Confirm New Password:">
+                            <div class="changePassword2">
+                                <div class="changePassword3">
+                                    <input type="password" class="IInput" id="curpass" placeholder="Current Password:">
+                                    <span class="eye-icon" onclick="togglePasswordVisibility('curpass')">
+                                        <i class="fa fa-eye"></i>
+                                    </span>
+                                </div >
+                                <div class="changePassword3">
+                                    <input type="password" class="IInput" id="newpass" placeholder="New Password:">
+                                    <span class="eye-icon" onclick="togglePasswordVisibility('newpass')">
+                                        <i class="fa fa-eye"></i>
+                                    </span>
+                                </div>
+                                <div class="changePassword3">
+                                    <input type="password" class="IInput" id="connewpass" placeholder="Confirm New Password:">
+                                    <span class="eye-icon" onclick="togglePasswordVisibility('connewpass')">
+                                        <i class="fa fa-eye"></i>
+                                    </span>
+                                </div>
                             <div class="Button" onclick="">
                                 <div class="ButtonTitle">Submit</div>
                             </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

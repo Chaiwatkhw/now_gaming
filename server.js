@@ -204,7 +204,6 @@ app.post('/login', async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: 'none',
-            maxAge: 24 * 60 * 60 * 1000 // 1 วัน
         });
         res.status(200).json({ message: 'Login successful' });
     } catch (error) {

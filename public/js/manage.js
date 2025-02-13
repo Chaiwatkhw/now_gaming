@@ -4,14 +4,14 @@ window.addEventListener('pageshow', (event) => {
     }
 });
 
-function checkAndToggleTbody() {
+function checkAndToggleTbody(gameAmount) {
     const table = document.getElementById('gamelistTable');
-    const tbody = document.getElementById('games-container');
     // ตรวจสอบว่า tbody มีแถวอยู่หรือไม่
-    if (tbody && tbody.children.length == 0) {
-        table.style.display = 'none';  // แสดง tbody
+    if (gameAmount == 0) {
+        table.style.display = 'none';
     } else {
-        table.style.display = '';  // ซ่อน tbody
+        table.style.display = ''; 
+          // ซ่อน tbody
     }
 }
 
@@ -217,30 +217,43 @@ function filterZeroKey() {
 function displayGames() {
     const tbody = document.getElementById('games-container');
     tbody.innerHTML = ''; // ล้างตารางก่อน
+
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const paginatedGames = filteredGamesData.slice(start, end); // ตัดเฉพาะเกมของหน้านั้นๆ
+    const notfoundgame = document.getElementById('notfoundgame');
+    if (paginatedGames.length === 0) {
+        notfoundgame.style.display = 'flex';
+        notfoundgame.innerHTML = `No results found`;
+        checkAndToggleTbody(paginatedGames.length)
+        return;
+    }
 
     paginatedGames.forEach((game, index) => {
         const formattedPrice = parseFloat(game.game_price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         const row = `
-            <tr>
-                <td>${start + index + 1}</td>
-                <td><img src="../img/game/${game.game_image}" alt="${game.game_title}" style="width: 100px;"></td>
-                <td style="text-align: left;">${game.game_title}</td>
-                <td>฿${formattedPrice}</td>
-                <td>${game.key_count}</td>
-                <td class="editDelButton">
+            <tr class="rowGame">
+                <td onclick="editGame(${game.game_id})">${start + index + 1}</td>
+                <td onclick="editGame(${game.game_id})"><img src="../img/game/${game.game_image}" alt="${game.game_title}" style="width: 90px;"></td>
+                <td style="text-align: left;" onclick="editGame(${game.game_id})">${game.game_title}</td>
+                <td onclick="editGame(${game.game_id})">฿${formattedPrice}</td>
+                <td onclick="openKeyGame(${game.game_id})" >${game.key_count}</td>
+                <td onclick="editGame(${game.game_id})">${game.game_category}</td>
+                <td class="editDelButton" style="cursor: default">
                     <button onclick="openKeyGame(${game.game_id})" class="addKey">Add Key</button>
                     <button onclick="editGame(${game.game_id})" class="editButton">Edit</button>
                     <button onclick="confirmDeleteGame(${game.game_id})" class="deleteButton">Delete</button>
                 </td>
             </tr>
         `;
+        notfoundgame.innerHTML = ``
+        notfoundgame.style.display = 'none';
         tbody.innerHTML += row;
     });
-    checkAndToggleTbody();
+
+    checkAndToggleTbody(paginatedGames.length);
 }
+
 
 
 // ฟังก์ชันแบ่งหน้า
@@ -264,23 +277,25 @@ function setupPagination() {
     }
 }
 
-// ฟังก์ชันค้นหาจากลำดับที่แสดงบนตาราง
 function searchGames() {
-    const searchQuery = document.getElementById('searchinput').value.toLowerCase();
-    
-    if (searchQuery.trim() === "") {
+    const searchQuery = document.getElementById('searchinput').value.toLowerCase().trim();
+
+    if (searchQuery === "") {
         filteredGamesData = [...gamesData]; // ถ้าไม่กรอกข้อความ ค้นหาทั้งหมด
     } else {
         filteredGamesData = gamesData.filter((game, index) => {
-            // ค้นหาจากลำดับที่แสดง
             const displayId = (index + 1).toString(); // ใช้ลำดับที่แสดง (เริ่มจาก 1)
-            return game.game_title.toLowerCase().includes(searchQuery) || displayId.includes(searchQuery);
+            return game.game_title.toLowerCase().includes(searchQuery) || 
+                   displayId.includes(searchQuery) ||
+                   game.game_category.toLowerCase().includes(searchQuery); // ค้นหาจากหมวดหมู่
         });
     }
+    
     currentPage = 1; // รีเซ็ตหน้าเป็น 1
     displayGames(); // แสดงผล
     setupPagination(); // รีเฟรชปุ่มแบ่งหน้า
 }
+
 
 // เพิ่ม event listener ให้กับช่องค้นหา
 document.getElementById('searchinput').addEventListener('input', searchGames);
@@ -422,7 +437,6 @@ function searchBoxChange() {
 
 document.getElementById('x').addEventListener('click', closeSearch);
 function closeSearch() {
-    console.log('s')
     const searchBox = document.querySelector('.search-box');
     const searchIcon = document.getElementById('search-icon');
     const searchInput = document.getElementById('searchinput');

@@ -141,6 +141,7 @@ router.get('/getGameToManage',isAdmin, async (req, res) => {
     hp.game_price, 
     hp.start_date,
     g.game_deleted,
+    g.game_category, 
     COUNT(k.keygame) AS key_count  -- นับจำนวนคีย์ของแต่ละเกมที่ยังไม่ได้ใช้งาน
 FROM games g
 JOIN historyprice hp ON g.game_id = hp.game_id
@@ -160,7 +161,6 @@ ORDER BY g.game_id;
         const connection = await connectDB();
         // ดึงข้อมูลเกมพร้อมราคาล่าสุด
         const [games] = await connection.query(query);
-        
         // ส่งข้อมูลกลับไป
         res.send(games);
     } catch (error) {

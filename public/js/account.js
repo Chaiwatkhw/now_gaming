@@ -205,5 +205,21 @@ function renderOrderTable(orderItems, totalPrice) {
     ordersContainer.appendChild(orderDiv);
 }
 
+function togglePasswordVisibility(id) {
+    const passwordField = document.getElementById(id);
+    const eyeIcon = passwordField.nextElementSibling.querySelector('i');
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+    } else {
+        passwordField.type = "password";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+    }
+}
+
+
 // โหลดข้อมูลคำสั่งซื้อเมื่อหน้าโหลด
 document.addEventListener('DOMContentLoaded', fetchOrders);

@@ -16,6 +16,13 @@ async function loadCart() {
         const summaryPrice = document.querySelector('.summary-row span:last-child'); // ตำแหน่งของราคารวม
         cartContainer.innerHTML = ""; // เคลียร์ข้อมูลเก่าก่อน
 
+        // เช็คว่าตะกร้าว่างหรือไม่
+        if (cartItems.length === 0) {
+            cartContainer.innerHTML = `<div style="width: 100%; text-align:center; font-size:20px">Your cart is empty</div>`;
+            summaryPrice.textContent = "0.00 THB";
+            return;
+        }
+
         let subtotal = 0; // ตัวแปรเก็บราคารวม
 
         cartItems.forEach(item => {
@@ -60,6 +67,7 @@ async function loadCart() {
         console.error("Error loading cart:", error);
     }
 }
+
 
 // โหลดตะกร้าทันทีเมื่อหน้าเว็บโหลด
 document.addEventListener("DOMContentLoaded", loadCart);
