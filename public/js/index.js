@@ -221,7 +221,7 @@ function checkEmail(username,email,password){
         <input type="hidden" name="email" value="${email}">
         <input type="hidden" name="password" value="${password}">
         <legend id="legend">Email Verification</legend>
-        <label for="" style="font-size: 16px; align-self: flex-start;" >OTP has been sent to your email address.</label>
+        <label for="" style="font-size: 16px; align-self: flex-start;" >OTP has been sent to ${email}</label>
         <input type="text" id="otp" name="otp" placeholder="Verification Code:" required>
         <button type="submit">Verify</button>
     </form>
@@ -264,7 +264,7 @@ function forgotPassword2(email){
     <form action="" class="formAccount">
         <legend id="legend">Verification Code</legend>
         <input type="hidden" name="email" value="${email}">
-        <label for="" style="font-size: 16px; align-self: flex-start;" >Please enter your OTP to reset your password.</label>
+        <label for="" style="font-size: 16px; align-self: flex-start;" >"${email}"<br>Please enter your OTP to reset your password.</label>
         <input type="text" id="otp" name="otp" placeholder="Verification Code:" required>
         <button type="submit">Send OTP</button>
     </form>
